@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="module">
+        import obj, { site } from './8.js'
+        console.log(obj.render())
+        console.log(site)
+
+        console.log("-------------")
+        import * as all from './8.js'
+        console.log(all)
+        console.log(all.default.render())
+        console.log(all.site)
+    </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        div {
+            color: #eee;
+            font-size: 2rem;
+            text-align: center;
+        }
+        .parent {
+            width: 600px;
+            height: 600px;
+            background-color: blue;
+            border: 10px solid black;
+            padding: 20px;
+        }
+        .child {
+            background-color: red;
+            border: 10px solid gray;
+            margin: 20px;
+            height: 100px;
+            line-height: 100px;
+        }
+        .auto {
+            width: auto;
+        }
+        .hundred-percent {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="parent">
+        parent
+        <div class="child auto">Child1: width:auto</div>
+        <div class="child hundred-percent">Child2: width:100%</div>
+    </div>
+</body>
+</html>

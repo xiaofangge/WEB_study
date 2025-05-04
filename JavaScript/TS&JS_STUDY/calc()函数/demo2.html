@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style> 
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        :root {
+            --hue: 180;
+        }
+        .success {
+            background-color: hsl(calc(var(--hue)), 100%, 50%);
+        }
+        .danger {
+            background-color: hsl(calc(var(--hue) - 180), 100%, 50%);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button class="success">button1</button>
+        <button class="danger">button2</button>
+    </div>
+</body>
+</html>

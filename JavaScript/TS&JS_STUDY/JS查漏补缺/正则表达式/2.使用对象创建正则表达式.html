@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用对象创建正则表达式</title>
+</head>
+<body>
+    <div class="content">houdunren.com</div>
+    <script>
+        const contentEle = document.querySelector('.content')
+        const input = prompt("请输入要检测的内容（支持正则）")
+        const reg = new RegExp(input, 'g')
+        contentEle.innerHTML = contentEle.innerHTML.replace(reg, search => `<span style="color:red">${search}</span>`)
+    </script>
+</body>
+</html>

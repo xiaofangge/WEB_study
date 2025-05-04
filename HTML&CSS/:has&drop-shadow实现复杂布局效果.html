@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .outside-circle {
+            position: relative;
+            background-color: pink;
+            width: 180px;
+            height: 80px;
+            border-radius: 10px 10px 0 0;
+            display: flex;
+            margin: auto;
+            /* 对整个可见部分添加阴影 */
+            filter: drop-shadow(0 0 5px rgb(195, 103, 119));
+        }
+        .outside-circle::before, .outside-circle::after {
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            bottom: 0;
+        }
+        .outside-circle::before {
+            left: -20px;
+            background: radial-gradient(circle at 0 0, transparent 20px, pink 20px);
+        }
+        .outside-circle::after {
+            left: 180px;
+            background: radial-gradient(circle at 100% 0 , transparent 20px, pink 20px);
+        }
+    </style>
+</head>
+<body>
+    <div class="g-container">
+        <div class="g-nav">
+            <ul>
+                <li>Tab 1</li>
+                <li>Tab 2</li>
+                <li>Tab 3</li>
+                <li>Tab 4</li>
+            </ul>
+        </div>
+        <div class="g-main">
+            <!-- 负责样式层面的展示 begin -->
+            <ul class="g-status">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+            <!-- end -->
+            <ul class="g-content">
+                <li>内容1</li>
+                <li>内容2</li>
+                <li>内容3</li>
+                <li>内容4</li>
+            </ul>
+        </div>
+    </div>
+    <hr>
+    <div class="outside-circle"></div>
+</body>
+</html>

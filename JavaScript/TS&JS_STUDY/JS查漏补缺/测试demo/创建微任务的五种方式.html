@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1. Promise
+
+
+        // 2. MutationObserver
+        // console.log("Start")
+
+        // const observer = new MutationObserver(() => {
+        //     console.log("Microtask from MutationObserver")
+        // })
+
+        // observer.observe(document.body, { childList: true })
+        // document.body.appendChild(document.createElement("div"))
+
+        // console.log("End")
+
+
+
+        // 3.queueMicrotask()   
+        // console.log('Start')
+        // queueMicrotask(() => {
+        //     console.log("Microtask from queueMicrotask")
+        // });
+        // console.log("end")
+
+
+        // 4. process.nextTick() 【Nodejs环境】
+        // console.log("Start")
+
+        // process.nextTick(() => console.log('Microtask from process.nextTick'));
+        
+        // console.log('End');
+
+
+
+
+        // 5. async/await
+        console.log("Start")
+
+        (async function () {
+            await Promise.resolve();
+            console.log("Microtask from async/await")
+        })()
+
+        console.log("End")
+ 
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件捕获</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .box {
+            width: 600px;
+            height: 600px;
+            background-color: green;
+        }
+        .box .box_div {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            transform: translate(50px, 20px);
+        }
+    </style>
+</head>
+<body>
+    <div class="box">我是父亲box
+        <div class="box_div">我是box的儿子 box_div</div>
+    </div>
+    <script>
+        const boxEle = document.querySelector(".box")
+        const boxDivEle = document.querySelector(".box_div")
+        boxEle.addEventListener("click", () => {
+            console.log("box 被点击了") // box 被点击了
+        })
+        // 事件捕获：由内向外 
+        boxDivEle.addEventListener("click", () => {
+            console.log("box_div 被点击了") // box_div 被点击了\nbox 被点击了
+        })
+    </script>
+</body>
+</html>

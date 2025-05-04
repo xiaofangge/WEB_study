@@ -1,0 +1,46 @@
+:root {
+  /* 主题色 */
+  --primary-color: #409EFF;
+  --primary-color-light: #a0cfff;
+  --primary-color-dark: #337ecc;
+  
+  /* 辅助色 */
+  --success-color: #67C23A;
+  --warning-color: #E6A23C;
+  --danger-color: #F56C6C;
+  --info-color: #909399;
+  
+  /* 文字颜色 */
+  --text-color-primary: #303133;
+  --text-color-regular: #606266;
+  --text-color-secondary: #909399;
+  --text-color-placeholder: #C0C4CC;
+  
+  /* 边框颜色 */
+  --border-color-base: #DCDFE6;
+  --border-color-light: #E4E7ED;
+  --border-color-lighter: #EBEEF5;
+  --border-color-extra-light: #F2F6FC;
+  
+  /* 背景颜色 */
+  --background-color-base: #F5F7FA;
+  --background-color-white: #FFFFFF;
+  
+  /* 菜单颜色 */
+  --menu-background: #001529;
+  --menu-text-color: #FFFFFF;
+  --menu-active-text-color: var(--primary-color);
+  
+  /* 头部颜色 */
+  --header-background: #FFFFFF;
+  --header-text-color: var(--text-color-primary);
+  
+  /* 布局 */
+  --header-height: 60px;
+  --sidebar-width: 220px;
+  --sidebar-collapsed-width: 64px;
+  --footer-height: 40px;
+  
+  /* 动画时间 */
+  --transition-time: 0.3s;
+} 

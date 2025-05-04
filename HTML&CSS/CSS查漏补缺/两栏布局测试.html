@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>两栏布局测试</title>
+    <style>
+        .father {
+            margin: 10px auto;
+            width: 600px;
+            display: flex;
+            flex-direction: column;
+            /* align-items: baseline; */
+            justify-content: flex-start;
+        }
+        .left {
+            width: 200px;
+            flex-shrink: 0;
+            background-color: red;
+            height: 400px;
+        }
+        .right {
+            flex: 1;
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div class="father">
+        <div class="left"></div>
+        <div class="right">
+            fafafdafdsfadfafafdafdsfadaddddddddddsddddddddddd
+            fafafdafdsfadfafafdafdsfadaddddddddddsddddddddddd
+            fafafdafdsfadfafafdafdsfadaddddddddddsddddddddddd
+            fafafdafdsfadfafafdafdsfadaddddddddddsddddddddddd
+            fafafdafdsfadfafafdafdsfadaddddddddddsddddddddddd
+            fafafdafdsfadfafafdafdsfadaddddddddddsddddddddddd
+        </div>
+    </div>
+</body>
+</html>

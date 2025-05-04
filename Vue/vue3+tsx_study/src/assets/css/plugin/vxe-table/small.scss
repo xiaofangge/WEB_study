@@ -1,0 +1,69 @@
+// small 样式
+.content_font_size_small {
+
+    .vxe-grid{
+        font-size: 12px !important;
+    }
+    
+    // 头部单元格高度
+    .vxe-table--render-default .vxe-body--column.col--ellipsis,
+    .vxe-table--render-default .vxe-footer--column.col--ellipsis,
+    .vxe-table--render-default .vxe-header--column.col--ellipsis {
+        height: 28px;
+    }
+
+    // 设置可编辑输入字体大小
+    .vxe-table .el-input__inner {
+        font-size: 14px;
+    }
+
+    // 单元格字体大小
+    .vxe-cell {
+        font-size: 12px;
+        font-weight: 400;
+    }
+
+     // 图标大小
+     --tools--operate:26px;
+
+     .vxe-tools--operate {
+         .vxe-button.type--button.is--circle {
+             width: var(--tools--operate) !important;
+             height: var(--tools--operate) !important;
+         }
+ 
+         .vxe-button.type--button.is--circle {
+             display: flex;
+             justify-content: center;
+             align-items: center;
+             min-width: var(--tools--operate);
+         }
+     }
+
+    .vxe-toolbar {
+        padding: 4px 0;
+    }
+
+    --pager-vxe-page:20px;
+
+    .vxe-pager .vxe-pager--jump .vxe-pager--goto,
+    .vxe-pager .vxe-pager--sizes>.vxe-input {
+        height: var(--pager-vxe-page);
+        line-height: var(--pager-vxe-page);
+    }
+
+    .vxe-input .vxe-input--extra-suffix,
+    .vxe-input .vxe-input--prefix,
+    .vxe-input .vxe-input--suffix {
+        height: var(--pager-vxe-page);
+    }
+
+    .vxe-pager.size--small {
+        height: 28px;
+        font-size: 12px;
+    }
+
+    .vxe-table--render-default .vxe-body--column.col--valid-error .vxe-cell--valid .vxe-cell--valid-msg{
+        padding: 4px 12px;
+    }
+}

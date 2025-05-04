@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文本溢出省略</title>
+    <style>
+        p {
+            width: 400px;
+            height: 40px;
+            line-height: 40px;
+            border: 1px solid red;
+            /* 设置文本不换行 */
+            white-space: nowrap;
+            /* 隐藏超出的内容 */
+            overflow: hidden;
+            /* 当对象内文本溢出时显示省略标记 */
+            text-overflow: ellipsis;
+        }
+        .demo1 {
+            line-height: 20px;
+            height: 40px;
+            width: 300px;
+            overflow: hidden;
+            position: relative;
+            border: 1px solid red;
+        }
+        .demo1::after {
+            content: "...";
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            padding: 0 5px;
+            background-color: #fff;
+        }
+        .demo3 {
+            width: 400px;
+            border: 1px solid red;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+    </style>
+</head>
+<body>
+    <h3>一、单行文本溢出省略</h3>
+    <p>这是一些文本这是一些文本这是一些文本这是一些文本这是一些文本这是一些文本这是一些文本这是一些文本这是一些文本</p>
+    <h3>二、多行文本溢出省略</h3>
+    <h4>2.1、基于高度截断</h4>
+    <div class="demo1">这是一些文本这是一些文本这是一些文本这是一些文本这是一些文本这是一些文本这是一些文本这是一些文本这是一些文本</div>
+    <h4>2.2、基于行数截断</h4>
+    <div class="demo3">这是一些文本这是一些文本这是一些文本这是一些文本这是一些文本这是一些文本这是一些文本这是一些文本这是一些文本</div>
+</body>
+</html>

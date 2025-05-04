@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .demo1 li {
+            transition: all .5s;
+        }
+        .demo1 li:hover {
+            color: sandybrown;
+            cursor: pointer;
+        }
+        .demo1 li::marker {
+            content: '😢 ';
+        }
+        .demo1 li:hover::marker {
+            content: '😄 ';
+        }
+        .demo2 {
+            counter-reset: demo2H3;
+        }
+        .demo2 h3 {
+            counter-increment: demo2H3;
+            display: list-item;
+        }
+        .demo2 h3::marker {
+            display: list-item;
+            color: sandybrown;
+            content: "🪝" counter(demo2H3) ". ";
+        }
+    </style>
+</head>
+<body>
+    <ul class="demo1">
+        <li><h3>白日依山尽</h3></li>
+        <li><h3>黄河入海流</h3></li>
+        <li><h3>欲穷千里目</h3></li>
+        <li><h3>更上一层楼</h3></li>
+    </ul>
+    <hr>
+    <div class="demo2">
+        <h3>Lorem ipsum dolor sit amet.</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+        <h3>Itaque sequi eaque earum laboriosam.</h3>
+        <p>Ratione culpa reprehenderit beatae quaerat voluptatibus, debitis iusto?</p>
+        <h3>Laudantium sapiente commodi quidem excepturi!</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+    </div>
+</body>
+</html>

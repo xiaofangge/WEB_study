@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>indexDB基本操作使用</title>
+</head>
+<body>
+    
+    <script src="./indexDb.js"></script>
+    <script>
+        const names = ["张三", "李四", "王五"]
+        openDB("class", 1).then(db => {
+            console.log("db => ", db)
+            
+            const data = {
+                uuid: performance.now(),
+                name: '张三',
+                age: Math.ceil(Math.random() * 100)
+            }
+            add(db, "users", data)
+
+            // 通过主键查询数据
+            getDataByKey(db, "users", 34.80000000074506)
+
+            // 通过游标查询数据
+            cursorGetData(db, "users")
+
+            // 通过索引查询数据-只会获取第一条数据
+            getDataByIndex(db, "users", "age", 10)
+
+            // 通过游标索引查询数据
+            cursorDataByeIndex(db, "users", "age", 10)
+
+            // 通过游标索引分页查询
+            cursorGetDataByIndexAndPage(db, "users", "name", "张三", 2, 5)
+
+            // 更新数据
+            let updateData = {
+                uuid: 49.5, name: '李四', age: 26
+            }
+            updateDB(db, "users", updateData)
+
+
+            // 通过主键删除数据
+            deleteDB(db, "users", 49.5)
+
+            // 通过索引和游标删除指定数据
+            cursorDelete(db, "users", "age", 21)
+
+
+            // 关闭数据库
+            setTimeout(() => {
+                closeDB(db)
+            });
+        })
+
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let globalVar = '全局变量';
+    </script>
+    <script type="module">
+        // 模块作用域
+        let what = '张三';
+        console.log("module1 => ", what); // 张三
+        console.log("module1 => ", globalVar); // 全局变量
+    </script>
+    <script type="module">
+        // 模块作用域
+        let age = 15;
+        console.log("module2 => ", globalVar); // 全局变量
+        console.log("module2 => ", age)
+        console.log("module2 => ", what); // what is not defined
+    </script>
+</body>
+</html>

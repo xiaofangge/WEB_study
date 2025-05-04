@@ -1,0 +1,11 @@
+vue-his-demo/
+├── src/
+│   ├── components/
+│   │   ├── layout/
+│   │   └── common/
+│   ├── views/
+│   ├── router/
+│   ├── store/
+│   └── assets/
+├── public/
+└── package.json 

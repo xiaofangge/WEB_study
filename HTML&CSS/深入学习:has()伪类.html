@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* +: 相邻兄弟选择器 */
+      label:has(+ input:required)::before {
+        content: "*";
+        color: red;
+      }
+      /* .thumb {
+            opacity: 0;
+        }
+        .item:hover .humb {
+            opacity: 1;
+        }
+        .item:has(.thumb:hover) {
+            -webkit-user-drag: element;
+        } */
+      .layers {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .layers .box1 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 300px;
+        height: 300px;
+        background-color: pink;
+      }
+      .layers .box2 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 200px;
+        height: 200px;
+        background-color: greenyellow;
+      }
+      .layers .box3 {
+        width: 100px;
+        height: 100px;
+        background-color: deepskyblue;
+      }
+      /* .layers div:hover { */
+      /* 轮廓线不会占据空间 */
+      /* outline: 4px dashed deeppink; */
+      /* border: 4px dashed deeppink; */
+      /* } */
+      /* .layers div:has(:hover):hover {
+            outline: 4px dashed deeppink;
+        } */
+      .layers div:not(:has(:hover)):hover {
+        outline: 4px dashed deeppink;
+        outline-offset: -10px;
+      }
+      star {
+        display: flex;
+      }
+      star [type="radio"] {
+        appearance: none;
+        width: 40px;
+        height: 40px;
+        margin: 0;
+        cursor: pointer;
+        background-color: #ccc;
+        transition: 0.3s;
+        /* 遮罩：和background类似 */
+        -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E %3Cpath d='M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z'%3E%3C/path%3E %3C/svg%3E")
+          center/80% no-repeat;
+      }
+      star [type="radio"]:hover,
+        /* ~: 后置兄弟选择器 */
+        star [type="radio"]:has(~:hover),
+        star [type="radio"]:checked,
+        star [type="radio"]:has(~:checked) {
+        background-color: orangered;
+      }
+      h4 {
+        text-align: center;
+      }
+      .demo5 {
+        display: grid;
+        place-content: center;
+      }
+      .date {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        grid-template-rows: repeat(6, 1fr);
+      }
+      .date span {
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .select,
+      .select~span:has(~.select) {
+        background-color: blueviolet;
+        color: #fff;
+      }
+      span:hover~span:has(~.select), /* 表示在已选中之前，匹配当前hover之后，.select之前的元素 */
+      .select~span:has(~:hover) {    /* 表示在已选中之后，匹配.select之后，hover之前的元素 */
+        background-color: blueviolet;
+        color: #fff;
+      }
+      .date:not(:has(.select~.select)) .select,
+      .date:not(:has(.select~.select)) span:hover {
+        background-color: transparent;
+        color: inherit;
+        outline: 1px solid blueviolet;
+        /* 正值将轮廓向元素外扩展，负值则将轮廓向内发展 */
+        outline-offset: -2px;
+      }
+      .date:not(:has(.select~.select)) span:hover~span:has(~.select),
+      .date:not(:has(.select~.select)) .select~span:has(~:hover) {
+        background-color: blueviolet;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <form>
+      <div>
+        <label for="">用户名</label>
+        <input required type="text" />
+      </div>
+      <div>
+        <label for="">密码</label>
+        <input required type="text" />
+      </div>
+      <div>
+        <label for="">备注</label>
+        <input type="text" />
+      </div>
+    </form>
+    <hr />
+    <div class="layers">
+      <div class="box1">
+        <div class="box2">
+          <div class="box3"></div>
+        </div>
+      </div>
+    </div>
+    <hr />
+    <star>
+      <input name="star" type="radio" />
+      <input name="star" type="radio" />
+      <input name="star" type="radio" />
+      <input name="star" type="radio" />
+      <input name="star" type="radio" />
+    </star>
+    <h4>区域选择（已选一个）</h4>
+    <div class="demo5">
+        <div class="date" id="date">
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>5</span>
+            <span>6</span>
+            <span>7</span>
+            <span>8</span>
+            <span>9</span>
+            <span>10</span>
+            <span>11</span>
+            <span>12</span>
+            <span>13</span>
+            <span>14</span>
+            <span>15</span>
+            <span>16</span>
+            <span>17</span>
+            <span>18</span>
+            <span>19</span>
+            <span>20</span>
+            <span>21</span>
+            <span>22</span>
+            <span>23</span>
+            <span>24</span>
+            <span>25</span>
+            <span>26</span>
+            <span>27</span>
+            <span>28</span>
+            <span>29</span>
+            <span>30</span>
+            <span>31</span>
+          </div>
+    </div>
+    <script>
+        const dateEle = document.querySelector(".date")
+        dateEle.addEventListener("click", (ev) => {
+            const cur = dateEle.querySelectorAll(".select")
+            if (cur.length === 2) {
+                cur.forEach(el => {
+                    el.classList.remove("select")
+                })
+            }
+            ev.target.classList.add("select")
+        })
+    </script>
+  </body>
+</html>

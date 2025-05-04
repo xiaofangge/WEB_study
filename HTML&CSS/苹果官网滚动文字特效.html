@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div.clip {
+            font-size: 180px;
+            font-weight: bold;
+            /* color: deeppink; */
+            background: url(./grid布局/images/img-01.png) no-repeat center center;
+            background-size: cover;
+            text-align: center;
+            /* 可以实现背景被裁减成文字的前景色 */
+            background-clip: text;
+            color: transparent;
+        }
+        .g-wrap {
+            background: #000;
+        }
+        .g-wrap p {
+            width: 400px;
+            color: transparent;
+            background: linear-gradient(-4deg, transparent, transparent 25%, #ffb6ff, #b344ff,transparent 75%, transparent);
+            background-clip: text;
+            background-size: 100% 400%;
+            background-position: center 0;
+            animation: textScroll 4s infinite linear alternate;
+        }
+        @keyframes textScroll {
+            100% {
+                background-position: center 100%;
+            }
+        }
+        .text {
+            background-color: #000;
+            width: 400px;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+        .text .bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 400%;
+            background: linear-gradient(-3deg, #000, #000 25%, #ffb6ff 30%, #ffb6ff, #b344ff, #b344ff 70%, #000 75%, #000);
+            animation: bgUpDown 4s infinite linear alternate;
+            /* 混合模式 */
+            mix-blend-mode: darken;
+        }
+        @keyframes bgUpDown {
+            100% {
+                transform: translate(0, -75%);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- <div class=".clip">Clip</div> -->
+    <div class="g-wrap">
+        <p>灵动的 iPhone 新玩法，迎面而来。重大的安全新功能，为拯救生命而设计。创新的 4800 万像素主摄，让细节纤毫毕现。更有 iPhone 芯片中的速度之王，为一切提供强大原动力。  
+        </p>
+    </div>
+    <hr>
+    <div class="text">
+        灵动的 iPhone 新玩法，迎面而来。重大的安全新功能，为拯救生命而设计。创新的 4800 万像素主摄，让细节纤毫毕现。更有 iPhone 芯片中的速度之王，为一切提供强大原动力。
+        <div class="bg"></div>
+    </div> 
+    <script>
+        let timing = performance.timing,
+            start = timing.navigationStart;
+
+        let dnsTime = 0,
+            tcpTime = 0,
+            firstPaintTime = 0,
+            domRenderTime = 0,
+            loadTime = 0;
+        
+        // 根据提供的api和属性，拿到对应的时间
+        dnsTime = timing.domainLookupEnd - timing.domainLookupStart;
+        tcpTime = timing.connectEnd - timing.connectStart;
+        firstPaintTime = timing.responseStart - start;
+        domRenderTime = timing.domContentLoadedEventEnd - start;
+        loadTime = timing.loadEventEnd - start;
+
+        console.log('DNS解析时间:', dnsTime, 
+            '\nTCP建立时间:', tcpTime, 
+            '\n首屏时间:', firstPaintTime,
+            '\ndom渲染完成时间:', domRenderTime, 
+            '\n页面onload时间:', loadTime);
+
+    </script>
+</body>
+</html>

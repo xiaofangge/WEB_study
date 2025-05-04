@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        :root {
+            --stringA: "123";
+            --stringB: "456";
+            --stringC: "789";
+        }
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            height: 100vh;
+        }
+        .container .footer {
+            height: 80px;
+            color: #fff;
+            background-color: red;
+        }
+        .container .content {
+            background-color: aquamarine;
+            height: calc(100vh - 80px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .content .item {
+            width: 50px;
+            height: 50px;
+            background-color: #000;
+            border-radius: 50%;
+            animation: rotate 3s infinite linear;
+            /* (--delay, 1) 中的 1 是个容错机制 */
+            animation-delay: calc(var(--delay, 1) * -1s);
+        }
+        .container .footer::after {
+            /* 不生效 */
+            /* content: calc(var(--stringA) + var(--stringB) + var(--stringC)); */
+            /* 直接相加，生效 */
+            content: var(--stringA) + var(--stringB) + var(--stringC);
+        }
+        @keyframes rotate {
+            to {
+                transform: rotateY(360deg);
+            }
+        }
+        .container .box {
+            width: min(100%, 500px);
+            height: 100px;
+            background-color: #000;
+        }
+        .footer {
+            font-size: clamp(20px -5vw + 96px, 60px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <div class="box"></div>
+            <div class="item" style="--delay: 0"></div>
+            <div class="item" style="--delay: 0.6"></div>
+            <div class="item"></div>
+            <div class="item" style="--delay: 1.8"></div>
+            <div class="item" style="--delay: 2.4"></div>
+        </div>
+        <div class="footer">
+            γ干扰素 (IFN-γ)是可溶性二聚体细胞因子，是II型干扰素的唯一成员。它主要由自然杀伤细胞 (NK)和自然杀伤T细胞 (NKT) 细胞分泌，在固有免疫中发挥作用；在抗原特异性免疫过程中，由CD4 Th1和CD8细胞毒性T细胞分泌。IFN-γ或II型干扰素对抵抗病毒、某些细菌和原生动物感染的固有免疫和适应性免疫具有重要作用。
+        </div>
+    </div>
+</body>
+</html>

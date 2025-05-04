@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            display: flex;
+            width: 300px;
+            font-style: 24px;
+            background-color: #fff;
+            padding: 50px;
+            margin: 10px auto;
+            position: relative;
+        }
+        .box .cor {
+            width: 0;
+            height: 0;
+            position: absolute;
+            left: -40px;
+            top: 40px;
+            border: 20px solid transparent;
+            border-right-color: #fff;
+        }
+        .drop-shadow {
+            filter: drop-shadow(5px 5px 10px #aaa);
+        }
+        .box-shadow {
+            box-shadow: 5px 5px 10px #aaa;
+        }
+        .box-shadow2 {
+            width:100px;
+            height:100px;
+            margin:50px auto;
+            background:deeppink;
+            border-radius:50%;
+            box-shadow: 120px 0 0 -10px skyblue,
+                        95px 20px 0 0 salmon,
+                        30px 30px 0 -10px greenyellow,
+                        90px -20px 0 0px #FFC107,
+                        40px -40px 0 0px #2196F3;
+        }
+        .box2 {
+            width: 100px;
+            height: 100px;
+            margin: 20px auto;
+            border: 10px dashed #FFC107;
+        }
+        .box2-shadow {
+            box-shadow: 5px 5px 10px black;
+        }
+        .drop2-shadow {
+            filter: drop-shadow(5px 5px 10px black);
+        }
+    </style>
+</head>
+<body>
+    <div class="box drop-shadow">
+        <i class="cor"></i>
+        filter: drop-shadow
+    </div>
+    <div class="box box-shadow">
+        <i class="cor"></i>
+        box-shadow
+    </div>
+    <hr>
+    <!-- box-shadow 阴影可以任意叠加 -->
+    <div class="box-shadow2"></div>
+    <hr>
+    <div class="box2 box2-shadow"></div>
+    <div class="box2 drop2-shadow"></div>
+</body>
+</html>

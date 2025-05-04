@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="btn1">onStorage 通信</button>
+    <button id="btn2">sessionStorage 通信</button>
+    <script>
+      document.querySelector("#btn1").addEventListener("click", () => {
+        if (!localStorage.getItem("a")) {
+          localStorage.setItem("a", 1);
+        } else {
+          localStorage.setItem("a", parseInt(localStorage.getItem("a")) + 1);
+        }
+      });
+
+      document.querySelector("#btn2").addEventListener("click", () => {
+        console.log("btn2 click")
+        sessionStorage.setItem('message', '我是sessionStorage的值')
+        // 触发自定义事件来通知其他标签页
+        let event = new Event('sessionStorageUpdated');
+        window.dispatchEvent(event)
+      })
+    </script>
+  </body>
+</html>

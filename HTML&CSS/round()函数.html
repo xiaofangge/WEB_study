@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       
+        :root {
+            --rounding-interval: 25px;
+        }
+        div {
+            width: 100px;
+            background: rgba(255, 100, 0, .8);
+            float: left;
+            margin: 0 20px;
+        }
+        .box-1 {
+            /* 100px */
+            /* nearest: 舍入为roundingInterval的最接近的整数倍 */
+            height: round(nearest, 110px, var(--rounding-interval)); 
+
+        }
+        .box-2 {
+            /* 125px */
+            /* up: 向上舍入到roundingInterval最接近的整数倍 */
+            height: round(up, 110px, var(--rounding-interval));
+        }
+        .box-3 {
+            /* 100px */
+            /* down: 向下舍入到roundingInterval最接近的整数倍 */
+            height: round(down, 120px, var(--rounding-interval));
+        }
+        .box-4 {
+            /* 100px */
+            /* to-zero: 舍入为roundingInterval接近/接近零的最接近整数倍 */
+            height: round(to-zero, 120px, var(--rounding-interval));
+        }
+        .box-5 {
+            /* 125px */
+            height: round(120px, var(--rounding-interval));
+        }
+        body {
+            background-color: #000;
+        }
+        @property --angle {
+            syntax: '<angle>';
+            inherits: false;
+            initial-value: 0deg;
+        }
+        .anim {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: conic-gradient(#fc0, #fc0 15deg, transparent 15deg, transparent 30deg);
+            /* transform: rotate(var(--angle)); */
+            /* 保证其取值只能是30deg的倍数或者0deg */
+            transform: rotate(round(var(--angle), 30deg));
+            animation: propertyRotate 2s infinite linear;
+        }
+        @keyframes propertyRotate {
+            100% {
+                --angle: 369deg;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="box-1"></div>
+    <div class="box-2"></div>
+    <div class="box-3"></div>
+    <div class="box-4"></div>
+    <div class="box-5"></div>
+    <!-- 使用round()函数模拟步骤缓动动画 -->
+    <div class="anim"></div>
+</body>
+</html>

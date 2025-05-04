@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jusify-content 测试</title>
+    <style>
+        .father {
+            width: 800px;
+            height: 400px;
+            margin: 10px auto;
+            flex-direction: column-reverse;
+            display: flex;
+            background-color: red;
+            justify-content: space-evenly;
+        }
+        .father div {
+            width: 100px;
+            height: 100%;
+        }
+        .father div:nth-of-type(1) {
+            background-color: blue;
+        }
+        .father div:nth-of-type(2) {
+            background-color: green;
+        }
+        .father div:nth-of-type(3) {
+            background-color: gold;
+        }
+        .father div:nth-of-type(4) {
+            background-color: aqua;
+        }
+        .father div:nth-of-type(5) {
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <div class="father">
+        <div class="son"></div>
+        <div class="son"></div>
+        <div class="son"></div>
+        <div class="son"></div>
+        <div class="son"></div>
+    </div>
+</body>
+</html>

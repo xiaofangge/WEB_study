@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 600px;
+            margin: 50px auto;
+        }
+        .left, .right {
+            display: flex;
+            width: 100%;
+            position: relative;
+            margin: 10px 0;
+        }
+        .right {
+            justify-content: flex-end;
+        }
+        .left p, .right p {
+            padding: 12px;
+            background-color: #9bd73e;
+            border-radius: 5px;
+        }
+        .left::before, .right::after {
+            content: "";
+            width: 0;
+            height: 0;
+            border: 8px solid transparent;
+            position: absolute;
+            top: 12px;
+        }
+        .left::before {
+            border-right-color: #9bd73e;
+            left: -16px;
+        }
+        .right::after {
+            border-left-color: #9bd73e;
+            right: -16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left">
+            <p>早上好！</p>
+        </div>
+        <div class="right">
+            <p>早上好呀！嘛呢现在</p>
+        </div>
+        <div class="right">
+            <p>早上好呀！嘛呢现在</p>
+        </div>
+        <div class="left">
+            <p>早上好！</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            position: relative;
+        }
+        button {
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <!-- <button>你好</button> -->
+    <button>真好</button>
+    <script>
+        const btns = document.querySelectorAll('button');
+        // btns.forEach((btn) => {
+        //     // parent
+        //     let left = 1;
+        //     btn.addEventListener('click', () => {
+        //         setInterval(() => {
+        //             console.log(left)
+        //             btn.style.left = `${left++}px`;
+        //         }, 100) // 会抖动
+        //     })
+        // })
+
+        btns.forEach(btn => {
+            let bind = false;
+            btn.addEventListener('click', () => {
+                if (!bind) {
+                    let left = 1;
+                    bind = setInterval(() => {
+                        console.log(left)
+                        btn.style.left = `${left++}px`;
+                    }, 100)  // 不会抖动
+                }
+            })
+        })
+    </script>
+</body>
+</html>

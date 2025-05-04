@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iframe实现</title>
+</head>
+<body>
+    <iframe id="sandbox" style="display: none;"></iframe>
+    <script>
+        function createSandbox(callback) {
+            const iframe = document.getElementById("sandbox");
+            if (!iframe) {
+                return console.error("沙箱iframe未找到")
+            }
+            // 确保iframe完全加载后再执行代码
+            iframe.onload = () => {
+                const iframeWindow = iframe.contentWindow;
+
+                // 在沙箱环境中定义一些安全的全局变量或函数，如果需要的话
+                iframeWindow.safeGlobalVar = {
+                    // 安全的数据或方法
+                }
+
+                // 执行回调函数
+                callback(iframeWindow);
+            }
+
+            // 重新加载iframe以确保环境整洁
+            iframe.src = "about:blank";
+        }
+
+        createSandbox(function(sandboxWindow) {
+            // 在沙箱环境中执行代码
+            sandboxWindow.eval("console.log('沙箱环境执行代码')");
+        })
+    </script>
+</body>
+</html>

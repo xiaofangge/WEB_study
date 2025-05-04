@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>`
+    <iframe src="../images/苹果水果.svg" width="200" height="200" frameborder="0"></iframe>
+
+    <script>
+        // 获取iframe的DOM对象
+        const iframe = document.querySelector('iframe');
+        console.log([iframe]);
+        // 获取iframe的contentDocument对象
+        // 加载之后再获取才行
+        iframe.onload = () => {
+            const svgDoc = iframe.contentDocument;
+            console.log(svgDoc);
+            svgDoc.querySelector("[p-id='1841']").setAttribute("fill", "gold");
+            svgDoc.querySelector("[p-id='1842']").setAttribute("fill", "gold");
+            svgDoc.querySelector("[p-id='1843']").setAttribute("fill", "gold");
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        grid-auto-rows: 20px;
+        gap: 5px;
+        /* 计数器 */
+        counter-reset: list;
+      }
+      .container .item {
+        position: relative;
+      }
+      .container .item::before {
+        counter-increment: list;
+        content: counter(list);
+        position: absolute;
+        top: 0;
+        left: 0;
+        color: #fff;
+      }
+      .container .item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .container .item:nth-child(3n + 1) {
+        grid-row: auto/span 5;
+      }
+      .container .item:nth-child(3n + 2) {
+        grid-row: auto/span 7;
+      }
+      .container .item:nth-child(3n + 3) {
+        grid-row: auto/span 9;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="item"><img src="./images/img-01.png" /></div>
+      <div class="item"><img src="./images/img-02.jpg" /></div>
+      <div class="item"><img src="./images/img-03.png" /></div>
+      <div class="item"><img src="./images/img-04.jpg" /></div>
+      <div class="item"><img src="./images/img-05.jpg" /></div>
+      <div class="item"><img src="./images/img-06.jpg" /></div>
+      <div class="item"><img src="./images/img-07.jpg" /></div>
+      <div class="item"><img src="./images/img-08.png" /></div>
+      <div class="item"><img src="./images/img-09.png" /></div>
+      <div class="item"><img src="./images/img-10.jpg" /></div>
+      <div class="item"><img src="./images/img-11.jpg" /></div>
+      <div class="item"><img src="./images/img-12.jpg" /></div>
+      <div class="item"><img src="./images/img-13.jpg" /></div>
+    </div>
+    <script>
+      let timing = performance.timing,
+        start = timing.navigationStart,
+        dnsTime = 0,
+        tcpTime = 0,
+        firstPaintTime = 0,
+        domRenderTime = 0,
+        loadTime = 0;
+      //根据提供的api和属性，拿到对应的时间
+      dnsTime = timing.domainLookupEnd - timing.domainLookupStart;
+      tcpTime = timing.connectEnd - timing.connectStart;
+      firstPaintTime = timing.responseStart - start;
+      domRenderTime = timing.domContentLoadedEventEnd - start;
+      loadTime = timing.loadEventEnd - start;
+
+      console.log(
+        "DNS解析时间:",
+        dnsTime,
+        "\nTCP建立时间:",
+        tcpTime,
+        "\n首屏时间:",
+        firstPaintTime,
+        "\ndom渲染完成时间:",
+        domRenderTime,
+        "\n页面onload时间:",
+        loadTime
+      );
+    </script>
+  </body>
+</html>

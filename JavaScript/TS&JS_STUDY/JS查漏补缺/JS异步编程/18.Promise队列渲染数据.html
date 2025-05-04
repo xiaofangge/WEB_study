@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="./js/ajax.js"></script>
+    <script>
+        class Dict {
+            query(dictType) {
+                return ajax(`http://www.zjldsoft.com/ld/common/v1/code?method=getDictInfo&dict=${dictType}`)
+            }
+            // 使用队列
+            render(dictTypeList) {
+                dictTypeList.reduce((promise, dictType_) => {
+                    return promise.then(_ => {
+                        return this.query(dictType_)
+                    }).then(dicts => {
+                        this.view(dicts.data)
+                    })
+                }, Promise.resolve())
+            }   
+            view(dicts) {
+                console.log("dicts => ", dic)
+                return new Promise(resolve => {
+                    const frag = document.createDocumentFragment();
+                    dicts.forEach(dictItem => {
+                        const h4 = document.createElement("h4")
+                        h4.textContent = dictItem
+                        frag.appendChild(h4)
+                    })
+                    document.body.appendChild(frag)
+                    resolve()
+                })
+            }
+        }
+
+        new Dict().render(['dict_approval_number_type', 'dict_pub_code'])
+    </script>
+</body>
+</html>

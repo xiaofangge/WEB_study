@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>单行文本溢出</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .title {
+            width: 200px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+        .title2 {
+            width: 200px;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 3;
+        }
+    </style>
+</head>
+<body>
+    <div class="title">这是一段单行显示省略号的测试文本，当内容过长时,末尾会显示省略号</div>
+    <hr>
+    <div class="title2">这是一段多行显示省略号的测试文本哈哈哈；了解过i让两个巨大浪费，当内容过长时,末尾会显示省略号</div>
+</body>
+</html>

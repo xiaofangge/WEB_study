@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>毛玻璃效果</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100vw;
+        }
+        /* 这个card作为背景图 */
+        .card {
+            width: 200px;
+            height: 280px;
+            background-size: 100% 100%;
+            background-image: url('./images/girl.jpeg');
+            background-repeat: no-repeat;
+            border-radius: 3%;
+        }   
+        /* 这个card用来覆盖 */
+        .inlineCard {
+            width: 100%;
+            height: 100%;
+            border-radius: 3%;
+            backdrop-filter: blur(10px);
+            position: relative;
+        }
+        .text {
+            position: absolute;
+            left: 10px;
+            bottom: 10px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="inlineCard">
+            <div class="text">
+                <div>24岁</div>
+                <div>小姐姐</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

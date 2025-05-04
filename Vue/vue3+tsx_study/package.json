@@ -1,0 +1,43 @@
+{
+    "name": "vite-project",
+    "private": true,
+    "version": "0.0.0",
+    "scripts": {
+        "dev": "vite",
+        "build:jpom": "rmdir /s /q dist && npm run typecheck && vite build",
+        "build": "npm run typecheck && vite build",
+        "build:notype": "vite build",
+        "build:single": "npm run typecheck && vite build --mode single",
+        "build:single:notype": "vite build --mode single",
+        "typecheck": "vue-tsc --noEmit --skipLibCheck",
+        "preview": "vite preview"
+    },
+    "dependencies": {
+        "@element-plus/icons-vue": "2.0.10",
+        "axios": "0.27.2",
+        "element-plus": "2.2.21",
+        "mousetrap": "^1.6.5",
+        "naive-ui": "2.32.1",
+        "pinia": "2.0.27",
+        "pinyin": "2.11.2",
+        "sortablejs": "^1.15.2",
+        "splitpanes": "^3.1.5",
+        "vue": "3.2.37",
+        "vue-router": "4.1.6",
+        "vxe-table": "4.3.5",
+        "xe-utils": "3.5.6"
+    },
+    "devDependencies": {
+        "@types/mousetrap": "^1.6.11",
+        "@types/node": "18.11.11",
+        "@types/sortablejs": "^1.15.8",
+        "@types/splitpanes": "2.2.1",
+        "@vitejs/plugin-vue": "3.2.0",
+        "@vitejs/plugin-vue-jsx": "2.1.1",
+        "@vue/compiler-sfc": "3.2.20",
+        "sass": "1.54.4",
+        "typescript": "4.7.4",
+        "vite": "3.0.8",
+        "vue-tsc": "1.0.11"
+    }
+}

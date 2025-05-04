@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let module = (function () {
+            const moduleList = {};
+            function define(name, modules, action) {
+                modules.length > 0 && modules.map((item, index) => {
+                    modules[index] = moduleList[item];
+                })
+                moduleList[name] = action.apply(null, modules);
+            }
+            return {
+                define
+            }
+        })();
+        module.define('math', [], () => {
+            console.log("math module loaded")
+            return {
+                first: (arr) => arr[0],
+                max: (arr, key) => arr.sort((a, b) => b[key] - a[key])[0]
+            }
+        })
+        module.define('lesson', ['math'], (math) => {
+            let data = [
+                { name: 'js', price: 199 },
+                { name: 'ts', price: 299 },
+                { name: 'vue', price: 399 },
+                { name: 'HTML+CSS', price: 99 }
+            ]
+            // 用的时候不会再执行
+            console.log(math.max(data, 'price'))
+        })
+        module.define('a', [], () => {
+            return {
+                site: "后盾人",
+                url: "https://www.houdunren.com"
+            }
+        })
+        module.define('b', ['a'], (a) => {
+            console.log("a => ", a) // { site: "后盾人", url: "https://www.houdunren.com" }
+            a.site = "后盾网"
+        })
+        module.define('c', ['a'], (a) => {
+            console.log("a => ", a) // { site: "后盾网", url: "https://www.houdunren.com" }
+        })
+    </script>
+</body>
+</html>

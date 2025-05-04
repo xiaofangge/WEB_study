@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .div {
+            height: 2000px;
+        }
+        p {
+            height: 200px;
+            color: white;
+            background-color: blueviolet;
+        }
+    </style>
+</head>
+<body>
+    <!-- 2. 通过getBoundingClientRect方法来获取元素的位置信息，然后加以判断 -->
+     <div class="div"></div>
+     <p>我出现啦</p>
+     <script>
+        function isContain(dom) {
+            const totalHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+            const totalWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+            // 当滚动条滚动时，top、left、bottom、right时刻会发生改变
+            const { top, right, bottom, left } = dom.getBoundingClientRect();
+            return left >= 0 && top >= 0 && right <= totalWidth && bottom <= totalHeight;
+        }
+        const p = document.querySelector('p')
+        window.onscroll = () => {
+            if (isContain(p)) {
+                document.body.style.backgroundColor = 'red'
+            } else {
+                document.body.style.backgroundColor = 'green'
+            }
+        }
+     </script>
+</body>
+</html>

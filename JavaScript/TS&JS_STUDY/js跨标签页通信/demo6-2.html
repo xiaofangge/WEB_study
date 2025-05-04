@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const worker = new SharedWorker("demo6.js")
+        worker.port.start()
+        setInterval(() => {
+            worker.port.postMessage("PHP是世界上最好的语言")
+        }, 1000)
+        worker.port.onmessage = (e) => {
+            if (e.data) {
+                console.log(e.data)
+            }
+        }
+    </script>
+</body>
+</html>

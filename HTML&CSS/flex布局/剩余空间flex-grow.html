@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>剩余空间</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            margin: 10px;
+            display: flex;
+            width: 500px;
+            height: 200px;
+            background-color: #eee;
+            text-align: center;
+        }
+        .item {
+            height: 100px;
+        }
+        .item p {
+            margin: 0;
+        }
+        .a {
+            width: 100px;
+            background-color: red;
+            flex-grow: 1;
+        }
+        .b {
+            width: 150px;
+            background-color: green;
+            flex-grow: 2;
+        }
+        .c {
+            width: 100px;
+            background-color: yellow;
+            flex-grow: 3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="item a">
+            <p>A</p>
+            <p>width:100</p>
+            <p>flex-grow:1</p>
+        </div>
+        <div class="item b">
+            <p>B</p>
+            <p>width:150</p>
+            <p>flex-grow:2</p>
+        </div>
+        <div class="item c">
+            <p>C</p>
+            <p>width:100</p>
+            <p>flex-grow:3</p>
+        </div>
+    </div>
+</body>
+</html>

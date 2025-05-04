@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body,
+      html {
+        width: 100%;
+        height: 100%;
+        position: relative;
+      }
+
+      .container {
+        --scale: 1.25;
+        --rotation: 360deg;
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        /* vmin；取视口宽度和视口高度的最小值：自适应缩放 */
+        /* vmax 的意思表示取视口宽度( vw )和视口高度( vh )较大的值 */
+        width: 55vmin;
+        height: 55vmin;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        gap: 4px;
+        grid-template-areas:
+          "E B B"
+          "E A C"
+          "D D C";
+      }
+      .container > div {
+        position: relative;
+        border: 3px solid #431312;
+        border-radius: 5px;
+        overflow: hidden;
+      }
+
+      .A {
+        grid-area: A;
+      }
+      .B {
+        grid-area: B;
+      }
+      .C {
+        grid-area: C;
+      }
+      .D {
+        grid-area: D;
+      }
+      .E {
+        grid-area: E;
+      }
+
+      .container > div img {
+        --scale: 1;
+        --rotation: -360deg;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 260%;
+        height: 260%;
+        /* 让图片完美适应 */
+        object-fit: cover;
+        object-position: center;
+      }
+
+      .container,
+      .container > div img {
+        animation: 10s scale-up both ease-in-out infinite alternate;
+      }
+
+      @keyframes scale-up {
+        0% {
+          transform: translate(-50%, -50%) scale(var(--scale)) rotate(0deg);
+        }
+        100% {
+          transform: translate(-50%, -50%) scale(1) rotate(var(--rotation));
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="A"><img src="./grid布局/images/img-01.png" alt="" /></div>
+      <div class="B"><img src="./grid布局/images/img-02.jpg" alt="" /></div>
+      <div class="C"><img src="./grid布局/images/img-03.png" alt="" /></div>
+      <div class="D"><img src="./grid布局/images/img-04.jpg" alt="" /></div>
+      <div class="E"><img src="./grid布局/images/img-05.jpg" alt="" /></div>
+    </div>
+  </body>
+</html>

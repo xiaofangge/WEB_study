@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* .ellipsis-2lines { */
+            /* overflow: hidden; */
+            /* 超出部分隐藏 */
+            /* text-overflow: ellipsis; */
+            /* 显示省略号 */
+            /* line-height: 1.5; */
+            /* 行高建议明确设置（避免行数计算错误） */
+            /* display: -webkit-box; */
+            /* 启用弹性盒子模型 */
+            /* -webkit-line-clamp: 1; */
+            /* 限制显示行数（改为3行则设为3） */
+            /* -webkit-box-orient: vertical; */
+            /* 垂直排列子元素 */
+        /* } */
+
+        .ellipsis-2lines {
+            position: relative;
+            max-height: 3em;
+            /* 行高 × 行数（假设行高1.5，两行则为3em） */
+            line-height: 1.5;
+            overflow: hidden;
+        }
+
+        .ellipsis-2lines::after {
+            content: "...";
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            padding-left: 20px;
+            /* 避免遮挡末尾文字 */
+            background: linear-gradient(to right, transparent, white 50%);
+            /* 渐变背景防文字截断 */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="ellipsis-2lines" style="width: 300px;">
+        这是一段需要超过两行显示省略号的测试文本，当内容过长时，第二行末尾会显示省略号...
+    </div>
+</body>
+
+</html>

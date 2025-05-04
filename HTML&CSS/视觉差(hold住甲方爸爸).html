@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            color: #fff;
+        }
+        .wrap {
+            width: 100%;
+            background: url(./grid布局/images/img-02.jpg) no-repeat center;
+            background-attachment: fixed;
+            background-size: cover;
+            overflow-x: hidden;
+        }
+        .logo {
+            position: absolute;
+            top: 50px;
+            left: 50px;
+        }
+        .logo p {
+            font-style: 40px;
+            color: rgb(195, 238, 96);
+            font-weight: 1000;
+        }
+        .menu {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+        }
+        .menu ul li {
+            list-style: none;
+            display: inline-block;
+            padding: 40px;
+        }
+        .banner {
+            width: 60%;
+            height: 100vh;
+            margin: auto;
+            display: grid;
+            grid-template-rows: repeat(2, 1fr);
+        }
+        .banner .desc, .banner .name {
+            align-self: self-end;
+        }
+        .line {
+            width: 460px;
+            height: 6px;
+            background-color: rgb(195, 238, 96);
+        }
+        .desc p {
+            width: 80%;
+            font-size: 30px;
+            font-weight: 200;
+            padding-top: 20px;
+        }
+        h1 {
+            font-size: 60px;
+        }
+        .content {
+            width: 100vw;
+            height: 100vh;
+            background-color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="nav">
+            <div class="logo">
+                <p>天下为公</p>
+            </div>
+            <div class="menu">
+                <ul>
+                    <li class="active">Home</li>
+                    <li>大前端</li>
+                    <li>Java</li>
+                    <li>人工智能</li>
+                    <li>我的</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="banner">
+            <div class="desc">
+                <div class="line"></div>
+                <p>革命尚未成功，同志仍需努力！！！</p>
+            </div>
+            <div class="name">
+                <h1>Sun Yat sen, known as Wen <br>Zaizhi and Rixin</h1>
+            </div>
+        </div>
+        <div class="content">
+            <img src="./grid布局//images/img-01.png" alt="">
+        </div>
+    </div>
+</body>
+</html>

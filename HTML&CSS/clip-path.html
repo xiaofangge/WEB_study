@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            list-style: none;
+        }
+        .demo1 {
+            width: 0;
+            height: 0;
+            margin: 5px auto;
+            border: 100px solid skyblue;
+            border-color: transparent transparent skyblue transparent;
+        }
+        .demo2 {
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+            margin: 5px auto;
+            clip-path: polygon(50% 0, 100% 100%, 0 100%);
+        }
+        .demo3 {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            margin: 5px auto;
+            clip-path: inset(10% 10% 10% 10%);
+        }
+        .demo4 {
+            border: 2px solid;
+            margin: 5px auto;
+            border-image: linear-gradient(45deg rgb(184, 159, 218), rgb(15, 48, 194)) 1;
+            clip-path: inset(0 96% 0 0);
+            animation: clipPath 1s infinite linear;
+        }
+        @keyframes clipPath {
+            0% {
+                clip-path: inset(0 0 96% 0);
+                filter: hue-rotate(0deg);
+            }
+            25% {
+                clip-path: inset(0 96% 0 0);
+            }
+            50% {
+                clip-path: inset(96% 0 0 0);
+                filter: hue-rotate(360deg);
+            }
+            75% {
+                clip-path: inset(0 0 0 96%);
+            }
+            100% {
+                clip-path: inset(0 0 96% 0);
+                filter: hue-rotate(0deg);
+            }
+        }
+        .demo5 {
+            width: 200px;
+            height: 200px;
+            margin: 5px auto;
+            background-color: cadetblue;
+            /* at前50%代表半径，后面代表圆心 */
+            clip-path: circle(50% at 50% 50%);
+        }
+        .demo6 {
+            width: 200px;
+            height: 200px;
+            margin: 5px auto;
+            background-color: palevioletred;
+            /* at前参数为圆心位置，at后参数为椭圆半径(宽 高) */
+            clip-path: ellipse(at 40% 20%);
+        }
+    </style>
+</head>
+<body>
+    <div class="demo1"></div>
+    <hr>
+    <div class="demo2"></div>
+    <hr>
+    <div class="demo3"></div>
+    <hr>
+    <div class="demo4">loading...</div>
+    <hr>
+    <div class="demo5"></div>
+    <hr>
+    <div class="demo6"></div>
+</body>
+</html>

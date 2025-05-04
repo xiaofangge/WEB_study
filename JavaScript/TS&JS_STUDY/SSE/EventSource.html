@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSE Demo</title>
+</head>
+<body>
+    <h1>SSE Demo</h1>
+    <button onclick="connectSSE()">建立 SSE 连接</button>  
+    <button onclick="closeSSE()">断开 SSE 连接</button>
+    <br />
+    <br />
+    <div id="message"></div>
+
+    <script>
+        const messageElement = document.getElementById('message');
+
+        let eventSource;
+
+        // 建立连接
+        const connectSSE = () => {
+            eventSource = new EventSource('http://127.0.0.1:3000/sse?content=xxx');
+            // 监听消息事件
+            eventSource.addEventListener('customEvent', (event) => {
+                const data = JSON.parse(event.data);
+                messageElement.innerHTML += `${data.id} --- ${data.time} --- params参数: ${JSON.stringify(data.params)}` + '<br />'
+            })
+            eventSource.addEventListener('open', () => {
+                messageElement.innerHTML += `SSE 连接成功, 状态: ${eventSource.readyState}<br />`
+            })
+            eventSource.addEventListener('error', (event) => {
+                messageElement.innerHTML += `SSE 连接失败, 状态: ${eventSource.readyState}, 错误信息: ${event.data}<br />`
+            })
+        }
+
+        // 断开连接
+        const closeSSE = () => {
+            if (eventSource) {
+                eventSource.close();
+                messageElement.innerHTML += `SSE 连接已断开, 状态: ${eventSource.readyState}<br />`
+            }
+        }
+    </script>
+</body>
+</html>

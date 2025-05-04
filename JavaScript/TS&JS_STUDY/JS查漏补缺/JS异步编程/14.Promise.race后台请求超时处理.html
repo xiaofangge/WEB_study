@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="./js/ajax.js"></script>
+    <script>
+        // const promises = [
+        //     ajax(`http://www.zjldsoft.com/ld/common/v1/code?method=getDictInfo&dict=dict_approval_number_type`),
+        //     new Promise((resolve, reject) => {
+        //         setTimeout(() => {
+        //             reject("请求超时")
+        //         }, 10)
+        //     })
+        // ]
+        // Promise.race(promises).then(result => {
+        //     console.log("then => ", result)
+        // }).catch(error => {
+        //     console.log("error => ", error)
+        // })
+
+        // 封装
+        function query(url, delay) {
+            const promises = [
+                ajax(url),
+                new Promise((resolve, reject) => {
+                    setTimeout(() => {
+                        reject("请求超时")
+                    }, delay)
+                })
+            ]
+            return Promise.race(promises)
+        }
+        query(`http://www.zjldsoft.com/ld/common/v1/code?method=getDictInfo&dict=dict_approval_number_type`, 20)
+        .then(result => {
+            console.log("result => ", result)
+        }).catch(error => {
+            console.log("error => ", error)
+        })
+    </script>
+</body>
+</html>

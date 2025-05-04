@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        // 实现Promise.all()
+        Promise.myAll = function(params) {
+            let res, rej;
+            const p = new Promise((resolve, reject) => {
+                res = resolve;
+                rej = reject;
+            });
+            let count = 0;
+            const result = [];
+            let i = 0;
+            let fullFillCount = 0;
+            for (const item of params) {
+                const index = i;
+                count++;
+                i++;
+                Promise.resolve(item).then((data) => {
+                    // 1.data => result
+                    result[index] = data
+                    // 2.完成最终的Promise
+                    fullFillCount++;
+                    if (fullFillCount === count) {
+                        res(result);
+                    }
+                }, rej) 
+            }
+            if (count === 0) {
+                res(result);
+            }
+            return p;
+        }
+
+        Promise.myAll([1, 2, 3, 5]).then(data => {
+            console.log(data);
+        })
+    </script>
+</body>
+</html>

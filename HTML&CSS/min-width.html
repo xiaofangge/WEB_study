@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .demo1 {
+            width: 20px;
+            min-width: 100px;
+            height: 100px; 
+            border: 1px solid salmon;
+        }
+        .parent {
+            width: 500px;
+            height: 200px;
+            border: 1px solid salmon;
+        }
+        .child {
+            border: 1px solid #000;
+            height: 100px;
+            /* 这个生效 */
+            min-width: 100%;
+            max-width: 50%;
+        }
+        .parent1 {
+            width: 250px;
+            background-color: skyblue;
+            display: flex;
+        }
+        .child1 {
+            border: 1px solid #000;
+            min-width: 0;
+        }
+        .child1 p {
+            white-space: nowrap;
+            overflow: hidden;
+            /* 	显示省略符号来代表被修剪的文本 */
+            text-overflow: ellipsis;
+        }
+    </style>
+</head>
+<body>
+    <!-- width: 100px -->
+    <div class="demo1"></div>
+    <hr>
+    <div class="parent">
+        <div class="child"></div>
+    </div>
+    <hr>
+    <div class="parent1">
+        <div class="child1">
+            <p>我说道：“爸爸，你走吧。”他往车外看了看，说：“我买几个橘子去。你就在此地，不要走动。”我看那边月台的栅栏外有几个卖东西的等着顾客。</p>
+        </div>
+    </div>
+</body>
+</html>

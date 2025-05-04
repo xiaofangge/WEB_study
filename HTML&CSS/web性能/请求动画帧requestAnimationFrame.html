@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: slateblue;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <script>
+        let left = 0;
+        let requstId = null;
+        function move() {
+            console.log(arguments)
+            left++
+            const div = document.querySelector('div');
+            div.style.transform = `translateX(${left}px)`;
+            requstId = requestAnimationFrame(move)
+            console.log("requestId => ", requstId)
+        }
+        requstId = requestAnimationFrame(move)
+
+        // 3秒后停止动画
+        setTimeout(() => {
+            cancelAnimationFrame(requstId)
+        }, 3000)
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Mr.Fang is handsome</h1>
+    <button>改变</button>
+    <script>
+        const btn = document.querySelector('button');
+        const h1 = document.querySelector('h1');
+        const sleep = (time) => {
+            const start = Date.now();
+            while (Date.now() - start < time) {}
+        }
+        btn.addEventListener('click', function() {
+            h1.textContent = '方先生好帅啊';
+            sleep(3000)
+        });
+    </script>
+</body>
+</html>

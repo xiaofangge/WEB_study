@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .wrapper {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+        }
+        .wrapper div {
+            height: 100vh;
+            text-align: center;
+            line-height: 100vh;
+        }
+        .left {
+            width: 200px;
+            background-color: blue;
+        }
+        .right {
+            width: 200px;
+            background-color: green;
+        }
+        .center {
+            background-color: red;
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="left">left</div>
+        <div class="center">center</div>
+        <div class="right">right</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .start1 {
+            /* 创建一个计数器： 默认为0 */
+            counter-reset: myCounter;
+        }
+        .start1 h3::before {
+            counter-increment: myCounter; /* 递增+1 */
+            /* counter()函数：以字符串形式返回指定计数器的当前值 */
+            content: counter(myCounter)". ";
+        }
+        .start1 h3:nth-of-type(2)::before {
+            /* 既不增加也不减少. 通常用来取消更不具体的规则中设定的规则 */
+            counter-increment: none;
+        }
+        .start2 {
+            counter-reset: myCounter myCounter2 3 myCounter3 9;
+        }
+        .start2 h3::before {
+            counter-increment: myCounter3;
+            content: counter(myCounter3)". ";
+        }
+        .start3 {
+            /* reversed():  火狐版本才支持 */
+            counter-reset: reversed(myCounter3) bool 3;
+        }
+        .start3 h3::before {
+            counter-increment: myCounter3 2;
+            content: counter(myCounter3)". ";
+        }
+        .start4 {
+            counter-reset: myCounter4 3;
+            counter-reset: none;
+        }
+        .start4 h3::before {
+            counter-increment: myCounter4 1;
+            content: counter(myCounter4)". ";
+        }
+        .f-ol {
+            counter-reset: list-item 10;
+        }
+        .f-ol li {
+            counter-increment: list-item 2;
+        }
+        .f-ol li::marker {
+            content: counter(list-item) " 🍑 ";
+        }
+        .start5 {
+            counter-reset: myCounterA;
+        }
+        .start5 h3 {
+            counter-increment: myCounterA 2;
+        }
+        .start5 h3::before {
+            content: counter(myCounterA)". ";
+        }
+        .start5 h3:nth-of-type(3)::before {
+            /* 计数器的值设置为 0, 后面的计数器就接着新的值继续增加. */
+            counter-set: myCounterA 0;
+            /* counter-set: none; */
+        }
+        .start6 {
+            counter-reset: myCounterB;
+        }
+        .start6 h3 {
+            counter-increment: myCounterB 2;
+        }
+        .start6 h3::before {
+            content: counter(myCounterB)". ";
+        }
+        .start6 h3:nth-of-type(3)::before {
+            counter-set: myCounterC;
+            content: counter(myCounterC)". ";
+        }
+    </style>
+</head>
+<body>
+    <div class="start1">
+        <h3>白日依山尽</h3>
+        <h3>黄河入海流</h3>
+        <h3>欲穷千里目</h3>
+        <h3>更上一层楼</h3>
+    </div>
+    <hr>
+    <div class="start2">
+        <h3>白日依山尽</h3>
+        <h3>黄河入海流</h3>
+        <h3>欲穷千里目</h3>
+        <h3>更上一层楼</h3>
+    </div>
+    <hr>
+    <div class="start2">
+        <h3>白日依山尽</h3>
+        <h3>黄河入海流</h3>
+        <h3>欲穷千里目</h3>
+        <h3>更上一层楼</h3>
+    </div>
+    <hr>
+    <div class="start3">
+        <h3>白日依山尽</h3>
+        <h3>黄河入海流</h3>
+        <h3>欲穷千里目</h3>
+        <h3>更上一层楼</h3>
+        <h4>呵呵呵呵呵</h4>
+        <h3>哈哈哈哈哈</h3>
+    </div>
+    <hr>
+    <div class="start4">
+        <h3>白日依山尽</h3>
+        <h3>黄河入海流</h3>
+        <h3>欲穷千里目</h3>
+        <h3>更上一层楼</h3>
+    </div>
+    <hr>
+    <ol class="f-ol">
+        <li>白日依山尽</li>
+        <li>黄河入海流</li>
+        <li>欲穷千里目</li>
+        <li>更上一层楼</li>
+    </ol>
+    <hr>
+    <div class="start5">
+        <h3>白日依山尽</h3>
+        <h3>黄河入海流</h3>
+        <h3>欲穷千里目</h3>
+        <h3>更上一层楼</h3>
+    </div>
+    <hr>
+    <div class="start6">
+        <h3>白日依山尽</h3>
+        <h3>黄河入海流</h3>
+        <h3>欲穷千里目</h3>
+        <h3>更上一层楼</h3>
+    </div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动画</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-color: dodgerblue;
+        }
+
+       .container {
+            display: flex;
+            margin-top: 100px;
+       }
+       .card {
+            flex: 1;
+            height: 200px;
+            background-color: #fff;
+            border-radius: 20px;
+            margin-left: 10px;
+            transition: all 0.5s ease;
+       }
+       .card:hover {
+            flex: 2;
+            background-color: #ccc
+       }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+    </div>
+</body>
+</html>

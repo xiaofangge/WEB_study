@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">点击测试</button>
+    <script>
+        // 超过3秒提示
+        const btn = document.getElementById('btn');
+        btn.addEventListener('click', () => {
+            // 第一个异步任务
+            function asyncOne() {
+                return new Promise((resolve, reject) => {
+                    setTimeout(() => {
+                        // 这里我们永定时器模拟后端请求的返回的结果
+                        resolve('https://juejin.cn/')
+                    }, 4000)
+                })
+            }
+            console.log('异步任务一: ', asyncOne())  // 返回的是pending状态的Promise对象
+
+            // 第二个异步任务
+            function asyncTwo() {
+                return new Promise((resolve, reject) => {
+                    setTimeout(() => {
+                        // 这里我们永定时器模拟后端请求的返回的结果
+                        resolve('超时提示')
+                    }, 3000)
+                })
+            }
+            console.log('异步任务二: ', asyncTwo())  // 返回的是pending状态的Promise对象 
+
+            let paramArr = [asyncOne(), asyncTwo()] // two跑得快，所以结果会先返回第二个异步任务的结果
+            Promise.race(paramArr).then(res => {
+                console.log('结果: ', res)
+                if (res === '超时提示') {
+                    alert('请求超时')
+                } else {
+                    alert('请求成功')
+                }
+            })
+        })
+    </script>
+</body>
+</html>

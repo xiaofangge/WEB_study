@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            width: 100%;
+        }
+        .mode1, .mode2, .mode3 {
+            width: 700px;
+            height: 100vh;
+            margin: 40px auto;
+            background-color: aqua;
+        }
+        .mode {
+            margin-bottom: 500px;
+        }
+        .right-mode {
+            height: auto;
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateX(-50%)
+        }
+        a {
+            display: block;
+            width: 80px;
+            height: 80px;
+            background-color: chocolate;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div class="mode1" id="mode1">一楼</div>
+        <div class="mode2" id="mode2">二楼</div>
+        <div class="mode3" id="mode3">三楼</div>
+    </div>
+    <div class="right-mode">
+        <a href="#mode1">一楼</a>
+        <a href="#mode2">二楼</a>
+        <a href="#mode3">三楼</a>
+    </div>
+</body>
+</html>

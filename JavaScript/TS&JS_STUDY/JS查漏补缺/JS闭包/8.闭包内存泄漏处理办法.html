@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div desc="hello">你好</div>
+    <div desc="test">测试</div>
+    <script>
+        const divs = document.querySelectorAll('div');
+        divs.forEach(divEle => {
+            let desc = divEle.getAttribute('desc');
+            divEle.addEventListener('click', () => {
+                console.log(desc);
+                console.log(divEle);
+            })
+            divEle = null; // 手动清除引用
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 150px;
+            height: 150px;
+            background-color: skyblue;
+            position: absolute;
+            left: 0;
+            cursor: grab;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <script>
+        // 如下代码只会再浏览器第一次刷新时调用，只会执行一次
+        // window.requestAnimationFrame(function () {
+        //     console.log(this)
+        // })
+
+        // 与浏览器刷新频率同步
+        // function animateFn() {
+        //     console.log(this)
+        //     window.requestAnimationFrame(animateFn)
+        // }
+        // window.requestAnimationFrame(animateFn)
+
+        (function (window, document) {
+            const divBox = document.querySelector("div")
+            let aimationId = null;
+
+            divBox.addEventListener("click", () => {
+                aimationId ? stopAnimate() : startAnimate(divBox)
+            })
+
+            /* 开始运动 */
+            function startAnimate(ele) {
+                ele.style.left = parseInt(window.getComputedStyle(ele).getPropertyValue("left")) + 1 + "px"
+                aimationId = window.requestAnimationFrame(() => startAnimate(ele))
+            }
+
+            /* 停止运动 */
+            function stopAnimate(ele) {
+                window.cancelAnimationFrame(aimationId)
+                aimationId = null
+            }
+        })(window, document);
+    </script>
+</body>
+</html>

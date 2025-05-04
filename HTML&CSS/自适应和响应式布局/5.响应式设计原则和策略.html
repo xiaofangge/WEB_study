@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .content-block {
+            background-color: aqua;
+            padding: 20px;
+            flex: 1 1 calc(50% - 2rem);
+        }
+        .sidebar {
+            background-color: salmon;
+            padding: 20px;
+            flex: 1 1 calc(30% - 2rem);
+        }
+        @media (max-width: 768px) {
+            .content-block, .sidebar {
+                flex: 1 1 calc(100% - 2rem);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h3>侧边栏</h3>
+            <p>辅助信息，随着屏幕尺寸变大而显现，增强用户体验</p>
+        </div>
+        <div class="content-block">
+            <h2>主要内容</h2>
+            <p>这里是主要内容，优先展示，确保在小屏设备上也能有良好的阅读体验。</p>
+        </div>
+    </div>
+</body>
+</html>

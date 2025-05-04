@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>粘性定位</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            height: 5000px;
+        }
+        .nav {
+            height: 100px;
+            width: 100vw;
+            background-color: red;
+            line-height: 100px;
+            text-align: center;
+        }
+        ul {
+            list-style: none;
+            text-align: center;
+        }
+        li {
+            height: 50px;
+            width: 100vw;
+            background-color: aqua;
+            line-height: 50px;
+        }
+        .title {
+            background-color: blue;
+            font-weight: bolder;
+            color: aliceblue;
+            position: sticky;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <span>头部</span>
+    </div>
+    <div class="content">
+        <ul>
+            <li class="title">内容一</li>
+            <li>a</li>
+            <li>b</li>
+            <li>c</li>
+        </ul>
+        <ul>
+            <li class="title">内容二</li>
+            <li>d</li>
+            <li>e</li>
+            <li>f</li>
+        </ul>
+        <ul>
+            <li class="title">内容三</li>
+            <li>g</li>
+            <li>h</li>
+            <li>i</li>
+        </ul>
+    </div>
+</body>
+</html>

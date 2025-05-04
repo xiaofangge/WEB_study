@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>拖拽课程表</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            margin: 0;
+            display: flex;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .left {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-direction: column;
+            width: 100px;
+            height: 400px;
+            flex-shrink: 0;
+            background-color: whitesmoke;
+        }
+
+        .item {
+            width: 80px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            color: white;
+        }
+
+        .color1 {
+            background-color: skyblue;
+        }
+
+        .color2 {
+            background-color: red;
+        }
+
+        .color3 {
+            background-color: orange;
+        }
+
+        .color4 {
+            background-color: deeppink;
+        }
+
+        .color5 {
+            background-color: green;
+        }
+
+        .color6 {
+            background-color: blue;
+        }
+        .color7 {
+            background-color: salmon;
+        }
+
+        .right {
+            background-color: whitesmoke;
+            margin: 0 20px 0 12px;
+        }
+
+        .right table td {
+            width: 80px;
+            height: 50px;
+            transition: all 1s ease-in-out;
+        }
+
+        .drop-over {
+            background-color: #999;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="left" data-drop="move">
+            <div data-effect="copy" draggable="true" class="item color1">语文</div>
+            <div data-effect="copy" draggable="true" class="item color2">数学</div>
+            <div data-effect="copy" draggable="true" class="item color3">英语</div>
+            <div data-effect="copy" draggable="true" class="item color4">历史</div>
+            <div data-effect="copy" draggable="true" class="item color5">地理</div>
+            <div data-effect="copy" draggable="true" class="item color6">政治</div>
+            <div data-effect="copy" draggable="true" class="item color7">体育</div>
+        </div>
+        <div class="right">
+            <table border>
+                <caption>
+                    <h1>课程表</h1>
+                </caption>
+                <colgroup>
+                    <col />
+                    <col />
+                    <col />
+                    <col />
+                    <col />
+                    <col />
+                    <col />
+                    <col />
+                </colgroup>
+                <thead>
+                    <tr>
+                        <td></td>
+                        <th>星期一</th>
+                        <th>星期二</th>
+                        <th>星期三</th>
+                        <th>星期四</th>
+                        <th>星期五</th>
+                        <th>星期六</th>
+                        <th>星期天</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th rowspan="4" class="span">上午</th>
+                        <td data-drop="copy"></td>
+                        <td data-drop="copy"></td>
+                        <td data-drop="copy"></td>
+                        <td data-drop="copy"></td>
+                        <td data-drop="copy"></td>
+                        <td data-drop="copy"></td>
+                        <td data-drop="copy"></td>
+                    </tr>
+                    <tr>
+                        <td data-drop="copy"></td>
+                        <td data-drop="copy"></td>
+                        <td data-drop="copy"></td>
+                        <td data-drop="copy"></td>
+                        <td data-drop="copy"></td>
+                        <td data-drop="copy"></td>
+                        <td data-drop="copy"></td>
+                    </tr>
+                    <tr>
+                        <td data-drop="copy"></td>
+                        <td data-drop="copy"></td>
+                        <td data-drop="copy"></td>
+                        <td data-drop="copy"></td>
+                        <td data-drop="copy"></td>
+                        <td data-drop="copy"></td>
+                        <td data-drop="copy"></td>
+                    </tr>
+                    <tr>
+                        <td data-drop="copy"></td>
+                        <td data-drop="copy"></td>
+                        <td data-drop="copy"></td>
+                        <td data-drop="copy"></td>
+                        <td data-drop="copy"></td>
+                        <td data-drop="copy"></td>
+                        <td data-drop="copy"></td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="8"></td>
+
+                    </tr>
+
+                    <tr>
+                        <th rowspan="4" class="span">下午</th>
+                        <td data-drop="copy"></td>
+                        <td data-drop="copy"></td>
+                        <td data-drop="copy"></td>
+                        <td data-drop="copy"></td>
+                        <td data-drop="copy"></td>
+                        <td data-drop="copy"></td>
+                        <td data-drop="copy"></td>
+                    </tr>
+                    <tr>
+                        <td data-drop="copy"></td>
+                        <td data-drop="copy"></td>
+                        <td data-drop="copy"></td>
+                        <td data-drop="copy"></td>
+                        <td data-drop="copy"></td>
+                        <td data-drop="copy"></td>
+                        <td data-drop="copy"></td>
+                    </tr>
+                    <tr>
+                        <td data-drop="copy"></td>
+                        <td data-drop="copy"></td>
+                        <td data-drop="copy"></td>
+                        <td data-drop="copy"></td>
+                        <td data-drop="copy"></td>
+                        <td data-drop="copy"></td>
+                        <td data-drop="copy"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script type="text/javascript">
+        const container = document.querySelector(".container")
+
+        let source;
+        container.ondragstart = (e) => {
+            console.log("start => ", e.target)
+            // 设置鼠标状态为移动
+            e.dataTransfer.effectAllowed = e.target.dataset.effect
+            source = e.target;
+        }
+
+        // 会一直触发
+        container.ondragover = (e) => {
+            // console.log("over => ", e.target)
+            // 阻止浏览器默认行为
+            e.preventDefault()
+        }
+
+        const clearDropStyle = () => {
+            document.querySelectorAll('.drop-over').forEach(node => {
+                node.classList.remove('drop-over')
+            })
+        }
+
+        const getDropNode = (node) => {
+            while (node) {
+                if (node.dataset.drop) {
+                    return node;
+                }
+                node = node.parentNode;
+            }
+        }
+
+        // 只会触发一次
+        container.ondragenter = (e) => {
+            console.log("enter => ", e.target)
+            // 清楚之前的drop-over
+            clearDropStyle()
+            const dropNode = getDropNode(e.target)
+            if (dropNode && Object.is(dropNode.dataset.drop, e.dataTransfer.effectAllowed)) {
+                dropNode.classList.add('drop-over')
+            }
+        }
+
+        container.ondrop = (e) => {
+            console.log("drop => ", e.target)
+            clearDropStyle()
+            const dropNode = getDropNode(e.target)
+            if (dropNode && Object.is(dropNode.dataset.drop, e.dataTransfer.effectAllowed)) {
+                if (dropNode.dataset.drop === 'copy') {
+                    dropNode.innerHTML = ''
+                    const cloned = source.cloneNode(true);
+                    cloned.dataset.effect = 'move'
+                    dropNode.appendChild(cloned)
+                } else {
+                    // 清除
+                    source.remove()
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

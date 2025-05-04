@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        section {
+            display: flex;
+            width: 60%;
+            height: 200px;
+            margin: 0 auto;
+        }
+        section div:first-of-type {
+            width: 150px;
+            height: 200px;
+            background-color: blue;
+        }
+        section div:nth-of-type(2) {
+            flex: 1;
+            background-color: green;
+        }
+        section div:last-of-type {
+            width: 150px;
+            height: 200px;
+            background-color: red;
+        }
+
+        p {
+            display: flex;
+            width: 60%;
+            height: 200px;
+            margin: 100px auto;
+        }
+        p span {
+            /* 直接三等份 */
+            flex: 1;
+            background-color: var(--color);
+        }
+        p span:nth-of-type(2) {
+            flex: 2;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <div></div>
+        <div></div>
+        <div></div>
+    </section>
+    <p>
+        <span style="--color: red"></span>
+        <span style="--color: blue"></span>
+        <span style="--color: pink"></span>
+    </p>
+</body>
+</html>

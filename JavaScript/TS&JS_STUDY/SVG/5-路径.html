@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        path {
+            stroke: skyblue;
+            stroke-width: 10;
+            fill: none;
+        }
+        path:hover {
+            stroke: salmon;
+        }
+        text {
+            stroke: red;
+            stroke-width: 2px;
+            /* fill: skyblue; */
+            fill: none;
+            font-size: 50px;
+            font-weight: bold;
+            font-weight: 900;
+            font-style: italic;
+            text-shadow: 0 0 10px #ccc;
+        }
+    </style>
+</head>
+<body>
+    <svg width="500" height="500">
+        <!-- 
+            M: move to (移动到)
+            L: line to (直线到)
+            H: horizontal line to（闭合路径）
+         -->
+        <path d="M 50,50 L 100,120 L 200,150 L 300,300 L 400,200 Z"/>
+        <text x="200" y="400">绘制路径</text>
+    </svg>
+</body>
+</html>

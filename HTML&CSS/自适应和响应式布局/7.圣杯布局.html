@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>圣杯布局</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        /* 浮动+calc() 实现圣杯布局 */
+        /* header, footer {
+            text-align: center;
+            height: 40px;
+            line-height: 40px;
+            width: 100%;
+        }
+        header {
+            background-color: skyblue;
+        }
+        footer {
+            background-color: salmon;
+        }
+        main {
+            height: calc(100vh - 80px);
+        }
+        main > div {
+            float: left;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        main .left {
+            width: 200px;
+            background-color: red;
+        }
+        main .center {
+            background-color: deepskyblue;
+            width: calc(100% - 400px);
+        }
+        main .right {
+            width: 200px;
+            background-color: greenyellow;
+        } */
+
+        /* flex布局 实现圣杯布局 */
+        header, footer {
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+        }
+        header {
+            background-color: slateblue;
+        }
+        footer {
+            background-color: slategray;
+        }
+        main {
+            height: calc(100vh - 100px);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        main div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        main .left, main .right {
+            width: 200px;
+            flex-shrink: 0;
+        }
+        main .left {
+            background-color: red;
+        }
+        main .right {
+            background-color: greenyellow
+        }
+        main .center {
+            background-color: skyblue;
+            flex-grow: 1;
+        }
+    </style>
+</head>
+<body>
+    <header>header</header>
+    <main>
+        <div class="left">左侧内容</div>
+        <div class="center">中间内容</div>
+        <div class="right">右侧内容</div>
+    </main>
+    <footer>footer</footer>
+</body>
+</html>

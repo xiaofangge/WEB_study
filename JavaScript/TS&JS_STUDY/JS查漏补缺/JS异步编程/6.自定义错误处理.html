@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="./js/ajax.js"></script>
+    <script>
+        const url = 'http://www.baiduc.com'
+        ajax(url).then(value => {
+            console.log(value)
+        }).catch(error => {
+            if (error instanceof ParamError) {
+                console.log("ParamError => ", error.message)
+            }
+            if (error instanceof HttpError) {
+                console.log("HttpError => ", error.message)
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="./js/ajax.js"></script>
+    <script>
+        function queryDict(dictType) {
+            const cacheObj = queryDict.cacheObj || (queryDict.cacheObj = new Map())
+            if (cacheObj.has(dictType)) {
+                console.log("命中缓存")
+                return Promise.resolve(cacheObj.get(dictType))
+            }
+            return ajax(`http://www.zjldsoft.com/ld/common/v1/code?method=getDictInfo&dict=${dictType}`)
+                    .then(dictList => {
+                        console.log("没走缓存")
+                        cacheObj.set(dictType, dictList.data)
+                        return dictList.data
+                    })
+        }
+
+        function query() {
+            queryDict('dict_approval_number_type').then(dictList => {
+                console.log(dictList)
+            })
+            requestAnimationFrame(query)
+        }
+        query()
+       
+    </script>
+</body>
+</html>

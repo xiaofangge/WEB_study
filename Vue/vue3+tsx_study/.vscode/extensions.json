@@ -1,0 +1,13 @@
+{
+  "recommendations": [
+    "MS-CEINTL.vscode-language-pack-zh-hans",
+    "clinyong.vscode-css-modules",
+    "mikestead.dotenv",
+    "donjayamanne.githistory",
+    "eamodio.gitlens",
+    "Vue.volar",
+    "techer.open-in-browser",
+    "ritwickdey.LiveServer",
+    "lihuiwang.vue-alias-skip"
+  ]
+}

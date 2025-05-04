@@ -1,0 +1,228 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+@font-face {
+  font-family: 'DS-DIGIT';
+  src: url(../fonts/DS-DIGIT.TTF);
+}
+li {
+  list-style: none;
+}
+body {
+  background: url(../images/bg.jpg);
+}
+header {
+  background: url(../images/head_bg.png) no-repeat top center;
+  height: 1rem;
+  line-height: 1rem;
+}
+header h1 {
+  font-size: 0.555rem;
+  color: white;
+  text-align: center;
+}
+header #showTime {
+  position: absolute;
+  right: 0.25rem;
+  top: 0;
+  color: #dbdec5;
+  font-size: 0.25rem;
+}
+.mainbox {
+  display: flex;
+  min-width: 1024px;
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: 0.125rem 0.125rem 0;
+}
+.mainbox .column {
+  flex: 3;
+}
+.mainbox .column:nth-child(2) {
+  flex: 5;
+  padding: 0 0.125rem 0.1875rem;
+}
+.mainbox .column .panel {
+  height: 3.75rem;
+  position: relative;
+  padding: 0.1rem;
+  margin-bottom: 10px;
+  background: url(../images/line.png) rgba(255, 255, 255, 0.04);
+}
+.mainbox .column .panel::before {
+  content: '';
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-left: 2px solid #4ad5ff;
+  border-top: 2px solid #4ad5ff;
+}
+.mainbox .column .panel::after {
+  content: '';
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-right: 2px solid #4ad5ff;
+  border-top: 2px solid #4ad5ff;
+}
+.mainbox .column .panel .panel-bottom {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+.mainbox .column .panel .panel-bottom::before {
+  content: '';
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  border-left: 2px solid #4ad5ff;
+  border-bottom: 2px solid #4ad5ff;
+}
+.mainbox .column .panel .panel-bottom::after {
+  content: '';
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  border-right: 2px solid #4ad5ff;
+  border-bottom: 2px solid #4ad5ff;
+}
+.mainbox .column .panel h2 {
+  font-size: 0.25rem;
+  color: #fff;
+  height: 0.3rem;
+  line-height: 0.3rem;
+  text-align: center;
+  font-weight: 400;
+}
+.mainbox .column .panel .chart {
+  color: #fff;
+  background-color: #4ad5ff;
+  height: calc(100% - 0.3rem);
+}
+.mainbox .column .no {
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.04);
+  padding: 0.1875rem;
+}
+.mainbox .column .no .no-data {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0.125rem 0.1875rem;
+  position: relative;
+}
+.mainbox .column .no .no-data ul {
+  display: flex;
+}
+.mainbox .column .no .no-data ul::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 30px;
+  height: 10px;
+  border-top: 2px solid #4ad5ff;
+  border-left: 2px solid #4ad5ff;
+}
+.mainbox .column .no .no-data ul::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 30px;
+  height: 10px;
+  border-bottom: 2px solid #4ad5ff;
+  border-right: 2px solid #4ad5ff;
+}
+.mainbox .column .no .no-data ul li {
+  flex: 1;
+  text-align: center;
+  font-size: 0.75rem;
+  color: #ebde7a;
+  font-family: 'DS-DIGIT';
+}
+.mainbox .column .no .no-title {
+  padding-top: 0.125rem;
+}
+.mainbox .column .no .no-title ul {
+  display: flex;
+}
+.mainbox .column .no .no-title ul li {
+  flex: 1;
+  font-size: 0.25rem;
+  font-weight: 200;
+  text-align: center;
+  height: 0.5rem;
+  line-height: 0.5rem;
+}
+.mainbox .column .map {
+  height: 9.55rem;
+  position: relative;
+}
+.mainbox .column .map .chart {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+.mainbox .column .map .earth {
+  width: 6.475rem;
+  height: 6.475rem;
+  background: url(../images/map.png);
+  background-size: 100% 100%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.4;
+}
+.mainbox .column .map .rotate1 {
+  width: 8.0375rem;
+  height: 8.0375rem;
+  background: url(../images/lbx.png);
+  background-size: 100% 100%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  animation: animationRotate1 15s linear infinite;
+  opacity: 0.6;
+}
+@keyframes animationRotate1 {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+.mainbox .column .map .rotate2 {
+  width: 7.075rem;
+  height: 7.075rem;
+  background: url(../images/jt.png);
+  background-size: 100% 100%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  animation: animationRotate2 10s linear infinite;
+  opacity: 0.6;
+}
+@keyframes animationRotate2 {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(-360deg);
+  }
+}

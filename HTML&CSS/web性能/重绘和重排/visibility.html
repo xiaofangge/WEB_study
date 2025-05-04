@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            /* visibility: visible; */
+            opacity: 1;
+            will-change: transform;
+        }
+    </style>
+</head>
+<body>
+    <div>test</div>
+    <script type="text/javascript">
+        const div = document.querySelector('div');
+        setTimeout(() => {
+            // div.style.visibility = 'hidden';
+            div.style.opacity = 0;
+        }, 2000)
+    </script>
+</body>
+</html>

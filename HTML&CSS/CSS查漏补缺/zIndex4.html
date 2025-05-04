@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .dom {
+            width: 100px;
+            height: 100px;
+            border: 2px solid black;
+            position: relative;
+        }
+        .dom1 {
+            background-color: red;
+            z-index: 1;
+        }
+        .dom2 {
+            background-color: green;
+            margin-top: -50px;
+            z-index: 2;
+            float: left;
+        }
+        .dom3 {
+            background-color: blue;
+            margin-top: -50px;
+            z-index: 3;
+        }
+    </style>
+</head>
+<body>
+    <div class="dom dom1"></div>
+    <div class="dom dom2"></div>
+    <div class="dom dom3"></div>
+</body>
+</html>

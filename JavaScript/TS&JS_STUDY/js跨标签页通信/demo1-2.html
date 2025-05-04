@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        window.addEventListener("storage", (e) => {
+            console.log(e)
+            if (e.key === 'message') {
+                console.log(`storage message => ${sessionStorage.getItem('message')}`)
+            }
+        })
+
+        // 监听自定义事件来检测 ‘sessionStorage’ 的更新
+        window.addEventListener('sessionStorageUpdated', () => {
+            console.log(`sessionStorageUpdated message => ${sessionStorage.getItem('message')}`)
+        })
+    </script>
+</body>
+</html>

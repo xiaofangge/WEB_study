@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="result"></p>
+    <script>
+        const $result = document.querySelector("#result")
+        //==================== 长任务 start ================
+        const bigArray = Array.from({length: 100000000}, (_, i) => i + 1)
+        function processChunk(chunk) {
+            return `chunk: ${chunk}`
+        }
+
+        // 分割任务并使用requestAnimationFrame
+        let chunkSize = 1000; // 每个小块的大小
+        let index = 0;
+
+        // function processArrayWithRAF() {
+        //     function processChunkWithRAF() {
+        //         for (let i = 0; i < chunkSize; i++) {
+        //             if (index < bigArray.length) {
+        //                 $result.innerText = processChunk(bigArray[index])
+        //                 index++;
+        //             }
+        //         }
+        //         if (index < bigArray.length) {
+        //             // 继续处理下一块
+        //             requestAnimationFrame(processArrayWithRAF);
+        //         }
+        //     }
+        //     requestAnimationFrame(processArrayWithRAF)
+        // }
+        // processArrayWithRAF();
+
+        function processArrayWithDynamicChunkSize() {
+            function processArrayWithRAF() {
+                let start = performance.now();
+                for (let i = 0; i < chunkSize; i++) {
+                    if (index < bigArray.length) {
+                        const result = processChunk(bigArray[index])
+                        $result.innerHTML = result;
+                        index++;
+                    }
+                }
+                let end = performance.now();
+                let timeTaken = end - start;
+                // 根据处理时间动态调整chunkSize
+                if (timeTaken > 16) {   //  如果处理时间超过一帧的时间（16毫秒），则减小 chunkSize
+                    chunkSize = Math.floor(chunkSize * 0.9)
+                } else if (timeTaken < 16) {    //  如果处理时间小于一帧的时间（16毫秒），则增大 chunkSize
+                    chunkSize = Math.floor(chunkSize * 1.1)
+                }
+
+                if (index < bigArray.length) {
+                    requestAnimationFrame(processArrayWithRAF); // 继续处理下一个小块
+                }
+            }
+            requestAnimationFrame(processArrayWithRAF) // 开始处理大数组
+        }
+        processArrayWithDynamicChunkSize()
+        // bigArray.forEach(item => {
+        //     $result.innerHTML = processChunk(item)
+        // })
+    </script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="name">
+    <span></span>
+    <script>
+        document.getElementById("name").addEventListener('keyup', function () {
+            console.log(this.value);
+            // console.log(this.value);
+            let flag = this.value.match(/^[a-z]{3,6}$/)
+            console.log("flag => ", flag)
+            document.querySelector('span').innerHTML = flag ? '有效' : '无效';
+        })
+    </script>
+</body>
+</html>

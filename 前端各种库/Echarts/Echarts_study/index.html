@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据可视化</title>
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
+    <!-- 页头 -->
+    <header>
+        <h1>数据可视化-ECharts</h1>
+        <span id="showTime"></span>
+    </header>
+
+    <!-- 页面主体部分 -->
+    <section class="mainbox">
+        <div class="column">
+            <div class="panel bar">
+                <h2>柱状图-就业行业</h2>
+                <div class="chart">图表</div>
+                <div class="panel-bottom"></div>           
+            </div>
+            <div class="panel line">
+                <h2>柱形图-就业行业</h2>
+                <div class="chart">图表</div>
+                <div class="panel-bottom"></div>
+            </div>
+            <div class="panel pine">
+                <h2>柱形图-就业行业</h2>
+                <div class="chart">图表</div>
+                <div class="panel-bottom"></div>
+            </div>
+        </div>
+        <div class="column">
+            <!-- 上面数字模块 -->
+            <div class="no">
+                <div class="no-data">
+                    <ul>
+                        <li>200218</li>
+                        <li>101208</li>
+                    </ul>
+                </div>
+                <div class="no-title">
+                    <ul>
+                        <li>市场前端人数</li>
+                        <li>市场供应岗位</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- 地图模块 -->
+             <div class="map">
+                <div class="earth"></div>
+                <div class="rotate1"></div>
+                <div class="rotate2"></div>
+                <div class="chart"></div>
+             </div>
+        </div>
+        <div class="column">
+            <div class="panel bar">
+                <h2>柱形图-就业行业</h2>
+                <div class="chart">图表</div>
+                <div class="panel-bottom"></div>
+            </div>
+            <div class="panel line">
+                <h2>柱形图-就业行业</h2>
+                <div class="chart">图表</div>
+                <div class="panel-bottom"></div>
+            </div>
+            <div class="panel pine">
+                <h2>柱形图-就业行业</h2>
+                <div class="chart">图表</div>
+                <div class="panel-bottom"></div>
+            </div>
+        </div>
+    </section>
+    <script src="./js/flexible.js"></script>
+    <script src="./utils/DateUtil.js"></script>
+    <script>
+        const timeEle = document.getElementById("showTime")
+  
+        const getTime = () => {
+            timeEle.textContent = `当前时间：${formatDate(new Date().getTime(), 'yyyy年MM月dd日 hh时mm分ss秒')}`
+            // 使用requestAnimationFrame 再次调用 getTime
+            requestAnimationFrame(getTime)
+        }
+        // 启动动画
+        requestAnimationFrame(getTime);
+    </script>
+</body>
+</html>

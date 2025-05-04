@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="pushStateBtn">pushState压栈</button>
+    <button id="getLenBtn">getLen</button>
+    <button id="replaceStateBtn">replaceState替换</button>
+    <button id="forward">前进</button>
+    <button id="back">后退</button>
+    <div>栈：<span id="size"></span></div>
+    <hr>
+    <div id="content"></div>
+    <script>
+
+        const loadHTML = (url, element) => {    
+            fetch(url).then(response => {
+                if (response.ok) {
+                    return response.text()
+                }
+                throw new Error('Network response was not ok.');
+            }).then(html => {
+                element.innerHTML = html;
+            }).catch(error => {
+                console.error("error => ", error)
+            })
+        }
+
+        const pushStateBtn = document.getElementById('pushStateBtn');
+        const getLenBtn = document.getElementById('getLenBtn');
+        const size = document.getElementById('size');
+        const replaceStateBtn = document.getElementById('replaceStateBtn');
+        const forward = document.getElementById('forward');
+        const back = document.getElementById('back');
+        const content = document.getElementById('content');
+
+        let i = 1;
+        size.textContent = `当前历史记录栈总数：${history.length}`;
+
+        pushStateBtn.addEventListener('click', () => {
+            const page = `test${i}.html`
+            history.pushState({page: page}, "", page)
+            loadHTML(page, content)
+            i++;
+        }, false)
+
+        getLenBtn.addEventListener('click', () => {
+            size.textContent = `当前历史记录栈总数：${history.length}`;
+        })
+
+        forward.addEventListener('click', () => history.forward())
+        back.addEventListener('click', () => history.back())
+
+        window.addEventListener('popstate', (e) => {
+            console.log("state => ", e.state.page)
+            loadHTML(e.state.page, content)
+        })
+    </script>
+</body>
+</html>

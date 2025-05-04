@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="module">
+        import { reactive, ref, toRef, toRefs, effect } from './reactive.js'
+
+        const obj = {
+            name: '小浪',
+            age: 22,
+            test: {
+                test1: {
+                    test2: 21,
+                },
+            },
+        }
+
+        const objReactive = reactive(obj)
+        console.log(objReactive.age)
+        objReactive.test.test1.test2 = 22
+        console.log(delete objReactive.age)
+        // 获取对象属性age值
+        // 22
+        // 获取对象属性test值
+        // 获取对象属性test1值
+        // 设置对象属性test2值
+        // 删除对象属性age
+        // true
+        console.info("----------------------------")
+        const obj2 = reactive({
+            name: "小浪"
+        })
+        const age2 = toRef(obj2, "age")
+        age2.value = 21
+        console.log(obj2)
+        effect(() => {
+            age2.value = 22
+        })
+        console.log(obj2)
+
+        console.info("----------------------------")
+        const { name, age } = toRefs(obj2);
+        console.log(obj2)
+        name.value = '小云';
+        age.value = 30;
+        console.log(obj2)
+    </script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fetchSSE Demo</title>
+</head>
+<body>
+    <h1>fetchSSE Demo</h1>
+    <button onclick="connectFetch()">建立 fetchSSE 连接</button>
+    <button onclick="closeSSE()">断开 fetchSSE 连接</button>
+    <br />
+    <br />
+    <div id="message"></div>
+
+    <script>
+        const messageElement = document.getElementById('message');
+        let controller;
+
+        // 建立 fetchSSE 连接
+        const connectFetch = () => {
+            controller = new AbortController();
+            fetchEventSource('http://127.0.0.1:3002/fetch-sse', {
+                method: 'POST',
+                body: JSON.stringify({
+                    content: 'xxx'
+                }),
+                signal: controller.signal,
+                onopen: () => {
+                    messageElement.innerHTML += 'fetchSSE 连接建立成功 <br />';
+                },
+                onclose: () => {
+                    messageElement.innerHTML += 'fetchSSE 连接断开 <br />';
+                },
+                onmessage: (event) => {
+                    const data = JSON.parse(event);
+                    messageElement.innerHTML += `${data.id} --- ${data.time} --- body参数: ${JSON.stringify(data.body)} <br />`
+                },
+                onerror: (e) => {
+                    console.log(e);
+                }
+            })
+        }
+
+
+        const fetchEventSource = (url, options) => {
+            fetch(url, options)
+                .then(response => {
+                    if (response.status === 200) {
+                        options.onopen && options.onopen();
+                        return response.body;
+                    }
+                })
+                .then(rb => {
+                    const ready = rb.getReader();
+                    const push = () => {
+                        // done 为数据流是否接收完成，boolean
+                        // value 为数据流中的数据，Unit8Array
+                        return ready.read().then(({ done, value }) => {
+                            if (done) {
+                                options.onclose && options.onclose();
+                                return;
+                            }
+                            options.onmessage && options.onmessage(new TextDecoder('utf-8').decode(value))
+                            // 持续读取流信息
+                            return push();
+                        })
+                    }
+                    // 开始读取流信息
+                    return push();
+                })
+                .catch(e => {
+                    options.onerror && options.onerror(e);
+                })
+        }
+
+        // 断开连接
+        const closeSSE = () => {
+            if (controller) {
+                controller.abort();
+                controller = undefined;
+                messageElement.innerHTML += 'fetchSSE 连接已断开 <br />';
+            }
+        }
+    </script>
+</body>
+</html>

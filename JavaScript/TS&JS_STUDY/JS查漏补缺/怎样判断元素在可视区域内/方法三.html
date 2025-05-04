@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .div {
+            height: 2000px;
+        }
+        p {
+            height: 200px;
+            color: white;
+            background-color: blueviolet;
+        }
+    </style>
+</head>
+<body>
+    <!-- 3. 通过交叉检查器：Intersection Observer 来实现监听 -->
+     <div class="div"></div>
+     <p>我出现啦</p>
+     <script>
+        const p = document.querySelector('p')
+        const observer = new IntersectionObserver(entries => {
+            if (entries[0].isIntersecting) {
+                document.body.style.backgroundColor = 'skyblue'
+            } else {
+                document.body.style.backgroundColor = 'orange'
+            }
+        }, {
+            threshold: .2,  // 表示当子元素和父元素覆盖多少时触发回调函数。
+        });
+        observer.observe(p)
+     </script>
+</body>
+</html>

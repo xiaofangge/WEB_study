@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .text {
+            /* 文本水平居中 */
+            text-anchor: middle;
+            /* 文本垂直居中 */
+            dominant-baseline: middle;
+        }
+        body {
+            text-align: center;
+        }
+        .circle {
+             /* 路径末尾定义的形状 */
+            stroke-linecap: round;
+            stroke-width: 40;
+            stroke: grey;
+            fill: none;
+        }
+        .progress {
+            fill: none;
+            stroke: red;
+            stroke-width: 40;
+            /* 路径末尾定义的形状 */
+            stroke-linecap: round;
+            /* stroke-dasharray: 0, 10000; 一个表示长度，一个表示间距 */
+            stroke-dasharray: 0, 10000;
+            transform: rotate(-90, 350, 350);
+        }
+        .text {
+            font-size: 200px;
+            fill: red;
+        }
+    </style>
+</head>
+<body>
+    <svg width="700" height="700">
+        <!-- 设置底色的圆环 -->
+        <circle cx="350" cy="350" r="300" class="circle" />
+
+        <!-- 设置进度条 -->
+        <circle class="progress" cx="350" cy="350" r="300" />
+
+        <!-- 设置文本 -->
+        <text x="350" y="350" class="text">0</text>
+    </svg>
+    <script>
+         const progress = document.querySelector('.progress');
+         const text = document.querySelector('.text');
+         const roateFunc = (percent) => {
+            // 计算周长
+            const totalPath = Math.floor(2 * Math.PI * parseFloat(progress.getAttribute("r"))) 
+            // 按照百分比，算出进度环的长度
+            const progressLen = totalPath * percent / 100;
+            // 颜色变化 红色到浅蓝色
+            // 红色 255, 0, 0
+            // 浅蓝色 0, 191, 255
+            let r = 255 + parseInt((0-255) * percent / 100)
+            let g = 0 + parseInt((191 - 0) * percent / 100)
+            let b = 0 + parseInt((255 - 0) * percent / 100)
+            // 设置进度环的长度
+            progress.style.strokeDasharray = `${progressLen} ${totalPath - progressLen}`;
+            // 设置进度环的颜色
+            progress.style.stroke = `rgb(${r}, ${g}, ${b})`;
+            // 设置文本
+            text.innerHTML = percent + '%';
+            // 设置文本的颜色
+            text.style.fill = `rgb(${r}, ${g}, ${b})`;
+         }
+
+         // 40ms 刷新一次
+         let num = 0;
+         setInterval(() => {
+             num++;
+             if (num > 100) {
+                 num = 0;
+             }
+             roateFunc(num);
+         }, 40)   
+    </script>
+</body>
+</html>

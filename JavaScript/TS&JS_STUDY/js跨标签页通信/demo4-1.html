@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button class="pop">弹出新窗口</button>
+    <button class="send-btn">发送消息</button>
+    <script>
+        const popBtn = document.querySelector(".pop")
+        const sendBtn = document.querySelector(".send-btn")
+        let index = 0;
+        let opener = null;
+        popBtn.addEventListener("click", () => {
+            opener = window.open('demo4-2.html', '123', 'height=600,width=600,top=20,resizeable=yes')
+        })
+        sendBtn.addEventListener("click", () => {
+            const data = {
+                value: `moment ${index++}`
+            }
+            opener.postMessage(data, '*')
+        })
+    </script>
+</body>
+</html>

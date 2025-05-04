@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>大案例</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            /* 粘性定位 */
+            position: sticky;
+            top: 0;
+            height: 50px;
+            background-color: red;
+        }
+        main {
+            height: 400px;
+        }
+        .box {
+            background-color: skyblue;
+            height: 50px;
+            position: sticky;
+            top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>头部</header>
+        <main>内容</main>
+        <div class="box">标题一</div>
+        <main>内容</main>
+        <main>内容</main>
+        <main>内容</main>
+        <main>内容</main>
+    </div>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="test">
+        外层
+        <span style="color:red">内层</span>
+    </div>
+    <div id="test2">
+        <span>test1</span>
+        <span>test2</span>
+    </div>
+    <div id="test3">
+        <span>test1</span>
+        <span style="display: none;">test2</span>
+        <script>var a='test3';</script>
+    </div>
+    <div id="test4">
+        test1
+        <span></span>
+        test2
+        <p></p>
+        test3
+        <span></span>
+        <span></span>
+        <span></span>
+        test4
+        <p></p>
+        <p></p>
+        <p></p>
+        test5
+    </div>
+
+    <script>
+        // innerHTML: 包含HTML标签的字符串
+        const element = document.getElementById('test');
+        console.info("innerHTML: ",element.innerHTML); // 外层<span style="color:red">内层</span>
+
+        // innerText: 不含HTML标签的字符串
+        console.info("innerText: ",element.innerText); // 外层 内层
+
+        // outerHTML: 包含HTML标签的字符串,且包括元素本身
+        console.info("outerHTML: ",element.outerHTML); // <div id="test">外层<span style="color:red">内层</span></div>
+
+        // outerText: 不含HTML标签的字符串,且包括元素本身
+        console.info("outerText: ",element.outerText); // 外层 内层
+
+        // innerHTML 是符合W3C标准的属性，而 innerText 只适用于IE浏览器，因此建议使用 innerText。
+
+
+        // textContent: 不含HTML标签的字符串,仅包含元素内部的文本内容
+        const element2 = document.getElementById('test2');
+        console.info("textContent: ",element2.textContent); 
+        // textContent:  
+        // test1
+        // test2
+        console.info("innerText: ",element2.innerText);  // innerText:  test1 test2
+
+        // innerText 和 textContent 都可以获取元素内部的文本内容，但是两者的区别在于：
+        // 1、innerText的值取决于浏览器的显示结果，textContent的值取决于代码的结构
+        // 2、
+
+        const element3 = document.getElementById('test3');
+        console.info("textContent: ",element3.textContent); 
+        // textContent:  
+        // test1
+        // test2
+        // var a='test3'
+        console.info("innerText: ",element3.innerText); // innerText:  test1 
+
+        const element4 = document.getElementById('test4');
+        console.info("textContent: ",element4.textContent); 
+        // test1
+        
+        // test2
+        
+        // test3
+        
+        
+        
+        // test4
+        
+        
+        
+        // test5
+        console.info("innerText: ",element4.innerText); 
+        // test1 test2
+
+        // test3 test4
+
+        // test5
+
+        // innerText 的操作一定会引起浏览器回流，所以是比较耗性能的。而 textContent 并非一定会触发回流，但它也是在特定情况下（比如所赋值的内容超出了容器尺寸，影响到了页面整体布局）才会触发回流，在其他情况下一般只是触发浏览器的重绘。
+    </script>
+</body>
+</html>

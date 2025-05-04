@@ -1,0 +1,25 @@
+.view-container {
+    height: 400px;
+    width: 200px;
+    border: 1px solid red;
+    overflow-y: scroll;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .content-container {
+    height: 1000px;
+  }
+  
+  .item-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  
+  .item {
+    height: 20px;
+  }
+  

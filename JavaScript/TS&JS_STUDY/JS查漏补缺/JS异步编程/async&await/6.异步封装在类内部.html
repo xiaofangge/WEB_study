@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="../js/ajax.js"></script>
+    <script>
+        class Dict {
+            constructor(dictType) {
+                this.dictType = dictType
+            }
+            async get() {
+                let dictList = await ajax(`http://www.zjldsoft.com/ld/common/dict/code?method=getDictInfo&dict=${this.dictType}`)
+                dictList.data.forEach(dictItem => {
+                    dictItem.AREA_NAME += '-心潮'
+                })
+                return dictList.data;
+            }
+        }
+        new Dict('DICT_DRUG_AREA').get().then(value => {
+            console.log("value => ", value)
+        })
+    </script>
+</body>
+</html>

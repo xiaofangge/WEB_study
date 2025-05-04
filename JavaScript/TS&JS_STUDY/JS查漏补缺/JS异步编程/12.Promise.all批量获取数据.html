@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="./js/ajax.js"></script>
+    <script>
+        const promise1 = new Promise((resolve, reject) => {
+            resolve("第一个异步")
+        })
+        const promise2 = new Promise((resolve, reject) => {
+            resolve("第二个异步")
+        })
+
+        Promise.all([promise1, promise2]).then(value => {
+            console.log(value)
+        })
+
+        function getDicts(dictTypeList) {
+            const promises = dictTypeList.map(dictType => {
+                return ajax(`http://www.zjldsoft.com/ld/common/v1/code?method=getDictInfo&dict=${dictType}`)
+            })
+            return Promise.all(promises)
+        }
+        getDicts(['dict_approval_number_type', 'dict_pub_code']).then(dictList => {
+            console.log('dictList => ', dictList)
+        })
+    </script>
+</body>
+</html>

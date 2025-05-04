@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            height: 300vh;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        const body = document.querySelector('body');
+        let count = 1;
+        let flag = false
+        body.onscroll = () => {
+            if (!flag) {
+                flag = true;
+                setTimeout(() => {
+                    flag = false;
+                    console.log(count++)
+                }, 2000)
+            }
+        }
+    </script>
+</body>
+</html>

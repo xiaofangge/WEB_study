@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 打印节点内容
+      console.log("%o", document.body);
+      // 打印该DOM节点的对象属性
+      console.log("%O", document.body);
+
+      // console.warn()
+      const app = ["facebook", "google", "twitter"];
+      console.warn(app);
+      console.error(app);
+
+      function a() {
+        b();
+      }
+      function b() {
+        console.error("error");
+      }
+      function c() {
+        a();
+      }
+      c();
+
+      // 和log一致
+      console.info(app);
+
+      //   console.time("time1")
+      //   console.time("time2")
+      //   setTimeout(() => {
+      //     console.timeEnd("time1")
+      //   }, 1000)
+      //   setTimeout(() => {
+      //     console.timeEnd("time2")
+      //   }, 2000)
+
+      // timeLog()
+      //   console.time("time3")
+      //   setTimeout(() => {
+      //     console.timeLog("time3")
+      //     setTimeout(() => {
+      //         console.timeLog("time3")
+      //     }, 2000)
+      //   }, 1000)
+
+      //   console.time("time4")
+      //   setTimeout(() => {
+      //     console.timeEnd("time4")
+      //     setTimeout(() => {
+      //         console.timeLog("time4")
+      //     }, 2000)
+      //   }, 1000)
+
+      // 分组打印
+      console.group();
+      console.log("First Group");
+      console.group();
+      console.log("Second Group");
+      console.groupEnd();
+      console.groupEnd();
+
+      console.group("Alphabet"); // 默认展开
+      console.info("A");
+      console.info("B");
+      console.info("C");
+      console.group("Numbers");
+      console.info(1);
+      console.info(2);
+      console.info(3);
+      console.groupEnd("Numbers");
+      console.groupEnd("Alphabet");
+
+      console.info("--------------------");
+      console.groupCollapsed("Alphabet"); // 默认折叠
+      console.info("A");
+      console.info("B");
+      console.info("C");
+      console.groupCollapsed("Numbers");
+      console.info("one");
+      console.info("two");
+      console.info("three");
+      console.groupEnd("Numbers");
+      console.groupEnd("Alphabet");
+
+      // 计数
+      // for (let i = 0; i < 5; i++) {
+      //     console.count()
+      // }
+      // for (let i = 0; i < 10; i++) {
+      //     console.count("hello")
+      // }
+
+      // 重置计数器
+      console.info("--------------------");
+      console.count(); // default: 1
+      console.count("a"); // a: 1
+      console.count("b"); // b: 1
+      console.count("a"); // a:2
+      console.count("a"); // a:3
+      console.count(); // default:2
+      console.count(); // default:3
+
+      console.countReset();
+      console.countReset("a");
+      console.countReset("c");
+
+      console.count(); // default:1
+      console.count("a"); // a:1
+      console.count("b"); // b:1
+
+      console.info("--------------------");
+      const users = [
+        {
+          first_name: "Harcourt",
+          last_name: "Huckerbe",
+          gender: "Male",
+          city: "Linchen",
+          birth_country: "China",
+        },
+        {
+          first_name: "Allyn",
+          last_name: "McEttigen",
+          gender: "Male",
+          city: "Ambelókipoi",
+          birth_country: "Greece",
+        },
+        {
+          first_name: "Sandor",
+          last_name: "Degg",
+          gender: "Male",
+          city: "Mthatha",
+          birth_country: "South Africa",
+        },
+      ];
+      console.table(users, ['first_name', 'gender', 'birth_country'])
+
+
+      // 断言
+      console.info("--------------------");
+      const list = new Array(1000).fill(0)
+      console.assert(list.length < 1000, "list length is 大于等于 1000")
+
+      console.info("--------------------")
+      console.dir(document)
+
+      console.info("--------------------")
+      console.dirxml(document)
+
+      console.info("------------------0")
+      console.info(console.memory)
+    </script>
+  </body>
+</html>

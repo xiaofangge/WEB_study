@@ -1,0 +1,9 @@
+/* 全局生效 */
+:root:root {
+    --adm-color-primary: rgb(90, 208, 202);
+}
+
+/* 局部生效 */
+/* .puple {
+    --adm-color-primary: #0077aa;
+} */

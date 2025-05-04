@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            display: flex;
+            width: 1000px;
+            height: 400px;
+            background-color: pink;
+        }
+        div span {
+            width: 200px;
+            height: 100px;
+            background-color: blue;
+            color: white;
+            margin: 10px;
+        }
+        div span:nth-of-type(2) {
+            /* 默认为0，定义子项的排列顺序 */
+            order: -1;
+        }
+        div span:last-of-type {
+            /* 控制子项自己在侧轴的排列方式 */
+            align-self: flex-end;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+    </div>
+    <ul>
+        
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+        <li>9</li>
+        <li>10</li>
+    </ul>
+</body>
+</html>

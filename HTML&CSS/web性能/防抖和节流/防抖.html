@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text">
+    <script>
+        const input = document.querySelector('input');
+        let id;
+        input.addEventListener('keyup', function() {
+            clearTimeout(id);
+            id = setTimeout(() => {
+                const value = input.value;
+                console.log(value);
+            }, 500)
+        })
+    </script>
+</body>
+</html>

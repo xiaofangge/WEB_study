@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="content">
+        houdunren.com
+    </div>
+    <script>
+        let con = prompt('请输入要检测的内容，支持正则');
+        let reg = new RegExp(con, 'g');
+        let content = document.querySelector('.content');
+        content.innerHTML = content.innerHTML
+        .replace(reg, search => `<span style="color:red">${search}</span>`);
+        // $& 表示匹配到的内容，replace 方法的第二个参数支持函数，函数的参数就是匹配到的内容，返回值就是要替换的
+    </script>
+</body>
+</html>

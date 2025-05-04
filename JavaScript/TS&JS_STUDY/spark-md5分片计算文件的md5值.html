@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="file" id="file">
+    <script src="https://cdn.bootcdn.net/ajax/libs/spark-md5/3.0.2/spark-md5.js"></script>
+    <script>
+        // 1.使用方式一
+        const hexHash = SparkMD5.hash('Hello, world!');
+        console.log(hexHash); // 输出：6cd3556deb0da54bca060b4c39479839
+
+        // 2.使用方式二
+        const spark = new SparkMD5();
+        spark.append('Hi');
+        spark.append(' there');
+        const hexHash2 = spark.end();
+        console.log(hexHash2); // 输出：d9385462d3deff78c352ebb3f941ce12
+
+        console.log("------------------------------------------")
+        // 3.计算文件Md5值
+        function getFileMd5(file) {
+            return new Promise((resolve, reject) => {
+                let fileReader = new FileReader();
+                fileReader.onload = function (event) {
+                    let fileMd5 = SparkMD5.ArrayBuffer.hash(event.target.result)
+                    resolve(fileMd5)
+                }
+                fileReader.readAsArrayBuffer(file);
+            })
+        }
+
+        // document.getElementById('file').addEventListener('change', function(e) {
+        //     let file = e.target.files[0];
+        //     getFileMd5(file).then(md5 => {
+        //         console.log("file => ", md5)  // file => bdebd3840e18a4872ee66a1950d60ead
+        //     })
+        // })
+
+
+        // 4.分片读取文件，计算最终MD5值
+        function getFileMd5BySlice(file, chunkSize) {
+            // 默认分片大小
+            let defaultChunkSize = 20 * 1024 * 1024;
+
+            return new Promise((resolve, reject) => {
+                chunkSize = chunkSize || defaultChunkSize;
+
+                let blobSlice = File.prototype.slice || File.prototype.mozSlice || File.prototype.webkitSlice;
+
+                // 总分片数
+                let chunks = Math.ceil(file.size / chunkSize);
+                let currentChunk = 0;
+                let spark = new SparkMD5.ArrayBuffer();
+                let fileReader = new FileReader();
+
+
+                fileReader.onload = function (e) {
+                    console.log("read chunk nr => ", currentChunk + 1, " of", chunks)
+                    spark.append(e.target.result);
+                    currentChunk++;
+
+                    if (currentChunk < chunks) {
+                        loadNext();
+                    } else {
+                        resolve(spark.end());
+                    }
+                }
+
+                fileReader.onerror = function (error) {
+                    reject(error);
+                }
+
+
+                function loadNext() {
+                    // 切片起始位置
+                    let start = currentChunk * chunkSize;
+                    // 切片结束位置
+                    let end = start + chunkSize >= file.size ? file.size : start + chunkSize;
+                    // 读取切片
+                    fileReader.readAsArrayBuffer(blobSlice.call(file, start, end));
+                }
+                loadNext();
+            })
+        }
+
+        document.getElementById('file').addEventListener('change', function(e) {
+            let startTime = new Date().getTime();
+            let file = e.target.files[0];
+            getFileMd5BySlice(file).then(res => {
+                console.log("file => ", res)  // file => bdebd3840e18a4872ee66a1950d60ead
+                console.log("计算耗时 => ", new Date().getTime() - startTime, "ms")
+            })
+        })
+    </script>
+</body>
+</html>

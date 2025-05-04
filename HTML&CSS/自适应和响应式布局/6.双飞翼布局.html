@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>双飞翼布局与现代重构方案</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        /* 纯CSS实现双飞翼布局 */
+        /* .container {
+            min-width: 100%;
+        }
+        .container div {
+            float: left;
+            padding: 20px;
+            text-align: center;
+        }
+        .center {
+            width: calc(100% - 400px - 20 * 6px);
+            background-color: red;
+        }
+        .left {
+            width: 200px;
+            background-color: yellow;
+        }
+        .right {
+            width: 200px;
+            background-color: green;
+        } */
+
+        /* 使用Flexbox实现双飞翼布局 */
+        .container {
+            display: flex;
+            justify-content: space-between;
+        }
+        .container div {
+            padding: 20px;
+            text-align: center;
+        }
+        .left {
+            width: 200px;
+            background-color: red;
+        }
+        .right {
+            width: 200px;
+            background-color: greenyellow;
+        }
+        .center {
+            background-color: gold;
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left">左侧内容</div>
+        <div class="center">中间内容</div>
+        <div class="right">右侧内容</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件冒泡</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        div {
+            color: white;
+        }
+        .big {
+            width: 600px;
+            height: 600px;
+            background-color: red;
+        }
+        .center {
+            width: 400px;
+            height: 400px;
+            background-color: blue;
+        }
+        .small {
+            width: 200px;
+            height: 200px;
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="big">
+        <div class="center">
+            <div class="small"></div>
+        </div>
+    </div>
+    <script>
+        const big = document.querySelector('.big')
+        const center = document.querySelector('.center')
+        const small = document.querySelector('.small')
+
+        // big.addEventListener('click', () => console.log("big"))
+        // center.addEventListener('click', () => console.log("center"))   // 会冒泡
+        // small.addEventListener('click', (e) => {
+        //     // 阻止冒泡
+        //     e.stopPropagation()
+        //     console.log("small")        // 不会冒泡
+        // })
+
+
+        // 事件捕获
+        big.addEventListener('click', () => {
+            console.log('big----事件捕获')
+        }, true)
+        center.addEventListener("click", () => {
+            console.log('center----事件捕获')
+        }, true)
+        small.addEventListener('click', () => {
+            console.log("small----事件捕获")
+        }, true)
+        big.addEventListener('click', () => {
+            console.log("big----事件冒泡")
+        }, false)
+        center.addEventListener("click", () => {
+            console.log("center----事件冒泡")
+        }, false)
+        small.addEventListener('click', () => {
+            console.log("small----事件冒泡")
+        }, false)
+    </script>
+    
+</body>
+</html>

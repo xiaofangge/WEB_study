@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        function _strListToObjKey(keys, item) {
+            let groupKeysStr = []
+            keys.forEach(key => {
+                groupKeysStr.push(item[key])
+            });
+            return groupKeysStr.join("$[=]$")
+        }
+
+        function groupListFlat(list, groupOrgKey, idKey, delChildKeyList, config) {
+            let groupKey = []
+            if (!Array.isArray(groupOrgKey)) {
+                groupKey = [groupOrgKey]
+            } else {
+                groupKey = groupOrgKey
+            }
+
+            let json = {}
+            list.forEach((e, index) => {
+                if (typeof idKey !== "undefined") {
+                    e.id = e[idKey]
+                }
+                if (!e.id) {
+                    e.id = index + 1
+                }
+
+                let groupKeysStr = _strListToObjKey(groupKey, e)
+
+                if (!json[groupKeysStr]) {
+                    json[groupKeysStr] = [e]
+                } else {
+                    json[groupKeysStr].push(e)
+                }
+            })
+
+            console.log(json);
+
+
+            let retList = []
+            Object.keys(json).forEach((key, index) => {
+                const element = json[key]
+                let first = element.slice(0, 1)[0]
+                let children = element.slice(1, element.length)
+                first.parentId = null
+                children = children.map((e) => {
+                    e.parentId = first.id
+                    if (typeof delChildKeyList !== "undefined") {
+                        delChildKeyList.forEach(keyStr => {
+                            e[keyStr] = ""
+                        })
+                    }
+                    if (typeof config !== "undefined" && typeof config.groupKey !== "undefined" && typeof config.groupKey.length) {
+                        config.groupKey.forEach(str => {
+                            e[str] = " ┗━ " + e[str]
+                        })
+                    }
+                    return e
+                })
+
+                first.childrenIds = children.map((e) => e.id)
+                let pushList = [first, ...children];
+                // 是否有禁用药品
+                let hasJy = false;
+                // 是否有缺药药品
+                let hasQy = false;
+                if (pushList.find(e => e.YXBZMC === "禁用")) hasJy = true;
+                if (pushList.find(e => (e.QY_STATUS !== null && e.QY_STATUS !== ""))) hasQy = true;
+                if (pushList.find(e => typeof e.QY_STATUS === 'undefined')) hasQy = false;
+                if (hasJy || hasQy) {
+                    pushList = pushList.map(item => {
+                        if (hasJy) {
+                            item.YXBZMC = "禁用"
+                        }
+                        if (hasQy) {
+                            item.QY_STATUS = "缺药"
+                        }
+                        return item
+                    })
+                }
+                retList.push(...pushList)
+                // retList.push(first, ...children)
+            })
+
+            return retList
+        }
+
+        const data = [
+            {
+                "SHR_ID": "",
+                "FYDWMC": "",
+                "SFLX_MC": "心电图费",
+                "SFXM_JE": 144.0,
+                "SFXM_DJ": 144.0,
+                "SFLX_ID": "1024",
+                "YZZX_LSHID": "",
+                "SH_FLAG": "0",
+                "ZYFYMX_ID": "2025011176142749",
+                "JZKSMC": "全科",
+                "FY_STATUS": "2",
+                "DYZYYZJL_ID": "73656740773100003051",
+                "JZR_ID": "dx130",
+                "JZKS": "01020004",
+                "YJJJE": "500",
+                "ZX_KSID": "01040002",
+                "ZYLSH": "0292419",
+                "SHR_NAME": "",
+                "SFXM_SL": 1.0,
+                "YZ_MC": "24小时动态心电图",
+                "BXHJE": 1034.109,
+                "PAT_ID": "8000600",
+                "ZF_BL": 0.1,
+                "JZ_RQ": "2025-01-11 11:52:30",
+                "ZXKSMC": "心电图",
+                "QFJE": 649.01,
+                "SQ_RQ": "2025-01-11 11:50:56",
+                "STATUSMC": "记账",
+                "SFXM_MC": "24小时动态心电图",
+                "JZR_NAME": "林倩",
+                "ZX_RQ": "2025-01-11 11:50:56"
+            },
+            {
+                "SHR_ID": "",
+                "FYDWMC": "",
+                "SFLX_MC": "心电图费",
+                "SFXM_JE": 150.0,
+                "SFXM_DJ": 150.0,
+                "SFLX_ID": "1024",
+                "YZZX_LSHID": "",
+                "SH_FLAG": "0",
+                "ZYFYMX_ID": "2025011176142750",
+                "JZKSMC": "全科",
+                "FY_STATUS": "2",
+                "DYZYYZJL_ID": "73656741098600003053",
+                "JZR_ID": "dx130",
+                "JZKS": "01020004",
+                "YJJJE": "500",
+                "ZX_KSID": "01040002",
+                "ZYLSH": "0292419",
+                "SHR_NAME": "",
+                "SFXM_SL": 1.0,
+                "YZ_MC": "24小时动态血压监测",
+                "BXHJE": 1149.01,
+                "PAT_ID": "8000600",
+                "ZF_BL": 0.0,
+                "JZ_RQ": "2025-01-11 11:52:30",
+                "ZXKSMC": "心电图",
+                "QFJE": 649.01,
+                "SQ_RQ": "2025-01-11 11:50:56",
+                "STATUSMC": "记账",
+                "SFXM_MC": "24小时动态血压监测",
+                "JZR_NAME": "林倩",
+                "ZX_RQ": "2025-01-11 11:50:56"
+            },
+            {
+                "SHR_ID": "",
+                "FYDWMC": "",
+                "SFLX_MC": "化验费",
+                "SFXM_JE": 20.0,
+                "SFXM_DJ": 20.0,
+                "SFLX_ID": "2001",
+                "YZZX_LSHID": "247234",
+                "SH_FLAG": "0",
+                "ZYFYMX_ID": "2025011176142732",
+                "JZKSMC": "全科",
+                "FY_STATUS": "2",
+                "DYZYYZJL_ID": "73656730048400003027",
+                "JZR_ID": "dx141",
+                "JZKS": "01020004",
+                "YJJJE": "500",
+                "ZX_KSID": "01040004",
+                "ZYLSH": "0292419",
+                "SHR_NAME": "",
+                "SFXM_SL": 1.0,
+                "YZ_MC": "尿微量蛋白五项",
+                "BXHJE": 1149.01,
+                "PAT_ID": "8000600",
+                "ZF_BL": 0.0,
+                "JZ_RQ": "2025-01-12 08:10:59",
+                "ZXKSMC": "检验科",
+                "QFJE": 649.01,
+                "SQ_RQ": "2025-01-11 11:48:29",
+                "STATUSMC": "记账",
+                "SFXM_MC": "β2微球蛋白测定",
+                "JZR_NAME": "应悦",
+                "ZX_RQ": "2025-01-11 11:48:29"
+            },
+            {
+                "SHR_ID": "",
+                "FYDWMC": "盒",
+                "SFLX_MC": "西药费",
+                "SFXM_JE": 7.51,
+                "SFXM_DJ": 7.51,
+                "SFLX_ID": "8001",
+                "YZZX_LSHID": "247024",
+                "SH_FLAG": "0",
+                "ZYFYMX_ID": "76142758",
+                "JZKSMC": "全科",
+                "FY_STATUS": "2",
+                "DYZYYZJL_ID": "73656746991500003081",
+                "JZR_ID": "fb025",
+                "JZKS": "01020004",
+                "YJJJE": "500",
+                "ZX_KSID": "01060005",
+                "ZYLSH": "0292419",
+                "SHR_NAME": "",
+                "SFXM_SL": 1.0,
+                "YZ_MC": "阿卡波糖片   ",
+                "BXHJE": 1149.01,
+                "PAT_ID": "8000600",
+                "ZF_BL": 0.0,
+                "JZ_RQ": "2025-01-11 15:13:30",
+                "ZXKSMC": "病区药房",
+                "QFJE": 649.01,
+                "SQ_RQ": "2025-01-11 12:48:04",
+                "STATUSMC": "记账",
+                "SFXM_MC": "阿卡波糖片   ",
+                "JZR_NAME": "俞晓琪",
+                "ZX_RQ": "2025-01-11 12:48:04"
+            },
+            {
+                "SHR_ID": "",
+                "FYDWMC": "",
+                "SFLX_MC": "化验费",
+                "SFXM_JE": 15.0,
+                "SFXM_DJ": 15.0,
+                "SFLX_ID": "2001",
+                "YZZX_LSHID": "247258",
+                "SH_FLAG": "0",
+                "ZYFYMX_ID": "2025011176142685",
+                "JZKSMC": "全科",
+                "FY_STATUS": "2",
+                "DYZYYZJL_ID": "73656708638800002891",
+                "JZR_ID": "fb038",
+                "JZKS": "01020004",
+                "YJJJE": "500",
+                "ZX_KSID": "01040004",
+                "ZYLSH": "0292419",
+                "SHR_NAME": "",
+                "SFXM_SL": 1.0,
+                "YZ_MC": "血常规+CRP",
+                "BXHJE": 1149.01,
+                "PAT_ID": "8000600",
+                "ZF_BL": 0.0,
+                "JZ_RQ": "2025-01-12 08:11:32",
+                "ZXKSMC": "检验科",
+                "QFJE": 649.01,
+                "SQ_RQ": "2025-01-11 11:45:29",
+                "STATUSMC": "记账",
+                "SFXM_MC": "超敏C反应蛋白全血快速定量测定",
+                "JZR_NAME": "雷雨婷",
+                "ZX_RQ": "2025-01-11 11:45:29"
+            },
+            {
+                "SHR_ID": "",
+                "FYDWMC": "日",
+                "SFLX_MC": "护理费",
+                "SFXM_JE": 26.0,
+                "SFXM_DJ": 26.0,
+                "SFLX_ID": "5001",
+                "YZZX_LSHID": "",
+                "SH_FLAG": "0",
+                "ZYFYMX_ID": "76142910",
+                "JZKSMC": "",
+                "FY_STATUS": "2",
+                "DYZYYZJL_ID": "0",
+                "JZR_ID": "dx084",
+                "JZKS": "",
+                "YJJJE": "500",
+                "ZX_KSID": "01030003",
+                "ZYLSH": "0292419",
+                "SHR_NAME": "",
+                "SFXM_SL": 1.0,
+                "YZ_MC": "",
+                "BXHJE": 1149.01,
+                "PAT_ID": "8000600",
+                "ZF_BL": 0.0,
+                "JZ_RQ": "2025-01-11 23:59:59",
+                "ZXKSMC": "",
+                "QFJE": 649.01,
+                "SQ_RQ": "2025-01-11 23:59:59",
+                "STATUSMC": "记账",
+                "SFXM_MC": "等级护理",
+                "JZR_NAME": "丁宝艺",
+                "ZX_RQ": "2025-01-11 23:59:59"
+            },
+            {
+                "SHR_ID": "",
+                "FYDWMC": "日",
+                "SFLX_MC": "护理费",
+                "SFXM_JE": 26.0,
+                "SFXM_DJ": 26.0,
+                "SFLX_ID": "5001",
+                "YZZX_LSHID": "",
+                "SH_FLAG": "0",
+                "ZYFYMX_ID": "76143273",
+                "JZKSMC": "",
+                "FY_STATUS": "2",
+                "DYZYYZJL_ID": "0",
+                "JZR_ID": "dx084",
+                "JZKS": "",
+                "YJJJE": "500",
+                "ZX_KSID": "01030003",
+                "ZYLSH": "0292419",
+                "SHR_NAME": "",
+                "SFXM_SL": 1.0,
+                "YZ_MC": "",
+                "BXHJE": 1149.01,
+                "PAT_ID": "8000600",
+                "ZF_BL": 0.0,
+                "JZ_RQ": "2025-01-12 23:59:00",
+                "ZXKSMC": "",
+                "QFJE": 649.01,
+                "SQ_RQ": "2025-01-12 23:59:59",
+                "STATUSMC": "记账",
+                "SFXM_MC": "等级护理",
+                "JZR_NAME": "丁宝艺",
+                "ZX_RQ": "2025-01-12 23:59:59"
+            },
+            {
+                "SHR_ID": "",
+                "FYDWMC": "盒",
+                "SFLX_MC": "西药费",
+                "SFXM_JE": 39.0,
+                "SFXM_DJ": 39.0,
+                "SFLX_ID": "8001",
+                "YZZX_LSHID": "247288",
+                "SH_FLAG": "0",
+                "ZYFYMX_ID": "76143262",
+                "JZKSMC": "全科",
+                "FY_STATUS": "2",
+                "DYZYYZJL_ID": "73666080083300005880",
+                "JZR_ID": "fb025",
+                "JZKS": "01020004",
+                "YJJJE": "500",
+                "ZX_KSID": "01060005",
+                "ZYLSH": "0292419",
+                "SHR_NAME": "",
+                "SFXM_SL": 1.0,
+                "YZ_MC": "脯氨酸恒格列净片   ",
+                "BXHJE": 0.0,
+                "PAT_ID": "8000600",
+                "ZF_BL": 1.0,
+                "JZ_RQ": "2025-01-12 14:46:27",
+                "ZXKSMC": "病区药房",
+                "QFJE": 649.01,
+                "SQ_RQ": "2025-01-12 14:40:09",
+                "STATUSMC": "记账",
+                "SFXM_MC": "脯氨酸恒格列净片   ",
+                "JZR_NAME": "俞晓琪",
+                "ZX_RQ": "2025-01-12 14:40:09"
+            }
+        ]
+        const list = groupListFlat(data, ["SFLX_MC"], undefined);
+        console.log("list => ", list)
+    </script>
+</body>
+
+</html>

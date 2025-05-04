@@ -1,0 +1,40 @@
+#git rm  -r --cached .
+#git add .
+#git commit -m "update .gitignore"
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+.DS_Store
+dist
+dist-ssr
+coverage
+*.local
+stats.html
+
+/src/core/
+/cypress/videos/
+/cypress/screenshots/
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+/shell_layout/typings/components.d.ts
+ajaxBase.ts
+pnpm-lock.yaml
+yarn.lock

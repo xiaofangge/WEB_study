@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .wrapper {
+            width: 100vw;
+            height: 100vh;
+            display: grid;
+            grid-template-areas: 'left center right';
+            grid-template-columns: 200px auto 200px;
+        }
+        .wrapper div {
+            height: 100vh;
+            text-align: center;
+            line-height: 100vh;
+        }
+        .left {
+            background-color: green;
+            grid-area: left;
+        }
+        .right {
+            background-color: blue;
+            grid-area: right;
+        }
+        .center {
+            background-color: red;
+            grid-area: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="left">left</div>
+        <div class="center">center</div>
+        <div class="right">right</div>
+    </div>
+</body>
+</html>

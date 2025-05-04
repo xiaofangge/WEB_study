@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            /* 三维透视距离：仅作用于元素的后代，而不是其元素本身 */
+            perspective: 1px;
+            height: 100%;
+            overflow-x: hidden;
+            overflow-y: scroll;
+        }
+        #app {
+            width: 100vw;
+            height: 200vh;
+            /*将子元素保留其3D位置 */
+            transform-style: preserve-3d;
+            perspective-origin: 100% 50%;
+        }
+        #app .one {
+            height: 500px;
+            width: 500px;
+            background: skyblue;
+            transform: translateZ(-2px);
+        }
+        #app .two {
+            width: 500px;
+            height: 500px;
+            background: sandybrown;
+            transform: translateZ(-1px);
+        }
+        #app .three {
+            width: 500px;
+            height: 500px;
+            background: greenyellow;
+            transform: translateZ(0px);
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="one"></div>
+        <div class="two"></div>
+        <div class="three"></div>
+    </div>
+</body>
+</html>

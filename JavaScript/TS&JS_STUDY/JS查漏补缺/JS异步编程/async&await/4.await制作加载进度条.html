@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #loading {
+            width: 0vw;
+            background-color: blueviolet;
+            height: 10vh;
+            display: flex;
+            color: white;
+            align-items: center;
+            justify-content: center;
+            transition: all 1s ease-out;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="loading">0%</div>
+    <script src="../js/ajax.js"></script>
+    <script>
+        (async (dicts) => {
+            const loading = document.querySelector("#loading");
+            for (let i = 0, len = dicts.length; i < len; i++) {
+                await ajax(`http://www.zjldsoft.com/ld/common/dict/code?method=getDictInfo&dict=${dicts[i]}`)
+                loading.style.width = `${(i + 1) / len * 100}vw`
+                loading.textContent = `${Math.round((i + 1) / len * 100)}%`
+            }
+        })(Array(50).fill('DICT_DRUG_AREA'))
+    </script>
+</body>
+</html>

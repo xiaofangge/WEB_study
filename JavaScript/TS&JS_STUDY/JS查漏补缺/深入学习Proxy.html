@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let obj = {
+        name: "alice",
+        showName() {
+          console.log(`my name is ${this.name}`);
+        },
+      };
+
+      // 使用Object身上的方法，为某个对象添加一个或多个属性
+      Object.defineProperty(obj, "age", {
+        value: 12,
+        writable: true,
+        enumerable: true,
+        configurable: true,
+      });
+      Object.defineProperties(obj, {
+        showAge: {
+          value: function () {
+            console.info(`我今年${this.age}岁了`);
+          },
+          writable: true,
+          enumerable: true,
+          configurable: true,
+        },
+        showInfo: {
+          value: function () {
+            console.info(`我叫${this.name}，我今年${this.age}岁了`);
+          },
+          writable: true,
+          enumerable: true,
+          configurable: true,
+        },
+      });
+
+      // 获取一个对象的原型对象
+      Object.getPrototypeOf(obj);
+      console.info(Object.getPrototypeOf(obj) === obj.__proto__);  // true
+
+      console.info("---------------------")
+      var person = {
+        name: "Alice"
+      }
+      var proxy = new Proxy(person, {
+        get: function (target, propKey) {
+            if (propKey in target) {
+                return target[propKey]
+            } else {
+                throw new ReferenceError(`Prop name ${propKey} does not exist.`)
+            }
+        }
+      })
+      console.info(proxy.name)
+    //   console.info(proxy.age) // 深入学习Proxy.html:56 Uncaught ReferenceError: Prop name age does not exist.
+
+      console.info("---------------------")
+      var proxy2 = new Proxy(person, {
+        set(target, propKey, value, receiver) {
+            console.info(`设置了 ${target} 的 ${propKey} 属性, 值为 ${value}`)
+        }
+      })
+      proxy2.name = "Tom"
+      proxy2.age = 18
+      console.log("person => ", person)
+
+      console.info("---------------------")
+      // has()方法
+      var proxy3 = new Proxy(person, {
+        has(target, propKey) {
+            return propKey in target
+        }
+      })
+      if ('name' in proxy3) {
+        console.info("proxy3.name => ", proxy3.name)
+      }
+
+
+      console.info("---------------------")
+      // deletePropery()方法
+      var proxy4 = new Proxy(person, {
+        deleteProperty(target, propKey) {
+            return delete target[propKey]
+        }
+      })
+      console.info(delete proxy.name) // true
+    //   console.info(proxy.name) // undefined
+
+      console.info("---------------------")
+      // ownKeys() 获取key 相当于 Object.keys()
+      var proxy5 = new Proxy(person, {
+        ownKeys(target) {
+            return Object.getOwnPropertyNames(target) // 为了省事
+        }
+      })
+
+
+      // defineProperty()方法
+      console.info("---------------------")
+      var person6 = {}
+      var proxy6 = new Proxy(person6, {
+        defineProperty(target, propKey, propKeypropDesc) {
+            return Object.defineProperty(target, propKey, propKeypropDesc)
+        }
+      })
+      console.info(Object.defineProperty(proxy6, 'name', {value: 'Tom'}))
+      console.info("person6.name => ", person6.name)  // Tom
+
+
+      console.info("---------------------")
+      // preventExtensions()方法: 将对象变成不可扩展
+      var person7 = {
+        name: "Alice"
+      }
+      var proxy7 = new Proxy(person7, {
+        preventExtensions(target) {
+            return Object.preventExtensions(target)
+        }
+      })
+      Object.preventExtensions(proxy7)
+      proxy7.age = 11
+      console.info("person7 => ", person7)
+
+
+      // apply(target, object, args) 三个参数分别是目标对象、调用函数时的this指向以及参数列表
+      console.info("---------------------")
+      function f(x, y) {
+        return x+y;
+      }
+      let proxy8 = new Proxy(f, {
+        apply(target, object, args) {
+            console.info("调用了f")
+            return f.call(object, ...args)
+        }
+      })
+      console.info(proxy8(1, 2))
+
+
+
+      // 目标对象和代理对象之间的关系
+      console.info("---------------------")
+      var person9 = {
+        name: "Alice"
+      }
+      var proxy9 = new Proxy(person9, {
+        set(target, propKey, value, receiver) {
+            console.info(`设置 ${target} 的 ${propKey} 属性，值为 ${value}`)
+            target[propKey] = value
+        }
+      })
+      proxy9.age = 18
+      person9.sex = "female"
+      console.log("person9 => ", person9)
+      console.log("proxy9 => ", proxy9)
+    </script>
+  </body>
+</html>

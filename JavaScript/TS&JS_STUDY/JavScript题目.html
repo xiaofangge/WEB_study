@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div onclick="console.log('first div')">
+        <div onclick="console.log('second div')">
+            <button onclick="console.log('button')">
+                Click
+            </button>
+        </div>
+    </div>
+    <script>
+      // ======
+      // 因为var关键字声明，该值全局
+    //   for (var i = 0; i < 3; i++) {
+    //     setTimeout(() => console.log(i), 1); // 3 3 3
+    //   }
+    //   // 因为let关键字声明，该值具有块作用域
+    //   for (let i = 0; i < 3; i++) {
+    //     setTimeout(() => console.log(i), 1); // 0 1 2
+    //   }
+
+      console.log("----------------------");
+      const shape = {
+        radius: 10,
+        diameter() {
+          return this.radius * 2;
+        },
+        // 在箭头函数中，this关键字指向的是它所在上下文（定义时的位置）的环境
+        perimeter: () => 2 * Math.PI * this.radius,
+      };
+      console.log(shape.diameter()); // 20
+      console.log(shape.perimeter()); // NaN
+
+      console.log("----------------------");
+      class Chameleon {
+        static colorChange(newColor) {
+            this.newColor = newColor
+        }
+        constructor({ newColor = "green" } = {}) {
+            this.newColor = newColor
+        }
+      }
+      const fredie = new Chameleon({ newColor: "purple" })
+    //   fredie.colorChange("orange")  // Uncaught TypeError: fredie.colorChange is not a function
+
+    console.log("----------------------");
+      function bark() {
+        console.log("Woof")
+      }
+    //   这在JavaScript中是可能的，因为函数也是对象！（原始类型之外的所有东西都是对象
+      bark.animal = "dog"
+
+
+
+      function Person(firstName, lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+      }
+      const lydia = new Person("Lydia", "Hallie")
+      // 不使用new：指的是全局对象
+      const sarah = Person("Sarah", "Smith")
+      console.log("lydia => ", lydia)
+      console.log("sarah => ", sarah)
+
+
+        console.log("----------------------");
+      function sum(a, b) {
+        return a + b;
+      }
+      console.log(sum(1, "2")) // 12
+
+
+      console.log("----------------------");
+      function getPersonInfo(one, two, three) {
+        console.log(one)
+        console.log(two)
+        console.log(three)
+      }
+      const person = "Lydia";
+      const age = 21;
+      getPersonInfo`${person} is ${age} years old`  // ["", "is", "years old"] Lydia 21
+
+
+      console.log("----------------------");
+      function getAge(...args) {
+        console.log(typeof args)
+      }
+      getAge(21)  // object
+
+      console.log("----------------------");
+    //   function getAge() {
+    //     "use strict";
+    //     age = 21;
+    //     console.log(age)  
+    //   }
+    //   getAge()  // ReferenceError
+
+
+        var num = 8;
+        var num = 10;
+        console.log("num => ", num) // 10
+
+
+        console.log("------------------")
+        const person2 = { name: "Lydia" }
+        function sayHi(age) {
+            console.log(`${this.name} is ${age}`)
+        }
+        sayHi.call(person2, 21)
+        sayHi.bind(person2, 21)
+
+
+        console.log("------------------")
+        (() => {
+            let x, y;
+            try {
+                throw new Error()
+            } catch (x) {
+                (x = 1), (y = 2);
+                console.log(x)      // 1
+            }
+            console.log(x)      // undefined
+            console.log(y)      // 2
+        })()
+    </script>
+  </body>
+</html>

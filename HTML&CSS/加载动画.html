@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-color: #aaa;
+        }
+        .loading {
+            display: flex;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            align-items: center;
+        }
+        .loading .item {
+            width: 5px;
+            height: 50px;
+            background-color: #fff;
+            margin: 0 3px;
+            border-radius: 5px;
+            animation: loadingAnimate 1s infinite;
+            animation-delay: calc(0.1s * var(--i));
+        }
+        @keyframes loadingAnimate {
+            0% {
+                height: 0;
+            }
+            50% {
+                height: 50px;
+            }
+            100% {
+                height: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="loading">
+        <div class="item" style="--i:0"></div>
+        <div class="item" style="--i:1"></div>
+        <div class="item" style="--i:2"></div>
+        <div class="item" style="--i:3"></div>
+        <div class="item" style="--i:4"></div>
+        <div class="item" style="--i:5"></div>
+        <div class="item" style="--i:6"></div>
+        <div class="item" style="--i:7"></div>
+        <div class="item" style="--i:8"></div>
+        <div class="item" style="--i:9"></div>
+    </div>
+</body>
+</html>

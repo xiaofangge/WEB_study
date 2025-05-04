@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .box1 {
+            width: 600px;
+            margin: 10px auto;
+        }
+        .box1 > div {
+            height: 200px;
+        }
+        .left {
+            width: 200px;
+            float: left;
+            background-color: red;
+        }
+        .right {
+            width: 200px;
+            float: right;
+            background-color: green;
+        }
+        /* 通过mrgin */
+        /* .main {
+            background-color: blue;
+            margin-left: 200px;
+            margin-right: 200px;
+        } */
+        
+        /* 通过BFC */
+        .main {
+            background-color: blue;
+            overflow: hidden;
+        }
+
+
+        .box2 {
+            margin-top: 10px;
+            display: flex;
+            margin: 0 auto;
+            width: 600px;
+        }
+        .box2 .left {
+            width: 200px;
+            height: 200px;
+            background-color: salmon;
+        }
+        .box2 .right {
+            width: 200px;
+            height: 200px;
+            background-color:aqua;
+        }
+        .box2 .main {
+            display: 1;
+            height: 200px;
+            width: 200px;
+            background-color: seagreen;
+        }
+
+        .box3 {
+            margin-top: 10px;
+            margin: 0 auto;
+            width: 600px;
+            position: relative;
+        }
+        .box3 .left {
+            width: 200px;
+            height: 200px;
+            background-color: slateblue;
+            position: absolute;
+            left: 0;
+        }
+        .box3 .right {
+            width: 200px;
+            height: 200px;
+            background-color: brown;
+            position: absolute;
+            right: 0;
+        }
+        .box3 .main {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            margin-left: 200px;
+            margin-right: 200px;
+        }
+
+        .box4 {
+            width: 1000px;
+            margin: 10px auto;
+            display: table;
+        }
+        .box4 .left {
+            display: table-cell;
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+        }
+        .box4 .right {
+            display: table-cell;
+            width: 200px;
+            height: 200px;
+            background-color: gray;
+        }
+        .box4 .main {
+            display: table-cell;
+            width: 600px;
+            height: 200px;
+            background-color: greenyellow;
+        }
+
+        .box5 {
+            width: 1000px;
+            margin: 10px auto;
+        }
+        .box5 .left {
+            width: 200px;
+            height: 200px;
+            background-color: gold;
+        }
+        .box5 .right {
+            width: 200px;
+            height: 200px;
+            background-color: sienna;
+        }
+        .box5 .main {
+            height: 200px;
+            width: calc(100% - 400px);
+            background-color: skyblue;
+        }
+    </style>
+</head>
+<body>
+    <!-- 第一种：浮动+margin -->
+    <!-- 第一种：浮动+BFC -->
+    <div class="box1">
+        <div class="left">左</div>
+        <div class="right">右</div>
+        <div class="main">主</div>
+    </div>
+
+    <!-- 第三种：flex布局 -->
+    <div class="box2">
+        <div class="left">左</div>
+        <div class="main">主</div>
+        <div class="right">右</div>
+    </div>
+
+    <!-- 第四种：定位+margin -->
+    <div class="box3">
+        <div class="left">左</div>
+        <div class="right">右</div>
+        <div class="main">主</div>
+    </div>
+
+    <!-- 第五种：table布局 -->
+    <div class="box4">
+        <div class="left">左</div>
+        <div class="main">主</div>
+        <div class="right">右</div>
+    </div>
+
+    <!-- 第六种：flex+calc -->
+    <div class="box5">
+        <div class="left">左</div>
+        <div class="right">右</div>
+        <div class="main">主</div>
+    </div>
+</body>
+</html>

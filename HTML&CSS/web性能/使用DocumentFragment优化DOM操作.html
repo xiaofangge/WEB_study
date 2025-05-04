@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="parent"></ul>
+    <script>
+
+        // 在一个 ul 节点中一次性插入 50000 个 li 元素
+        
+        const liCount = 50000;
+        const parent = document.getElementById("parent")
+        // 方法一
+        // for (let i = 0; i < liCount; i++) {
+        //     let child = document.createElement("li")
+        //     let text = document.createTextNode(i.toString())
+        //     child.appendChild(text)
+        //     parent.appendChild(child) // 卡死
+        // }
+
+        // 方法二 创建div，在内存中操作，然后再挂到DOM树上，只交互一次
+        // const begin2 = Date.now();
+        // const div = document.createElement("div")
+        // for (let i = 0; i < liCount; i++) {
+        //     let child = document.createElement("li")
+        //     let text = document.createTextNode(i.toString())
+        //     child.appendChild(text)
+        //     div.appendChild(child)
+        // }
+        // parent.appendChild(div)
+        // console.log(`方法二耗时 => ${Date.now() - begin2}ms`) // 37ms
+
+        // 方法三
+        const begin3 = Date.now();
+        const fragment = document.createDocumentFragment();
+        for (let i = 0; i < liCount; i++) {
+            let child = document.createElement("li")
+            child.innerText = i.toString(); 
+            fragment.appendChild(child)
+        }
+        parent.appendChild(fragment)
+        console.log(`方法三耗时 => ${Date.now() - begin3}ms`) // 31ms
+
+        // 方法四
+
+    </script>
+</body>
+</html>

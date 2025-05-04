@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 300px;
+            height: 300px;
+            margin: 50px auto;
+            border: 1px solid red;
+        }
+        div::before {
+            content: "前端";
+            background-color: pink;
+        }
+        div::after {
+            content: "项目";
+            background-color: skyblue;
+        }
+        ul {
+            list-style: none;
+        }
+        ul li {
+            display: inline-block;
+        }
+        ul li:not(:last-child)::after {
+            content: "|";
+            margin: 0 6px;
+        }
+        .line::before, .line::after {
+            content: '';
+            border: 1px dashed #000;
+            width: 400px;
+            display: inline-block;
+            margin: 6px 10px;
+        }
+    </style>
+</head>
+<body>
+    <div>开发</div>
+    <ul>
+        <li>标题一</li>
+        <li>标题二</li>
+        <li>标题三</li>
+    </ul>
+    <h2 class="line">这是一条分割线</h2>
+</body>
+</html>

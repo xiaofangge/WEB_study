@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="send-btn">发送消息</button>
+    <button id="close-btn">关闭</button>
+    <script>
+        const bc = new BroadcastChannel("标签页互通小测试")
+        // 监听消息
+        bc.onmessage = (e) => {
+            console.log(`监听消息：${e.data}`)
+        }
+
+        document.querySelector("#send-btn").onclick = () => {
+            // 发送消息
+            bc.postMessage("这是一首简单的小情歌")
+        }
+        document.querySelector("#close-btn").onclick = () => {
+            // 关闭通道
+            bc.close()
+        }
+        
+    </script>
+</body>
+</html>

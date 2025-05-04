@@ -1,0 +1,10 @@
+{
+    "code": 1,
+    "data": {
+        "LD_HSZ_VITE_BASE_URL": {
+            "desc": "后端api地址",
+            "value":"http://www.zjldsoft.com"
+        }
+    },
+    "msg": "成功"
+}

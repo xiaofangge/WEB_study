@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>哈希路由</title>
+</head>
+<body>
+    <ul>
+        <li>
+            <a href="Home.html">Home</a>
+        </li>
+        <li>
+            <a href="About.html">About</a>
+        </li>
+    </ul>
+    <div id="content"></div>
+    <script>
+        const contentEle = document.querySelector("#content");
+        const ulEle = document.querySelector("ul")
+
+        const loadHTML = (url, element) => {
+            fetch(url).then(response => {
+                if (response.ok) {
+                    return response.text()
+                }
+                throw new Error('Network response was not ok.');
+            }).then(html => {
+                element.innerHTML = html;
+            }).catch(error => {
+                console.error("error => ", error)
+            })
+        }
+
+        // 页面刷新时，需要重新获取hash
+        window.addEventListener('load', () => {
+            // 获取当前的hash值
+            const currentHash = window.location.hash;
+            // 如果存在hash值，执行相应的逻辑
+            if (currentHash) {
+                // 这里可以添加处理hash的逻辑
+                console.log('current hash: ', currentHash.slice(1))
+                loadHTML(currentHash.slice(1), contentEle)
+            }
+        })
+        
+        ulEle.addEventListener('click', (e) => {
+            // 不跳转
+            e.preventDefault()
+            const page = e.target.getAttribute('href')
+            loadHTML(page, contentEle)
+            location.hash = `#${page}`
+        })
+       
+    </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>异步加载图片体验JS任务操作</title>
+</head>
+<body>
+    <script>
+        function loadImage(src, resolve, reject) {
+            let image = new Image();
+            image.src = src;
+            image.onload = (image) => {
+                resolve(image)
+            };
+            image.onerror = reject
+        }
+        loadImage("../../../advanced-css/grid布局/images/img-01.png", (image) => {
+            console.log("图片加载成功")
+            document.body.append(image)    // 再执行这个
+        }, () => {
+            console.log("图片加载失败")
+        })
+        console.log("心潮")   // 先执行这个
+    </script>
+</body>
+</html>

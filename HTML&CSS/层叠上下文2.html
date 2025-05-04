@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>层叠上下文2</title>
+    <style>
+        .box1 {
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+            position: relative;
+            z-index: 0;
+        }
+        .box1-1 {
+            width: 150px;
+            height: 150px;
+            background-color: green;
+            position: absolute;
+            z-index: -1;
+        }
+        .box1-2 {
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+            float: left;
+        }
+
+        .box2 {
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+            position: relative;
+            z-index: -1;
+        }
+        .box2-2 {
+            z-index: -999;
+        }
+    </style>
+</head>
+<body>
+    <!-- 层叠上下文元素 -->
+    <div class="box1">
+        <div class="box1-1"></div>
+        <div class="box1-2"></div>
+    </div>
+
+    <div class="box2">
+        <div class="box2-2"></div>
+    </div>
+</body>
+</html>

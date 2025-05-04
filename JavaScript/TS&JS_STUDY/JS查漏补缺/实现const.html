@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       
+        function _const(key, value) {
+            window[key] = value;
+            Object.defineProperty(window, key, {
+                writable: false,
+                configurable: false
+            })
+        }
+    
+        _const('AR', 3.14)
+        console.log("AR => ", AR)
+        AR = 100;   // 赋值无效
+        console.log("AR 变 => ", AR)
+
+
+        _const("USER", { name: "Jack" })
+        console.log("USER => ", USER)
+        USER.name = 'John'
+        console.log("USER 改内容 => ", USER)
+        USER = {};  // 赋值无效
+        console.log("USER 改地址 => ", USER)
+    </script>
+</body>
+</html>

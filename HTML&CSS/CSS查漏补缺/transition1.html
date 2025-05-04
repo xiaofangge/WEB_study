@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        main {
+            width: 100vw;
+            height: 100vh;
+            background-color: #D9AFD9;
+            background-image: linear-gradient(297deg, #D9AFD9 0%, #97D9E1 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: greenyellow;
+            transition-property: background-color, width, height, border-radius;
+            transition-timing-function: steps(3, end);
+            /* transition-property: all; */
+            transition-duration: 2s, 1s, 500ms;
+            border: 20px solid gainsboro;
+            margin-right: 40px;
+        }
+        div:first-child {
+            /* transition-property: all; */
+        }
+        div:last-child {
+            transition-property: none;
+        }
+        div:hover {
+            /* transition: 1000ms; */
+            /* transition-property: background-color; */
+            border-radius: 50%;
+            border: 40px dotted white;
+            background-color: gold;
+            width: 400px;
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div></div>
+        <div></div>
+    </main>
+</body>
+</html>

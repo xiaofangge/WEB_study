@@ -1,0 +1,16 @@
+{
+  "alias-skip.mappings": {
+    "@": "/src",
+    "$": "/src/model/modules",
+		"": "/src/views"
+  },
+  "alias-skip.allowedsuffix": [
+    "js",
+    "vue",
+    "jsx",
+    "ts",
+    "tsx"
+  ],
+  "liveServer.settings.port": 5501,
+  "search.useIgnoreFiles": false
+}

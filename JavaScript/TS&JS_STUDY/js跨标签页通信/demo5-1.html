@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="tab-btn">新开 Tab</button>
+    <button id="send-btn">发送消息</button>
+    <script>
+        // 收集window对象：多个页面打开，打开一个页面就需要将打开的window对象收集起来，以便于发布广播
+        let windowOpens = [];
+        document.querySelector("#tab-btn").onclick = () => {
+            // IP地址为本地的服务
+            const windowOpen = window.open('demo5-2.html')
+            windowOpens.push(windowOpen)
+        }
+        document.querySelector("#send-btn").onclick = () => {
+            const data = {};
+            // 发消息前，先进行已关闭 Tab 的过滤
+            windowOpens = windowOpens.filter(window => !window.closed)
+            if (windowOpens.length > 0) {
+                // 数据打一个标记
+                data.tag = false;
+                data.message = '测试传送消息';
+                windowOpens.forEach(window => window.postMessage(data, '*'))
+            }
+            if (window.opener && !window.opener.closed) {
+                data.tag = true;
+                window.opener.postMessage(data, '*')
+            }
+        }
+    </script>
+</body>
+</html>

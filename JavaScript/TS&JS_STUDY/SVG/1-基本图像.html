@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .line {
+            stroke: skyblue;
+            transition: all 0.5s ease;
+            transform: rotate(45deg);
+            transform-origin: center;
+            animation: rotate 2s linear infinite;
+        }
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        .line:hover {
+            stroke: gold;
+        }
+        .polyline {
+            stroke: deeppink;
+            fill: none;
+        }
+    </style>
+</head>
+<body>
+    <svg width="500" height="500">
+        <line x1="50", y1="50", x2="450", y2="450", class="line" stroke-width="10"></line>
+        <!-- 折线 -->
+        <polyline points="50,50 50,300 400,300" class="polyline" stroke-width="20"></polyline>
+    </svg>
+</body>
+</html>

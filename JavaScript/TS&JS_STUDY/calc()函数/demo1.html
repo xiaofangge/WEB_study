@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            position: relative;
+            display: flex;
+            width: 1000px;
+            height: 200px;
+            background: #ccc;
+        }
+        .card {
+            position: relative;
+            min-width: calc(calc(100% / 5) - 20px);
+            height: calc(100% - 20px);
+            background-color: red;
+            margin: 10px 10px 10px 10px;
+            color: white;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card"><p>card1</p></div>
+        <div class="card"><p>card2</p></div>
+        <div class="card"><p>card3</p></div>
+        <div class="card"><p>card4</p></div>
+        <div class="card"><p>card5</p></div>
+    </div>
+</body>
+</html>

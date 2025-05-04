@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件委托</title>
+</head>
+<body>
+    <div class="father"></div>
+    <script>
+        const father = document.querySelector('.father')
+        const frag = document.createDocumentFragment();
+        for (let i = 0; i < 1000; i++) {
+            const buttonEle = document.createElement('button')
+            buttonEle.textContent = i;
+            // buttonEle.addEventListener('click', (e) => {            // 消耗性能
+            //     console.log(e.target.textContent)
+            // })
+            frag.append(buttonEle)
+        }
+        father.append(frag)
+        
+        // 利用事件委托
+        father.addEventListener('click', (e) => {
+            console.log(e.target.textContent)
+        })
+    </script>
+</body>
+</html>

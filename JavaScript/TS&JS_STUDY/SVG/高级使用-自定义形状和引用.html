@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #miqi {
+            fill: orange;
+            transform: rotate(0deg);
+        }
+        #miqi:hover {
+            fill: skyblue;
+            transform: rotate(360deg);
+        }
+    </style>
+</head>
+<body>
+    <svg width="1000" height="1000">
+        <g id="miqi">
+            <circle cx="50" cy="50" r="30" fill="black"></circle>
+            <circle cx="350" cy="50" r="30" fill="black"></circle>
+            <circle cx="200" cy="200" r="150" fill="black"></circle>
+        </g>
+
+        <use href="#miqi" x="0" y="400"></use>
+    </svg>
+</body>
+</html>

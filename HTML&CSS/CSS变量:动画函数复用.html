@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      ul {
+        list-style: none;
+      }
+      .demo1 li {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: #000;
+        margin: 10px 0;
+        animation: move 2s linear;
+      }
+      @keyframes move {
+        100% {
+          transform: translateX(var(--dis));
+          background-color: var(--color);
+        }
+      }
+      .rotate {
+        --degZEnd: 360deg;
+        --degZMiddle: 180deg;
+        --degX: 50deg;
+        background-color: #0093e9;
+        background-image: linear-gradient(160deg, #0093e9 0%, #80d0c7 100%);
+        width: 200px;
+        height: 200px;
+        animation: rotate 10s linear infinite;
+      }
+      .reverseRotate {
+        --degZEnd: -360deg;
+        --degZMiddle: -180deg;
+        --degX: 0deg;
+        background-color: #0093e9;
+        background-image: linear-gradient(160deg, #0093e9 0%, #80d0c7 100%);
+        width: 200px;
+        height: 200px;
+        animation: rotate 10s linear infinite;
+      }
+      @keyframes rotate {
+        0% {
+          transform: rotateX(0deg) rotateZ(0deg);
+        }
+        50% {
+          transform: rotateX(var(--degX)) rotateZ(var(--degZMiddle));
+        }
+        100% {
+          transform: rotateX(0deg) rotateZ(var(--degZEnd));
+        }
+      }
+      .demo2 {
+        display: flex;
+        margin: 100px auto;
+        justify-content: center;        
+      }
+      .reverseRotate2,
+      .rotate2 {
+        width: 30vh;
+        height: 30vh;
+      }
+      .reverseRotate2 {
+        border: 3px solid #999;
+        position: relative;
+        overflow: hidden;
+      }
+      .rotate2 {
+        width: 150%;
+        height: 150%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+      }
+      .reverseRotate2 {
+        --degZ: -360deg;
+        animation: rotate2 5s linear infinite;
+      }
+      .rotate2 {
+        --degZ: 360deg;
+        animation: rotate2 5s linear infinite;
+      }
+      @keyframes rotate2 {
+        0% {
+          transform: translate(-50%, -50%) rotateZ(0deg);
+        }
+        100% {
+          transform: translate(-50%, -50%) rotateZ(var(--degZ));
+        }
+      }
+      .container {
+        --scale: 1.25;
+        --rotation: 360deg;
+        margin: 50px auto;
+        width: 60vmin;
+        height: 60vmin;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        gap: 4px;
+        grid-template-areas: "E B B"
+                             "E A C"
+                             "D D C";
+      }
+      .container > div {
+        border: 3px solid #431312;
+        border-radius: 5px;
+        overflow: hidden;
+        position: relative;
+      }
+      .container .A {
+        grid-area: A;
+      }
+      .container .B {
+        grid-area: B;
+      }
+      .container .C {
+        grid-area: C;
+      }
+      .container .D {
+        grid-area: D;
+      }
+      .container .E {
+        grid-area: E;
+      }
+      .container > div img {
+        --scale: 1;
+        --rotation: -360deg;
+        width: 280%;
+        height: 280%;
+        object-fit: cover;
+        object-position: center;
+        position: absolute;
+        top: 50%;
+	    left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      .container > div,
+      .container > div img {
+        animation: 10s scale-up both ease-in-out infinite alternate;
+      }
+      @keyframes scale-up {
+        0% {
+            transform: translate(-50%, -50%) scale(var(--scale)) rotate(0deg);
+        }
+        100% {
+            transform: translate(-50%, -50%) scale(1) rotate(var(--rotation));
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <ul class="demo1">
+      <li style="--dis: 200px; --color: red"></li>
+      <li style="--dis: 300px; --color: blue"></li>
+      <li style="--dis: 120px; --color: green"></li>
+    </ul>
+    <hr />
+    <div class="rotate">
+      <div class="reverseRotate"></div>
+    </div>
+    <hr />
+    <br /><br />
+    <div class="demo2">
+        <div class="reverseRotate2">
+            <img class="rotate2" src="./grid布局/images/img-01.png" alt="" />
+          </div>
+    </div>
+    <hr>
+    <div class="container">
+        <div class="A"><img src="./grid布局/images/img-01.png" alt=""></div>
+        <div class="B"><img src="./grid布局/images/img-02.jpg" alt=""></div>
+        <div class="C"><img src="./grid布局/images/img-03.png" alt=""></div>
+        <div class="D"><img src="./grid布局/images/img-04.jpg" alt=""></div>
+        <div class="E"><img src="./grid布局/images/img-05.jpg" alt=""></div>
+    </div>
+  </body>
+</html>

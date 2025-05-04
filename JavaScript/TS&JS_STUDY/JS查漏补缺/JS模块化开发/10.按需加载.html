@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>按需加载</button>
+    <script type="module">
+        document.querySelector('button').addEventListener('click', () => {
+            console.log(import('./9m.js')) // 返回的是一个Promise对象
+            import('./9m.js').then(m => {
+                console.log(m.default.m91.site) // 输出模块的默认导出    
+            })
+        })
+    </script>
+</body>
+</html>

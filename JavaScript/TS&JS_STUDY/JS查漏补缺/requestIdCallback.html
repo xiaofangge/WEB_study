@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-size: 16px;
+        }
+        .task {
+            display: inline-block;
+            vertical-align: top;
+        }
+        .logbox {
+            margin-top: 16px;
+            width: 400px;
+            height: 300px;
+            border-radius: 6px;
+            border: 1px solid #eee;
+            box-shadow: 4px 4px 2px #eee;
+            padding: 6px;
+        }
+        .logHead {
+            padding: 0 6px 4px;
+            height: 22px;
+            background-color: aqua;
+            margin-bottom: 1px solid #000;
+            border-radius: 6px 6px 0 0;
+        }
+        #log, #log1 {
+            font-size: 12px;
+            padding: 6px;
+            overflow: hidden;
+            overflow-y: scroll;
+            width: 388px;
+            height: 260px;
+        }
+        .container {
+            width: 400px;
+            padding: 6px;
+            border-radius: 6px;
+            border: 1px solid #000;
+            box-shadow: 4px 4px 2px #000;
+            display: block;
+            overflow: auto;
+        }
+        .label {
+            display: inline-block;
+        }
+        .counter {
+            text-align: right;
+            padding-top: 4px;
+            float: right;
+        }
+        .button {
+            padding-top: 2px;
+            padding-bottom: 4px;
+            width: 180px;
+            display: inline-block;
+            border: 1px solid #000;
+            cursor: pointer;
+            text-align: center;
+            margin-top: 0;
+            color: #fff;
+            background-color: aqua;
+        }
+        progress {
+            width: 100%;
+            padding-top: 6px;
+        }
+        .animation-box {
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            background-image: linear-gradient(45deg, #3023ae 0, #f08 100%);
+            animation: bounce 1s linear 0s infinite alternate;
+        }
+        @keyframes bounce {
+            0% {
+                border-radius: 40% 60% 72% 28%/70% 77% 23% 30%;
+            }
+            100% {
+                border-radius: 25% 25% 24% 76%/13% 15% 85% 87%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="head">
+        <span>协作调度幕后人物 使用 <code>requestIdleCallback()</code> 方法。</span>
+        <div class="animation-box"></div>
+    </div>
+    <div class="button" style="margin-bottom: 20px;" id="createData">生成数据</div><span id="taskNum"></span>
+    <div class="box">
+        <div class="task task1">
+            <div class="container">
+                <div class="label">任务1: requestIdleCallback()优化实现, <span style="color: green;">页面流畅</span></div>
+                <progress id="progress" value="0"></progress>
+                <div class="button" id="startButton">
+                    开始 <span id="taskTime"></span>
+                </div>
+                <div class="label counter">
+                    <span id="currentTaskNumber">0</span> / <span id="totalTaskCount">0</span>
+                </div>
+            </div>
+            <div class="logbox">
+                <div class="logHead">记录</div>
+                <div id="log"></div>
+            </div>
+        </div>
+        <div class="task other">
+            <div class="container">
+                <div class="label">任务1: 无任何优化, 直接appendDom, <span style="color: red;">页面卡顿</span></div>
+                <progress id="progress1" value="0"></progress>
+                <div class="button" id="startButton1">
+                    开始 <span id="taskTime1"></span>
+                </div>
+                <div class="label counter">
+                    <span id="currentTaskNumber1">0</span> / <span id="totalTaskCount1">0</span>
+                </div>
+            </div>
+            <div class="logbox">
+                <div class="logHead">记录</div>
+                <div id="log1"></div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        // 变量声明和标记
+        let taskTime = 0
+        let taskTime1 = 0
+        let allData = []
+        let taskList = []
+        let totalTaskCount = 0
+        let currentTaskNumber = 0
+        let taskHandle = null;
+        // 获取需要操作的 DOM 元素
+        let totalTaskCountElem = document.querySelector("#totalTaskCount")
+        let currentTaskNumberElem = document.querySelector("#currentTaskNumber")
+        let progressBarElem = document.querySelector("#progress")
+        let startButtonElem = document.querySelector("#startButton")
+        let logElem = document.querySelector("#log")
+
+        let logFragment = null
+        let statusRefreshScheduled = false
+        // 定义 requestIdleCallback 的兼容处理，不执行则用setTimeout模拟实现
+        window.requestIdleCallback = window.requestIdleCallback || function (handle) {
+            // 闭包：创建的时候记录一下时间
+            let startTime = Date.now()
+            return setTimeout(function () {
+                handle({
+                    // 是否超时
+                    didTimeout: false,
+                    // 给你的空闲时间
+                    timeRemaining: function () {
+                        // 理论上系统给你空闲的时间会低于50ms,所以你的任务最好不要超过50ms，否则还是会卡顿
+                        return Math.max(0, 50.0 - (Date.now() - startTime))
+                    }
+                })
+            }, 1)
+        }
+        // 取消任务
+        window.cancelIdleCallback = window.cancelIdleCallback || function (id) {
+            clearTimeout(id)
+        }
+        // 将任务加入任务队列
+        function enqueueTask(taskHandle, taskData) {
+            // 构建任务list，放入回调和数据，这里的回调是执行写日志的操作，就是 append dom
+            taskList.push({
+                handle: taskHandle,
+                data: taskData
+            })
+            // 总任务数加1
+            totalTaskCount++;
+            if (!taskHandle) {
+                // 第一次，则启动我们的`requestIdleCallback`,放入回调，每个任务超时时间1000ms，意味着操作1000ms还未执行，则强制执行回调
+                taskHandle = requestIdleCallback(runTaskQueue, { timeout: 1000 })
+            }
+            scheduleStatusRefresh()
+        }
+
+        // 执行任务队列中的任务
+        function runTaskQueue(deadline) {
+            // 有空闲执行，空闲时间大于0，或者已经超时了，则立即执行
+            while ((deadline.timeRemaining() > 0 || deadline.didTimeout) && taskList.length) {
+                // 有空闲，一直执行，直到超时或执行完毕
+                // 拿出并移除一个任务
+                let task = taskList.shift()
+                // 下一个任务
+                currentTaskNumber++;
+                // 执行这个任务，其实就是append div 到log节点
+                task.handle(task.data)
+                scheduleStatusRefresh()
+            }
+            // 没有空闲了，还有任务，则继续调度
+            if (taskList.length) {
+                taskHandle = requestIdleCallback(runTaskQueue, {timeout: 1000})
+            } else {
+                // 没有任务了
+                document.querySelector("#taskTime").innerHTML = `任务耗时: ${Date.now() - taskTime}ms`
+                taskHandle = null;
+            }
+        }
+
+        // 定时刷新任务状态
+        function scheduleStatusRefresh() {
+            if (!statusRefreshScheduled) {
+                // 更新进度条，appendDom并且滚动到最后,使用requestAnimationFrame是为了优化渲染（不是一直渲染，与浏览器刷新率保持一直就好了）
+                requestAnimationFrame(updateDisplay)
+                statusRefreshScheduled = true;
+            }
+        }
+
+        // 更新页面显示
+        function updateDisplay() {
+            let isScrollToEnd = logElem.scrollHeight - logElem.clientHeight <= logElem.scrollTop + 1;
+            if (totalTaskCount) {
+                // 更新最大的进度值和count的值
+                if (progressBarElem.max !== totalTaskCount) {
+                    totalTaskCountElem.textContent = totalTaskCount
+                    progressBarElem.max = totalTaskCount
+                }
+                // 更新当前执行的任务数和进度
+                if (progressBarElem.value !== currentTaskNumber) {
+                    currentTaskNumberElem.textContent = currentTaskNumber;
+                    progressBarElem.value = currentTaskNumber
+                }
+            }
+            // 有未添加的日志，则添加到页面
+            if (logFragment) {
+                logElem.appendChild(logFragment)
+                logFragment = null;
+            }
+            // 没有滚动到最下面则滚动到最下面
+            if (isScrollToEnd) {
+                logElem.scrollTop = logElem.scrollHeight - logElem.clientHeight
+            }
+            statusRefreshScheduled = false;
+        }
+
+        // 在日志区域添加日志
+        function log(text) {
+            if (!logFragment) {
+                logFragment = document.createDocumentFragment();
+            }
+            let el = document.createElement("div")
+            el.innerHTML = text;
+            logFragment.appendChild(el)
+        }
+        // 执行任务的处理函数
+        function logTaskHandler(data) {
+            log("<strong>Running task1 #" + currentTaskNumber + "</strong>")
+            for (let i = 0; i < data.count; i++) {
+                log((i+1).toString() + ". " + data.text)
+            }
+        }
+        // 生成随机整数
+        function getRandomIntInclusive(min, max) {
+            min = Math.ceil(min)
+            max = Math.max(max)
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+        
+
+
+        // 解码技术内容
+        function decodeTechnoStuff() {
+            if (!allData.length) {
+                return alert("请先生成数据")
+            }
+            taskTime = Date.now() 
+            for (let i = 0; i < allData.length; i++) {
+                enqueueTask(logTaskHandler, allData[i])
+            }
+        }
+
+        function createData() {
+            totalTaskCount = 0;
+            currentTaskNumber = 0;
+            document.querySelector("#taskTime").innerHTML = ''
+            document.querySelector("#taskTime1").innerHTML = ''
+            updateDisplay()
+            let n = getRandomIntInclusive(100, 300)
+            allData = []
+            let renderDomTotal = 0
+            for (let i = 0; i < n; i++) {
+                const count = getRandomIntInclusive(75, 150)
+                renderDomTotal += count
+                let taskData = {
+                    count: count,
+                    text: "This text is from task number " + (i+1).toString() + " of " + n
+                }
+                allData.push(taskData)
+            }
+            // 计算需要渲染的dom
+            document.getElementById("taskNum").innerText = `需渲染${renderDomTotal.toString()}个节点`
+        }
+
+        function updateTaskOther() {
+            if (!allData.length) {
+                return alert("请先生成数据")
+            }
+            const start = Date.now()
+            // 更新demo，更新进度
+            let totalTaskCountElem = document.getElementById("totalTaskCount1")
+            let currentTaskNumberElem = document.getElementById("currentTaskNumber1");
+            let progressBarElem = document.getElementById("progress1")
+            const count = allData.length;
+            progressBarElem.max = count;
+            totalTaskCountElem.textContent = count.toString()
+            let logElem = document.getElementById("log1")
+            for (let j = 0; j < count; j++) {
+                let el = document.createElement("div");
+                // 更新demo
+                progressBarElem.value = j+1;
+                // 更新demo
+                currentTaskNumberElem.textContent = (j+1).toString()
+                el.innerHTML = "<strong>Running task #" + (j+1) + "</strong>"
+                // 更新demo
+                logElem.appendChild(el)
+                for (let i = 0; i < allData[j].count; i++) {
+                    let el = document.createElement("div")
+                    el.innerHTML = allData[j].text
+                    // 更新demo
+                    logElem.appendChild(el)
+                    // 滚动到最底下，每append一个则滚动一次,如果在这里执行滚动，直接浏览器卡死
+                    // let isScrolledToEnd = logElem.scrollHeight - logElem.clientHeight <= logElem.scrollTop + 1;
+                    // if (!isScrolledToEnd) {
+                    //     logElem.scrollTop = logElem.scrollHeight - logElem.clientHeight;
+                    // }
+                }
+                let isScrolledToEnd = logElem.scrollHeight - logElem.clientHeight <= logElem.scrollTop + 1;
+                if (!isScrolledToEnd) {
+                    logElem.scrollTop = logElem.scrollHeight - logElem.clientHeight
+                }
+            }
+            taskTime1 = Date.now() - start;
+            document.getElementById("taskTime1").innerHTML = `任务耗时: ${taskTime1}ms`
+        }
+
+        document.getElementById("createData").addEventListener("click", createData, false)
+        document.getElementById("startButton").addEventListener("click", decodeTechnoStuff, false)
+        document.getElementById("startButton1").addEventListener("click", updateTaskOther, false)
+    </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- <script>
+    console.log(document.querySelector('button'))  // null
+    site = "https://www.bilibili.com"
+    console.log(window.site)  // https://www.bilibili.com
+</script> -->
+<script type="module">
+    console.log("moduel => ", document.querySelector('button'))  // null
+    name = "心潮"
+    console.log("module name => ", window.name)  // 心潮   
+</script>
+<body>
+    <button>后盾人</button>
+    <script>
+        console.log(document.querySelector('button'))  // <button>后盾人</button>
+    </script>
+</body>
+</html>

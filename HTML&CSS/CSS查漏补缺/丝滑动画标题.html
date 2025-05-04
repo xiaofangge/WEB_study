@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>丝滑动画标题</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-color: #D9AFD9;
+            background-image: linear-gradient(297deg, #D9AFD9 0%, #97D9E1 100%);
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 200px;
+        }
+        .title {
+            font-size: 45px;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            font-weight: bold;
+            transform: rotate(-10deg);
+            display: flex;
+        }
+        .title span {
+            transform: skew(-10deg);
+            text-shadow: 1px 1px #533d4a, 2px 2px #533d4a, 3px 3px #533d4a, 4px 4px #533d4a,
+                    5px 5px #533d4a, 6px 6px #533d4a;
+            opacity: 0;
+            animation: move 1s cubic-bezier(0.56, 0.09, 0.41, 1.47) forwards;
+        }
+        @keyframes move {
+            from {
+                opacity: 0;
+                transform: skew(-10deg) translateY(700%);
+            }
+            to {
+                opacity: 1;
+                transform: skew(-10deg) translateY(0);
+            }
+        }
+        .title:nth-child(1) {
+            color: orange;
+        }
+        .title:nth-child(2) {
+            color: green;
+        }
+        .title:nth-child(3) {
+            color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p class="title">This is</p>
+        <p class="title">a long</p>
+        <p class="title">long title</p>
+    </div>
+    <script>
+        document.querySelectorAll('.title').forEach(item => {
+            const span = item.textContent.split('').map(word =>  `<span>${word.trim() ? word : '&nbsp;'}</span>`).join('')
+            item.innerHTML = span
+        })
+        document.querySelectorAll('.title span').forEach((item, index) => {
+            item.style.animationDelay = `${index * 0.05}s`
+        })
+    </script>
+</body>
+</html>

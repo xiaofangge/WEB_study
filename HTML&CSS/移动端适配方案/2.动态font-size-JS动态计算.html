@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 1.获取html标签
+        const htmlEl = document.documentElement;
+
+        const setRemUnit = () => {
+            const htmlWidth = htmlEl.clientWidth
+            htmlEl.style.fontSize = `${htmlWidth / 10}px`
+        }
+        // 页面初始化的时候就设置html标签font-size
+        setRemUnit()
+
+        window.addEventListener('resize', setRemUnit)
+
+        window.addEventListener("pageshow", function (e) {
+            if (e.persisted) {  // 如果页面从浏览器的缓存中读取
+                setRemUnit()
+            }
+        })
+    </script>
+    <style>
+        .box {
+            /* 100 / 37.5 */
+            width: 2.6667rem;
+            height: 2.6667rem;
+            background-color: orange;
+        }
+        p {
+            font-size: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+
+    <p>我是文本</p>
+</body>
+</html>

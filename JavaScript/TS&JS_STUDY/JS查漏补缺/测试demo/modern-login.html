@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>现代风格登录注册页面</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+        }
+
+        /* linear-gradient() 是CSS中用于创建渐变背景的函数
+           语法: linear-gradient(方向, 颜色1 位置1, 颜色2 位置2, ...)
+           
+           方向可以是:
+           - 角度: 如45deg (从左下到右上)
+           - 关键词: to top/right/bottom/left
+           
+           颜色可以是:
+           - 十六进制: #8e2de2
+           - RGB/RGBA: rgb(0,0,0)
+           - 颜色关键词: red, blue等
+           
+           位置是可选的,用百分比表示渐变位置,如: red 0%, blue 50%
+           
+           下面的例子中:
+           - 45deg 表示渐变角度为45度
+           - #8e2de2 是起始颜色(紫色)
+           - #4a00e0 是结束颜色(深蓝色)
+        */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(45deg, #8e2de2, #4a00e0);
+            overflow: hidden;
+        }
+
+        .container {
+            position: relative;
+            width: 800px;
+            height: 500px;
+            background: #fff;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .form-container {
+            position: absolute;
+            top: 0;
+            width: 50%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            transition: all 0.6s ease-in-out;
+        }
+
+        .sign-in-container {
+            left: 0;
+            z-index: 2;
+        }
+
+        .sign-up-container {
+            left: 0;
+            opacity: 0;
+            z-index: 1;
+        }
+
+        .overlay-container {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 50%;
+            height: 100%;
+            overflow: hidden;
+            transition: transform 0.6s ease-in-out;
+            z-index: 100;
+        }
+
+        .overlay {
+            position: relative;
+            left: -100%;
+            height: 100%;
+            width: 200%;
+            background: linear-gradient(to right, #4a00e0, #8e2de2);
+            transform: translateX(0);
+            transition: transform 0.6s ease-in-out;
+        }
+
+        .overlay-panel {
+            position: absolute;
+            top: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 0 40px;
+            height: 100%;
+            width: 50%;
+            text-align: center;
+            transform: translateX(0);
+            transition: transform 0.6s ease-in-out;
+        }
+
+        .overlay-right {
+            right: 0;
+            transform: translateX(0);
+        }
+
+        .overlay-left {
+            transform: translateX(-20%);
+        }
+
+        .container.right-panel-active .sign-in-container {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+
+        .container.right-panel-active .sign-up-container {
+            transform: translateX(100%);
+            opacity: 1;
+            z-index: 5;
+        }
+
+        .container.right-panel-active .overlay-container {
+            transform: translateX(-100%);
+        }
+
+        .container.right-panel-active .overlay {
+            transform: translateX(50%);
+        }
+
+        .container.right-panel-active .overlay-left {
+            transform: translateX(0);
+        }
+
+        .container.right-panel-active .overlay-right {
+            transform: translateX(20%);
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            position: relative;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            background: #f5f5f5;
+            font-size: 14px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            background: #fff;
+            box-shadow: 0 0 0 2px #4a00e0;
+        }
+
+        .btn {
+            background: #4a00e0;
+            color: #fff;
+            padding: 12px 45px;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn.ghost {
+            background: transparent;
+            border: 2px solid #fff;
+        }
+
+        .overlay-panel {
+            color: #fff;
+        }
+
+        .overlay-panel h1 {
+            color: #fff;
+        }
+
+        .overlay-panel p {
+            font-size: 14px;
+            line-height: 1.6;
+            margin: 20px 0 30px;
+        }
+
+        .social-container {
+            margin: 20px 0;
+        }
+
+        .social-container a {
+            border: 1px solid #ddd;
+            border-radius: 50%;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 5px;
+            height: 40px;
+            width: 40px;
+            text-decoration: none;
+            color: #333;
+            transition: all 0.3s ease;
+        }
+
+        .social-container a:hover {
+            border-color: #4a00e0;
+            color: #4a00e0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="container">
+        <div class="form-container sign-up-container">
+            <form action="#">
+                <h1>创建账号</h1>
+                <div class="social-container">
+                    <a href="#" class="social"><i class="fab fa-weixin"></i></a>
+                    <a href="#" class="social"><i class="fab fa-qq"></i></a>
+                    <a href="#" class="social"><i class="fab fa-weibo"></i></a>
+                </div>
+                <span>或使用邮箱注册</span>
+                <div class="form-group">
+                    <input type="text" class="form-input" placeholder="用户名" />
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-input" placeholder="邮箱" />
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-input" placeholder="密码" />
+                </div>
+                <button class="btn">注册</button>
+            </form>
+        </div>
+        <div class="form-container sign-in-container">
+            <form action="#">
+                <h1>登录</h1>
+                <div class="social-container">
+                    <a href="#" class="social"><i class="fab fa-weixin"></i></a>
+                    <a href="#" class="social"><i class="fab fa-qq"></i></a>
+                    <a href="#" class="social"><i class="fab fa-weibo"></i></a>
+                </div>
+                <span>或使用账号登录</span>
+                <div class="form-group">
+                    <input type="email" class="form-input" placeholder="邮箱" />
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-input" placeholder="密码" />
+                </div>
+                <a href="#" style="color: #4a00e0; text-decoration: none; margin: 15px 0;">忘记密码？</a>
+                <button class="btn">登录</button>
+            </form>
+        </div>
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h1>欢迎回来！</h1>
+                    <p>请使用您的账号登录，继续访问我们的平台</p>
+                    <button class="btn ghost" id="signIn">登录</button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <h1>你好！</h1>
+                    <p>输入您的个人信息注册，开始使用我们的平台</p>
+                    <button class="btn ghost" id="signUp">注册</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        const signUpButton = document.getElementById('signUp');
+        const signInButton = document.getElementById('signIn');
+        const container = document.getElementById('container');
+
+        signUpButton.addEventListener('click', () => {
+            container.classList.add('right-panel-active');
+        });
+
+        signInButton.addEventListener('click', () => {
+            container.classList.remove('right-panel-active');
+        });
+    </script>
+</body>
+</html> 

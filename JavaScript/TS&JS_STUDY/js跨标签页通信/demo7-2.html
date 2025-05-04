@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        navigator.serviceWorker.register("./serviceWorker.js").then(() => {
+            console.log("注册成功")
+        })
+
+        setInterval(() => {
+            navigator.serviceWorker.controller.postMessage({
+                value: `moment ${new Date()}`
+            })
+        }, 3000)
+
+        navigator.serviceWorker.onmessage = (e) => {
+            console.log(e.data.value)
+        }
+    </script>
+</body>
+</html>

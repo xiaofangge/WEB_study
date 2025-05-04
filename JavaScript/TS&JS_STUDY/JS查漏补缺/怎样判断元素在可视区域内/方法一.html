@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .div {
+            height: 2000px;
+        }
+        p {
+            height: 200px;
+            color: white;
+            background-color: blueviolet;
+        }
+    </style>
+</head>
+<body>
+    <!-- 1. 通过元素的位置信息和滚动条滚动的高度来判断 -->
+     <div class="div"></div>
+     <p>我出现啦</p>
+     <script>
+        function isContain(dom) {
+            // 获取可视窗口的高度- 兼容写法
+            const screenHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+            // 获取滚动条滚动的高度
+            const scrollTop = document.documentElement.scrollTop;
+            // 获取元素偏移的高度，就是距离可视窗口的偏移量
+            const offsetTop = dom.offsetTop;
+            return offsetTop - scrollTop <= screenHeight;
+        }
+        const p = document.querySelector('p')
+        window.onscroll = () => {
+            if (isContain(p)) {
+                document.body.style.backgroundColor = 'blue'
+            } else {
+                document.body.style.backgroundColor = 'skyblue'
+            }
+        }
+     </script>
+</body>
+</html>

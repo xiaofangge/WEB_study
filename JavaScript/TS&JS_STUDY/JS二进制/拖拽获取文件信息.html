@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box-area {
+            width: 300px;
+            height: 300px;
+            border: 2px solid red;
+        }
+    </style>
+</head>
+<body>
+    <div class="box-area" id="dropId"></div>
+    <script>
+        let dropArea = document.getElementById("dropId");
+        dropArea.ondragover = function(event) {
+            event.preventDefault();
+        }
+        dropArea.ondrop = function(event) {
+            event.preventDefault();
+            let files = event.dataTransfer.files;
+            console.info(files);
+        }
+    </script>
+</body>
+</html>

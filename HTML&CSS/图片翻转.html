@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-color: cornflowerblue;
+        }
+        .container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+        .well {
+            margin: 20px;
+            position: relative;
+        }
+        .well img {
+            width: 300px;
+            height: 400px;
+            border: 5px solid #fff;
+            position: absolute;
+            transition: all ease-in-out .8s;
+        }
+        .well img:first-of-type {
+            z-index: 1;
+            backface-visibility: hidden;
+        }
+        .well:hover img {
+            transform: rotateY(180deg)
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="well">
+            <img src="./grid布局/images/img-06.jpg" alt="">
+            <img src="./grid布局/images/img-02.jpg" alt="">
+        </div>
+    </div>
+</body>
+</html>

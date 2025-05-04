@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #container {
+            width: 600px;
+            height: 400px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 2. 准备一个具备大小的容器 -->
+    <div id="container"></div>
+    <!-- 1. 引入js文件 -->
+    <script src="../js/echarts.js"></script>
+    <script>
+        // 3. 初始化ECharts实例对象
+        const echartsContainer = echarts.init(document.getElementById("container"))
+
+        // 4. 指定配置项和数据
+        const option = {
+            // 设置图标的标题
+            title: {
+                text: 'ECharts 入门示例'
+            },
+            // 图表的提示框组件
+            tooltip: {},
+            // 图例组件
+            legend: {
+                data: ['销量']
+            },
+            xAxis: {
+                data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
+            },
+            yAxis: {},
+            series: [
+                {
+                    name: '销量',
+                    type: 'bar',
+                    data: [5, 20, 36, 10, 10, 20]
+                }
+            ]
+        };
+
+        // 5. 将配置项设置给echats实例对象
+        echartsContainer.setOption(option)
+    </script>
+</body>
+
+</html>

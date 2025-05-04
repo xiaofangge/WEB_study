@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3D动态图标</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        color: #fff;
+      }
+      .container {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .video {
+        width: 100%;
+        height: 100vh;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+      }
+      .video video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .wrap {
+        width: 50%;
+        height: 50%;
+        border-radius: 20px;
+        background: rgba(0, 0, 0, 0.2);
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        justify-items: center;
+        align-items: center;
+      }
+      /* .wrap .icon {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* text-align: center; */
+      /* } */
+      .wrap .item {
+        width: 128px;
+        height: 128px;
+        background: transparent url(./grid布局/images/img-01.png) 0 0 no-repeat;
+        background-size: contain;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="video">
+        <video src="./vieos/bg.mp4" muted autoplay loop></video>
+      </div>
+      <div class="wrap">
+        <div class="icon">
+          <div class="item"></div>
+          <span>视频服务</span>
+        </div>
+        <div class="icon">
+          <div class="item"></div>
+          <span>数据安全</span>
+        </div>
+        <div class="icon">
+          <div class="item"></div>
+          <span>互联数据</span>
+        </div>
+        <div class="icon">
+          <div class="item"></div>
+          <span>开发运维</span>
+        </div>
+        <div class="icon">
+          <div class="item"></div>
+          <span>万物物联</span>
+        </div>
+        <div class="icon">
+          <div class="item"></div>
+          <span>弹性计算</span>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
