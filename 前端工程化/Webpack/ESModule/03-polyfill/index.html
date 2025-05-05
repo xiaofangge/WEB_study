@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES Module 浏览器环境 Polyfill</title>
+</head>
+<body>
+    <!-- 用来兼容 不支持module 的浏览器环境的依赖 begin -->
+    <script nomodule src="https://app.unpkg.com/promise-polyfill@8.3.0/files/dist/polyfill.min.js"></script>
+    <script nomodule src="https://app.unpkg.com/browser-es-module-loader@0.4.1/files/dist/babel-browser-build.js"></script>
+    <script nomodule src="https://app.unpkg.com/browser-es-module-loader@0.4.1/files/dist/browser-es-module-loader.js"></script>
+    <!--  用来兼容 不支持module 的浏览器环境的依赖 end -->
+
+    <!-- nomodule: 代表script标签中的内容在 不支持module 的浏览器环境中运行 -->
+    <script nomodule>
+        alert("Hello");
+    </script>
+    <script type="module">
+        import { foo } from './module.js'
+        console.log(foo)
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="module">
+        console.log('this is a ESM')
+    </script>
+
+
+    <!-- 1. 自动采用严格模式 -->
+    <script type="module">
+        console.log('module => ', this) // undefined
+    </script>
+    <script>
+        console.log(this) // window
+    </script>
+
+    <!-- 2. 每个 ES Module 都运行在单独的作用域中 -->
+    <script type="module">
+        var num = 100;
+        console.log('var1 => ', num) // 100
+    </script>
+    <script type="module">
+        console.log("var2 => ", num) // Uncaught ReferenceError: num is not defined
+    </script>
+
+    <!-- 3. ESM 是通过 CORS 的方式去请求外部JS模块的 -->
+    <script type="module" src="https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.js"></script>
+
+    <!-- 4. ESM 的script标签会延迟执行脚本，等同于 defer -->
+    <script type="module" src="01-demo.js"></script>
+    <!-- <script defer src="01-demo.js"></script> -->
+    <p>这是要渲染的内容</p>
+</body>
+</html>
