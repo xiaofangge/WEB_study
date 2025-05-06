@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>严格模式</title>
+</head>
+<body>
+    <script>
+        "use strict";
+        console.log("这是严格模式")
+
+        num = 10;
+        console.log(num) // demo.html:13 Uncaught ReferenceError: num is not defined
+
+
+    </script>
+    <script>
+        console.log("这是普通模式")
+
+        function testThis() {
+            console.log("normal this => ", this)
+        }
+
+        testThis()
+
+        function func() {
+            "use strict";
+
+            console.log("为函数开启严格模式")
+        }
+    </script>
+    <script src="./strict.js"></script>
+</body>
+</html>
