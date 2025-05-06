@@ -1,0 +1,17 @@
+{
+  "name": "devtool",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "div": "webpack --mode=development"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "html-webpack-plugin": "^5.6.3",
+    "webpack": "^5.99.7",
+    "webpack-cli": "^6.0.1"
+  }
+}
