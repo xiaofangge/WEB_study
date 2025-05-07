@@ -1,0 +1,10 @@
+@import url(./reset.css);
+
+body {
+    min-height: 100vh;
+    background-image: url(./background.png);
+    /* 图片覆盖整个容器 */
+    background-size: cover;
+    /* 图片完全显示，保持比例 */
+    /* background-size: contain; */
+}
