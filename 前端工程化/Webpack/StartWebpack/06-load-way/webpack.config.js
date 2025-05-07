@@ -17,26 +17,26 @@ module.exports = {
                     'css-loader'
                 ]
             },
-            // {
-            //     test: /\.png$/,
-            //     use: [
-            //         {
-            //             loader: 'url-loader',
-            //             options: {
-            //                 limit: 10 * 1024 * 1024,  // 10MB
-            //                 esModule: false,    // 确保与 CSS 中的 url() 兼容
-            //             }
-            //         }
-            //     ]
-            // },
             {
                 test: /\.png$/,
                 use: [
                     {
-                        loader: 'file-loader',
+                        loader: 'url-loader',
+                        options: {
+                            limit: 10 * 1024 * 1024,  // 10MB
+                            esModule: false,    // 确保与 CSS 中的 url() 兼容
+                        }
                     }
                 ]
             },
+            // {
+            //     test: /\.png$/,
+            //     use: [
+            //         {
+            //             loader: 'file-loader',
+            //         }
+            //     ]
+            // },
             {
                 test: /\.js$/,
                 use: [
@@ -51,7 +51,10 @@ module.exports = {
             {
                 test: /\.html$/,
                 use: {
-                    loader: 'html-loader'
+                    loader: 'html-loader',
+                    options: {
+                        attrs: ['img:src', 'a:href']
+                    }
                 }
             }
         ]
