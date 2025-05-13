@@ -1,0 +1,36 @@
+$color: #000;
+$bg-color: red;
+$bg_color: green;
+// 定义map
+$color-map: (color1: #aaa, color2: #bbb, color3: #ccc);
+
+.container {
+    $font-size: 20px!global;
+    color: $color;
+    background-color: $bg-color;
+}
+
+.after {
+    font: {
+        size: $font-size;
+    }
+     // 如果 map 里面的key不存在，则不会编译到css
+    color: map-get($color-map, color4);
+    background: {
+        // 使用 map
+        color: map-get($color-map, color3);
+    }
+    border: {
+        // 如果 map 里面的key不存在，则不会编译到css
+        top: 1px solid map-get($color-map, color4);
+    }
+}
+
+
+// 变量默认值
+$body-color: #333;
+$body-color: #666!default;
+
+body {
+    border: 10px solid $body-color;
+}

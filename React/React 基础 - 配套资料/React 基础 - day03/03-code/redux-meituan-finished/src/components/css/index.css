@@ -1,0 +1,279 @@
+@charset "UTF-8";
+.nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  height: 40px;
+  min-height: 40px;
+  background-color: #ffffff;
+  position: relative;
+  /* 搜索 */
+}
+.nav::after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  height: 1px;
+  background-color: #e4e4e4;
+  -webkit-transform: scale(1, 0.5);
+          transform: scale(1, 0.5);
+  -webkit-transform-origin: center bottom;
+          transform-origin: center bottom;
+}
+.nav .menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+}
+.nav .menu-item {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-left: 15px;
+  width: 80px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  color: #666666;
+  font-size: 16px;
+}
+.nav .menu-item.active {
+  color: #333;
+  font-weight: bolder;
+}
+.nav .menu-active-bar {
+  display: inline-block;
+  position: absolute;
+  bottom: 0px;
+  left: 0%;
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+  width: 100%;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+  height: 0px;
+  border-radius: 1px;
+}
+.nav .menu-active-bar::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  bottom: 0px;
+  left: 21px;
+  width: 20px;
+  border-bottom: solid 2px #ffd300;
+}
+.nav .menu-comment {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  margin-left: 2px;
+  max-width: 31px;
+  height: 16px;
+  line-height: 1;
+  font-size: 10px;
+  color: #999;
+}
+.nav .menu-search {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  /* width: 120px; */
+  height: 100%;
+  margin: 0 10px;
+}
+.nav .menu-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #eee;
+  height: 25px;
+  border-radius: 15px;
+}
+.nav .menu-search-icon {
+  background: url(https://zqran.gitee.io/images/waimai/search-icon.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 12px;
+  height: 12px;
+  -webkit-box-flex: 0;
+      -ms-flex: none;
+          flex: none;
+  margin-left: 6px;
+  margin-right: 4px;
+}
+.nav .menu-search-text {
+  font-size: 11px;
+  color: #858687;
+  text-align: center;
+  margin-right: 10px;
+} left: 0;
+  right: 0;
+  color: #333;
+  z-index: 1;
+  border-radius: 12px 12px 0 0;
+  -webkit-transition: -webkit-transform 200ms ease 0s;
+  transition: -webkit-transform 200ms ease 0s;
+  transition: transform 200ms ease 0s;
+  transition: transform 200ms ease 0s, -webkit-transform 200ms ease 0s;
+  -webkit-transform: translateY(0px);
+          transform: translateY(0px);
+}
+.cartContainer .cartPanel .header {
+  height: 40.5px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 12px 16px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.cartContainer .cartPanel .header .text {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 16.5px;
+  height: 16.5px;
+  color: #33312e;
+}
+.cartContainer .cartPanel .header .clearCart {
+  font-size: 12px;
+  line-height: 16.5px;
+  height: 16.5px;
+  color: #666666;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.cartContainer .cartPanel .header .clearCart::before {
+  content: "";
+  display: inline-block;
+  background: url(https://zqran.gitee.io/images/waimai/del.png);
+  width: 12px;
+  height: 12px;
+  margin-right: 2.5px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  vertical-align: bottom;
+}
+.cartContainer .cartPanel .scrollArea {
+  max-height: 350px;
+  overflow: scroll;
+  border-top: 1px solid rgba(216, 216, 216, 0.3);
+}
+.cartContainer .cartPanel .scrollArea::after {
+  content: "";
+  display: block;
+  height: 90px;
+}
+.cartContainer .cartPanel .scrollArea .cartItem {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 16px 0;
+  margin: 0 15px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.cartContainer .cartPanel .scrollArea .cartItem::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  height: 1px;
+  left: 70px;
+  right: 0;
+  background-color: rgba(232, 232, 232, 0.3);
+}
+.cartContainer .cartPanel .scrollArea .shopPic {
+  width: 60px;
+  height: 60px;
+  border-radius: 6px;
+}
+.cartContainer .cartPanel .scrollArea .main {
+  margin-left: 10px;
+  padding-right: 10px;
+  -webkit-box-flex: 1;
+      -ms-flex: auto;
+          flex: auto;
+}
+.cartContainer .cartPanel .scrollArea .skuInfo {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  min-width: 0;
+}
+.cartContainer .cartPanel .scrollArea .name {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+  color: #33312e;
+}
+.cartContainer .cartPanel .scrollArea .payableAmount {
+  height: 29px;
+  margin-top: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  font-weight: 600;
+  color: #fb4e44;
+}
+.cartContainer .cartPanel .scrollArea .yuan {
+  font-size: 12px;
+  line-height: 16.5px;
+  margin-top: 10px;
+  width: 11.5px;
+}
+.cartContainer .cartPanel .scrollArea .price {
+  font-size: 18px;
+  line-height: 25px;
+  margin-top: 4px;
+}
+.cartContainer .cartPanel .scrollArea .skuBtnWrapper {
+  width: 70px;
+  margin-top: 51.5px;
+}
+.cartContainer .cartOverlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+.cartContainer .cartOverlay.visible,
+.cartContainer .cartPanel.visible {
+  display: block;
+}

@@ -1,0 +1,161 @@
+.keepAccounts {
+  --ka-bg-color: #daf2e1;
+  --ka-color: #69ae78;
+  --ka-border-color: #191d26;
+  height: 100%;
+  background-color: var(--ka-bg-color);
+}
+.keepAccounts .nav {
+  --adm-font-size-10: 16px;
+  color: #121826;
+  background-color: transparent;
+}
+.keepAccounts .nav::after {
+  height: 0;
+}
+.keepAccounts .nav .adm-nav-bar-back-arrow {
+  font-size: 20px;
+}
+.keepAccounts .header {
+  height: 132px;
+}
+.keepAccounts .header .kaType {
+  padding: 9px 0;
+  text-align: center;
+}
+.keepAccounts .header .kaType .adm-button {
+  --adm-font-size-9: 13px;
+}
+.keepAccounts .header .kaType .adm-button:first-child {
+  margin-right: 10px;
+}
+.keepAccounts .header .kaType .selected {
+  color: #fff;
+  --background-color: var(--ka-border-color);
+}
+.keepAccounts .header .kaFormWrapper {
+  padding: 10px 22.5px 20px;
+}
+.keepAccounts .header .kaFormWrapper .kaForm {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 11px 15px 11px 12px;
+  border: 0.5px solid var(--ka-border-color);
+  border-radius: 9px;
+  background-color: #fff;
+}
+.keepAccounts .header .kaFormWrapper .kaForm .date {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 28px;
+  padding: 5.5px 5px;
+  border-radius: 4px;
+  color: var(--ka-color);
+  background-color: var(--ka-bg-color);
+}
+.keepAccounts .header .kaFormWrapper .kaForm .date .icon {
+  margin-right: 6px;
+  font-size: 17px;
+}
+.keepAccounts .header .kaFormWrapper .kaForm .date .text {
+  font-size: 16px;
+}
+.keepAccounts .header .kaFormWrapper .kaForm .kaInput {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.keepAccounts .header .kaFormWrapper .kaForm .kaInput .input {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  margin-right: 10px;
+  --text-align: right;
+  --font-size: 24px;
+  --color: var(--ka-color);
+  --placeholder-color: #d1d1d1;
+}
+.keepAccounts .header .kaFormWrapper .kaForm .kaInput .iconYuan {
+  font-size: 24px;
+}
+.keepAccounts .kaTypeList {
+  height: 490px;
+  padding: 20px 11px;
+  padding-bottom: 70px;
+  overflow-y: scroll;
+  background: #ffffff;
+  border-radius: 20px 20px 0 0;
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+}
+.keepAccounts .kaTypeList::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+.keepAccounts .kaTypeList .kaType {
+  margin-bottom: 25px;
+  font-size: 12px;
+  color: #333;
+}
+.keepAccounts .kaTypeList .kaType .title {
+  padding-left: 5px;
+  margin-bottom: 5px;
+  font-size: 13px;
+  color: #808080;
+}
+.keepAccounts .kaTypeList .kaType .list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.keepAccounts .kaTypeList .kaType .list .item {
+  width: 65px;
+  height: 65px;
+  padding: 9px 0;
+  margin-right: 7px;
+  text-align: center;
+  border: 0.5px solid #fff;
+}
+.keepAccounts .kaTypeList .kaType .list .item:last-child {
+  margin-right: 0;
+}
+.keepAccounts .kaTypeList .kaType .list .item .icon {
+  height: 25px;
+  line-height: 25px;
+  margin-bottom: 5px;
+  font-size: 25px;
+}
+.keepAccounts .kaTypeList .kaType .list .item.selected {
+  border: 0.5px solid var(--ka-border-color);
+  border-radius: 5px;
+  background: var(--ka-bg-color);
+}
+.keepAccounts .btns {
+  position: fixed;
+  bottom: 15px;
+  width: 100%;
+  text-align: center;
+}
+.keepAccounts .btns .btn {
+  width: 200px;
+  --border-width: 0;
+  --background-color: #fafafa;
+  --text-color: #616161;
+}
+.keepAccounts .btns .btn:first-child {
+  margin-right: 15px;
+}
+.keepAccounts .btns .btn.save {
+  --background-color: var(--ka-bg-color);
+  --text-color: var(--ka-color);
+}

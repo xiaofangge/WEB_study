@@ -1,0 +1,30 @@
+@mixin margin($top, $right, $bottom, $left:10px) {
+    margin-top: $top;
+    margin-right: $right;
+    margin-bottom: $bottom;
+    margin-left: $left;
+}
+
+div {
+    // @include margin(10px, 20px, 30px)
+    @include margin($right: 10px, $bottom: 20px, $left: 30px, $top: 40px)
+}
+
+
+// 剩余参数
+@mixin linear-gradient($direction, $colors...) {
+    background: linear-gradient($direction, $colors);
+}
+
+p {
+    @include linear-gradient(to right, red, green, yellow)
+}
+
+.error {
+    color: red;
+}
+
+.alert {
+    @extend .error;
+    font-weight: bold;
+}

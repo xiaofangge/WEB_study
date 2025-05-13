@@ -1,0 +1,19 @@
+div {
+  margin-top: 40px;
+  margin-right: 10px;
+  margin-bottom: 20px;
+  margin-left: 30px;
+}
+
+p {
+  background: -webkit-gradient(linear, left top, right top, from(red), color-stop(green), to(yellow));
+  background: linear-gradient(to right, red, green, yellow);
+}
+
+.error, .alert {
+  color: red;
+}
+
+.alert {
+  font-weight: bold;
+}

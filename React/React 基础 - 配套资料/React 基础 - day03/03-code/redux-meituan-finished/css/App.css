@@ -1,0 +1,70 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.home {
+  /* 内容 */
+}
+.home .content-wrap {
+  width: 100%;
+  height: calc(100vh - 40px);
+  overflow-x: hidden;
+  overflow-y: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-transform: translateZ(0);
+          transform: translateZ(0);
+}
+.home .content {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  width: 100%;
+  overflow-x: hidden;
+}
+.home .list-content {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1;
+          flex: 1 1;
+  overflow: hidden;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  z-index: 2;
+  background-color: #fff;
+}
+.home .list-fixed-title {
+  position: absolute;
+  top: 0;
+  z-index: 2;
+  width: 100%;
+  font-size: 14px;
+  line-height: 24px;
+  color: #222426;
+  padding: 10px 8px 13px;
+  background-color: #fff;
+}
+.home .goods-list {
+  width: 100%;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1;
+          flex: 1 1;
+  position: relative;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.home .goods-list > div:last-child {
+  margin-bottom: 300px;
+}

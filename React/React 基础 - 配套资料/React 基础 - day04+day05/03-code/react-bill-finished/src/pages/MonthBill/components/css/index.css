@@ -1,0 +1,91 @@
+.dailyBill {
+  margin-bottom: 10px;
+  border-radius: 10px;
+  background: #ffffff;
+}
+.dailyBill .header {
+  --ka-text-color: #888c98;
+  padding: 15px 15px 10px 15px;
+}
+.dailyBill .header .dateIcon {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 21px;
+  margin-bottom: 9px;
+}
+.dailyBill .header .dateIcon .date {
+  font-size: 14px;
+}
+.dailyBill .header .dateIcon .icon {
+  width: 19px;
+  height: 19px;
+  color: var(--ka-text-color);
+  -webkit-transform-origin: center;
+          transform-origin: center;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+.dailyBill .header .dateIcon .icon.expand {
+  -webkit-transform: rotate(0);
+          transform: rotate(0);
+}
+.dailyBill .billList {
+  display: none;
+  padding: 15px 10px 15px 15px;
+}
+.dailyBill .billList .bill {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 43px;
+  margin-bottom: 15px;
+}
+.dailyBill .billList .bill:last-child {
+  margin-bottom: 0;
+}
+.dailyBill .billList .bill .icon {
+  margin-right: 10px;
+  font-size: 25px;
+}
+.dailyBill .billList .bill .detail {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  padding: 4px 0;
+}
+.dailyBill .billList .bill .detail .billType {
+  height: 17px;
+  line-height: 17px;
+  font-size: 15px;
+}
+.dailyBill .billList .bill .money {
+  font-size: 17px;
+}
+.dailyBill .billList .bill .money.pay {
+  color: #ff917b;
+}
+.dailyBill .billList .bill .money.income {
+  color: #4f827c;
+}
+
+.dailyBill.expand .header {
+  border-bottom: 1px solid #ececec;
+}
+.dailyBill.expand .billList {
+  display: block;
+}

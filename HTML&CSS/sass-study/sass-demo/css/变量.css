@@ -1,0 +1,14 @@
+.container {
+  color: #000;
+  background-color: green;
+}
+
+.after {
+  font-size: 20px;
+  background-color: #ccc;
+  border-top: 1px solid;
+}
+
+body {
+  border: 10px solid #333;
+}

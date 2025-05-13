@@ -1,0 +1,147 @@
+@charset "UTF-8";
+:root {
+  --el-text-color-regular: #000;
+  --el-color-primary:#5082F5;
+}
+
+.el-tabs {
+  --el-tabs-header-height: 26px;
+}
+
+.el-form .el-form-item {
+  margin-bottom: 0;
+}
+
+.el-card__header {
+  padding: 6px 10px;
+}
+
+.el-card__body {
+  padding: 6px 10px;
+}
+
+.el-form--inline .el-form-item {
+  margin-right: 10px;
+}
+
+.form_item_mini_qld_dialog {
+  width: 160px;
+  margin-right: 10px;
+}
+
+.el-table-v2 {
+  --el-table-border: 1px solid var(--ld-border-color);
+}
+
+.el-table-v2__row-cell {
+  border-left: 1px solid var(--ld-border-color);
+}
+
+.el-table-v2__header-cell {
+  border-left: 1px solid var(--ld-border-color);
+  border-bottom: 1px solid var(--ld-border-color);
+  border-top: 1px solid var(--ld-border-color);
+}
+
+.el-radio {
+  margin-right: 12px;
+}
+
+.el-dialog__header {
+  padding: 10px 10px 0px;
+}
+
+.el-dialog--center .el-dialog__body {
+  padding: 0px;
+}
+
+.el-dialog__footer {
+  padding: 0px 10px 10px;
+}
+
+.el-button [class*=el-icon] + span {
+  margin-left: 6px;
+}
+
+.el-drawer__header {
+  padding: 10px;
+  margin-bottom: 0px;
+}
+
+.el-drawer__body {
+  padding: 0 10px 10px;
+}
+
+.el-table-v2__header-row {
+  border-bottom: 0px;
+}
+
+.el-tree {
+  --el-color-primary-light-9:#feddd3;
+}
+
+.el-table-v2__main .el-vl__horizontal, .el-table-v2__main .el-vl__vertical {
+  width: 9px !important;
+  height: 9px !important;
+}
+
+.el-table-v2__sort-icon {
+  display: none !important;
+}
+
+.el-select__tags .el-select__input.is-small {
+  height: auto !important;
+}
+
+.el-descriptions__body .el-descriptions__table:not(.is-bordered) .el-descriptions__cell {
+  padding-bottom: 3px;
+  line-height: 20px;
+}
+
+.el-divider--horizontal {
+  margin: 0px 0 5px;
+}
+
+.el-checkbox.el-checkbox--small .el-checkbox__label {
+  font-size: 13px;
+}
+
+.el-tree-node__children {
+  overflow: visible !important;
+}
+
+.el-tree .el-collapse-transition-enter-active,
+.el-collapse-transition-leave-active {
+  -webkit-transition: 0s;
+  transition: 0s;
+}
+
+.el-tree-node__content {
+  width: 100%;
+}
+
+.el-tree-node__expand-icon.expanded {
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+
+/** 字体大小 */
+.el-form-item--small {
+  --font-size: 12px;
+}
+
+.el-form-item__label {
+  color: #000;
+}
+
+.el-menu {
+  border-right: solid 0px #fff;
+}
+
+.top_menu .el-menu {
+  height: 40px;
+}
+
+.el-tree-node__label {
+  width: 100%;
+}

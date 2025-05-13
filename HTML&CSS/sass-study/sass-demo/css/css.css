@@ -1,0 +1,47 @@
+@charset "UTF-8";
+p {
+  color: #000;
+  font-size: 12px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.container {
+  font-size: 14px;
+}
+.container .header {
+  width: 50%;
+}
+.container .header .left {
+  float: left;
+}
+.container .footer {
+  background-color: gray;
+}
+.container::after {
+  display: inline-block;
+}
+
+.container {
+  font-size: 14px;
+  font-family: "Times New Roman", Times, serif;
+  font-weight: bold;
+}
+
+/*
+    多行注释
+*/
+div.before, div.after {
+  border: 1px solid red;
+  width: 100px;
+  height: 100px;
+}
+
+.after {
+  background-color: green;
+}
+
+.before {
+  background-color: gray;
+}

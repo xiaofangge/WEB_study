@@ -1,0 +1,8 @@
+@charset "UTF-8";
+/**
+	所有页面共享class
+*/
+.form_item_mini_qld_dialog {
+  width: 160px;
+  margin-right: 10px;
+}

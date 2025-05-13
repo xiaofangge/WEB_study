@@ -1,0 +1,55 @@
+.content_font_size_default {
+  --tools--operate:30px;
+  --pager-vxe-page:28px;
+}
+.content_font_size_default .vxe-grid {
+  font-size: 16px !important;
+}
+.content_font_size_default .vxe-table--render-default .vxe-body--column.col--ellipsis,
+.content_font_size_default .vxe-table--render-default .vxe-footer--column.col--ellipsis,
+.content_font_size_default .vxe-table--render-default .vxe-header--column.col--ellipsis {
+  height: 34px;
+}
+.content_font_size_default .vxe-table .el-input__inner {
+  font-size: 16px;
+}
+.content_font_size_default .vxe-cell {
+  font-size: 16px;
+  font-weight: 400;
+}
+.content_font_size_default .vxe-tools--operate .vxe-button.type--button.is--circle {
+  width: var(--tools--operate) !important;
+  height: var(--tools--operate) !important;
+}
+.content_font_size_default .vxe-tools--operate .vxe-button.type--button.is--circle {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  min-width: var(--tools--operate);
+}
+.content_font_size_default .vxe-toolbar {
+  padding: 6px 0;
+}
+.content_font_size_default .vxe-pager .vxe-pager--jump .vxe-pager--goto,
+.content_font_size_default .vxe-pager .vxe-pager--sizes > .vxe-input {
+  height: var(--pager-vxe-page);
+  line-height: var(--pager-vxe-page);
+}
+.content_font_size_default .vxe-input .vxe-input--extra-suffix,
+.content_font_size_default .vxe-input .vxe-input--prefix,
+.content_font_size_default .vxe-input .vxe-input--suffix {
+  height: var(--pager-vxe-page);
+}
+.content_font_size_default .vxe-pager.size--small {
+  height: 38px;
+  font-size: 14px;
+}
+.content_font_size_default .vxe-table--render-default .vxe-body--column.col--valid-error .vxe-cell--valid .vxe-cell--valid-msg {
+  padding: 8px 12px;
+}

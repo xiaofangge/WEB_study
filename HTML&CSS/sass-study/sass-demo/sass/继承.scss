@@ -1,0 +1,44 @@
+%common {
+    width: 100vw;
+    height: 50px;
+    line-height: 50px;
+    font: {
+        size: 18px;
+    }
+    padding: 15px;
+    border-radius: 8px;
+    margin: {
+        bottom: 10px
+    }
+}
+.success-msg {
+    @extend %common;
+    color: #67c23a;
+    background: {
+        color: #f0f9eb;
+    }
+}
+
+.info-msg {
+    @extend %common;
+    color: #909399;
+    background: {
+        color: #f4f4f5;
+    }
+}
+
+.warning-msg {
+    @extend %common;
+    color: #e6a23c;
+    background: {
+        color: #fdf6ec;
+    }
+}
+
+.error-msg {
+    @extend %common;
+    color: #f56c6c;
+    background: {
+        color: #fef0f0;
+    }
+}

@@ -3,4 +3,48 @@ $baseColor: #000;
 p {
     color: $baseColor;
     font-size: 12px;
+    display: flex;
+}
+
+.container {
+    font-size: 14px;
+    .header {
+        width: 50%;
+        .left {
+            float: left;
+        }
+    }
+    .footer {
+        background-color: gray;
+    }
+    &::after {
+        display: inline-block;
+    }
+}
+
+.container {
+    font: {
+        size: 14px;
+        family: 'Times New Roman', Times, serif;
+        weight: bold;
+    }
+}
+
+/*
+    多行注释
+*/
+div%foo {
+    border: 1px solid red;
+    width: 100px;
+    height: 100px;
+}
+
+// 单行注释
+.after {
+    @extend %foo;
+    background-color: green;
+}
+.before {
+    @extend %foo;
+    background-color: gray;
 }

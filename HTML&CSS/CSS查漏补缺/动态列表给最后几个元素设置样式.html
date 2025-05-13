@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动态列表给最后几个元素设置样式</title>
+    <style>
+        .example .item:nth-last-child(-n+2) {
+            color: aqua;
+        }
+    </style>
+</head>
+<body>
+    
+    <script>
+        const ulEl = document.createElement('ul');
+        ulEl.classList.add('example');
+        
+
+        const fragment = document.createDocumentFragment();
+        for (let i = 0; i < 50; i++) {
+            const liEl = document.createElement('li');
+            liEl.classList.add('item')
+            liEl.textContent = `元素${i+1}`;
+            fragment.appendChild(liEl);
+        }
+        ulEl.appendChild(fragment);
+        document.body.appendChild(ulEl);
+
+
+        const elList = document.querySelectorAll('.item')
+        const n = 2;
+        for (let i = elList.length - n; i < elList.length; i++) {
+            elList[i].style.cssText = 'color: red;'
+        }
+
+    </script>
+</body>
+</html>
