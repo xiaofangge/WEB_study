@@ -1,0 +1,24 @@
+.pulse {
+  -webkit-animation-name: animate-colorChange;
+          animation-name: animate-colorChange;
+  -webkit-animation-duration: 2s;
+          animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+}
+@-webkit-keyframes animate-colorChange {
+  from {
+    background-color: yellow;
+  }
+  to {
+    background-color: blue;
+  }
+}
+@keyframes animate-colorChange {
+  from {
+    background-color: yellow;
+  }
+  to {
+    background-color: blue;
+  }
+}

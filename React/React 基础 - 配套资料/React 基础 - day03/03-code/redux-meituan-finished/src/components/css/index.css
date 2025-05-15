@@ -1,21 +1,19 @@
-@charset "UTF-8";
-.nav {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  height: 40px;
-  min-height: 40px;
-  background-color: #ffffff;
-  position: relative;
-  /* 搜索 */
+.category .cate-list > .cate-goods:last-child {
+  padding-bottom: 0;
 }
-.nav::after {
-  position: absolute;
-  content: "";
+.category .cate-title {
+  font-size: 14px;
+  line-height: 24px;
+  color: #222426;
   width: 100%;
+  background-color: #fff;
+  padding: 10px 8px 13px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+};
   left: 0;
   bottom: 0;
   height: 1px;

@@ -1,0 +1,27 @@
+p {
+  width: 0;
+  height: 0;
+  display: inline-block;
+  margin-right: 20px;
+}
+
+p.top {
+  border-width: 30px;
+  border-color: transparent transparent black transparent;
+  border-style: dashed dashed solid dashed;
+}
+p.right {
+  border-width: 30px;
+  border-color: transparent transparent transparent red;
+  border-style: dashed dashed dashed solid;
+}
+p.bottom {
+  border-width: 20px;
+  border-color: green transparent transparent transparent;
+  border-style: solid dashed dashed dashed;
+}
+p.left {
+  border-width: 50px;
+  border-color: transparent pink transparent transparent;
+  border-style: dashed solid dashed dashed;
+}

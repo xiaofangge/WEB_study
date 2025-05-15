@@ -1,0 +1,45 @@
+%triangle-base {
+    width: 0;
+    height: 0;
+    display: inline-block;
+    margin: {
+        right: 20px;
+    }
+}
+@mixin triangle($direction: top, $size: 30px, $border_color: black) {
+    border: {
+        width: #{$size};
+    }
+    @if ($direction == unquote($string: "top")) {
+        border-color: transparent transparent $border_color transparent;
+        border-style: dashed dashed solid dashed;
+    }
+    @if ($direction == unquote($string: "right")) {
+        border-color: transparent transparent transparent $border_color;
+        border-style: dashed dashed dashed solid;
+    }
+    @if ($direction == unquote($string: "bottom")) {
+        border-color: $border_color transparent transparent transparent;
+        border-style: solid dashed dashed dashed;
+    }
+    @if ($direction == unquote($string: "left")) {
+        border-color: transparent $border_color transparent transparent;
+        border-style: dashed solid dashed dashed;
+    }
+}
+
+p {
+    @extend %triangle-base;
+    &.top {
+        @include triangle()
+    }
+    &.right {
+        @include triangle(right, 30px, red)
+    }
+    &.bottom {
+        @include triangle(bottom, 20px, green)
+    }
+    &.left {
+        @include triangle(left, 50px, pink)
+    }
+}

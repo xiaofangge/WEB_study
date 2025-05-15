@@ -1,0 +1,5 @@
+$theme: 'dark';
+
+body {
+    background-color: if($theme == 'light', #fff, #000);
+}

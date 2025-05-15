@@ -1,0 +1,15 @@
+$font-size: 14px !default;
+* {
+    margin: 0;
+    padding: 0;
+    font-size: $font-size;
+    color: #333;
+}
+
+@function column-with($col, $total) {
+    @return percentage($number: $col / $total);
+}
+
+@mixin bgColor($bg-color: #f2f2f2) {
+    background-color: $bg-color;
+}

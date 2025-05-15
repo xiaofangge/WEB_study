@@ -1,0 +1,9 @@
+$colorList: red orange yellow green blue skyblue;
+
+@each $color in $colorList {
+    // index() 函数获取出来的索引从 1 开始
+    $index: index($list: $colorList, $value: $color);
+    .p#{$index - 1} {
+        background-color: $color;
+    }
+}

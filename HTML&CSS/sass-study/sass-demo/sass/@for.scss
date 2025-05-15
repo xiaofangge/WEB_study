@@ -1,0 +1,14 @@
+@for $var from 1 through 4 {
+    .p#{$var} {
+        font-size: 12px * $var;
+    }
+}
+
+@for $var from 1 to 4 {
+    div {
+        &.p#{$var} {
+            width: 100px * $var;
+            height: 100px * $var;
+        }
+    }
+}

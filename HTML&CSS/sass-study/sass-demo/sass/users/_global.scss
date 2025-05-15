@@ -1,0 +1,9 @@
+$-font-size: 28px;
+@mixin base($color: #f00) {
+    color: $color;
+    font-size: $-font-size;
+}
+
+.gclass {
+    background-color: #f00;
+}

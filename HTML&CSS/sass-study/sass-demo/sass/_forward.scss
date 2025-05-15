@@ -1,0 +1,7 @@
+// show 选择性转发
+// @forward './users/common' show $font-size, column-with;
+// 等同于
+@forward './users/common' as c-* hide c-bgColor;
+
+
+@forward './users/global' as g-*;

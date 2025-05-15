@@ -1,0 +1,13 @@
+@use 'common' with($font-size: 30px);
+@use 'global' as g1;
+@use 'global' as g2;
+
+body {
+    font-size: common.$font-size;
+    width: common.column-with(3, 12);
+    @include common.bgColor(#f00);
+    @include g1.base(#f00);
+    @include g2.base(#000);
+}
+
+$font-size: common.$font-size;

@@ -1,0 +1,22 @@
+@mixin inline-animation($duration, $ani-name) {
+    $name: animate-#{$ani-name};
+
+    @keyframes #{$name} {
+        @content;
+    }
+
+    animation-name: #{$name};
+    animation-duration: #{$duration};
+    animation-iteration-count: infinite;
+}
+
+.pulse {
+    @include inline-animation(2s, colorChange) {
+        from {
+            background-color: yellow;
+        }
+        to {
+            background-color: blue;
+        }
+    }
+}

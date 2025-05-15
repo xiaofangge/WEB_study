@@ -1,0 +1,10 @@
+// @use 'users' as index;
+
+@use './forward' with($c-font-size: 100px);
+
+body {
+    font-size: forward.$c-font-size;
+    width: forward.column-with(3, 12);
+    @include forward.bgColor(#f00);
+    @include forward.base(#f00);
+}

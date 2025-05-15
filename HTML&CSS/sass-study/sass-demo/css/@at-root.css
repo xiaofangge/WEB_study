@@ -1,0 +1,50 @@
+.container {
+  font-size: 50px;
+}
+.father {
+  font-size: 45px;
+}
+.son {
+  font-size: 30px;
+}
+
+.father {
+  color: red;
+}
+.child-1 {
+  color: blue;
+}
+
+.child-2 {
+  color: yellow;
+}
+
+.child-3 {
+  color: aliceblue;
+}
+
+.foo {
+  color: blue;
+}
+
+.foo .bar {
+  color: yellow;
+}
+
+.bar .foo {
+  color: red;
+}
+
+.block {
+  width: 1000px;
+}
+.block__element {
+  font-size: 12px;
+}
+.block__element--modifier {
+  font-size: 16px;
+}
+
+.block--modifier {
+  font-size: 14px;
+}

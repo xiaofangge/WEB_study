@@ -1,0 +1,7 @@
+$column: 12;
+@while ($column > 0) {
+    .col-sm-#{$column} {
+        width: $column / 12 * 100%;
+    }
+    $column: $column - 1;
+}
