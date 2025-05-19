@@ -1,22 +1,22 @@
 <template>
   <div id="app">
-    <Add></Add>
+    <AddItem></AddItem>
     <hr />
-    <Sub></Sub>
+    <SubItem></SubItem>
   </div>
 </template>
 
 <script>
-import Add from './components/Add.vue'
-import Sub from './components/Sub.vue'
+import AddItem from './components/AddItem.vue'
+import SubItem from './components/SubItem.vue'
 
 export default {
   data() {
     return {}
   },
   components: {
-    Add,
-    Sub,
+    AddItem,
+    SubItem,
   },
 }
 </script>
