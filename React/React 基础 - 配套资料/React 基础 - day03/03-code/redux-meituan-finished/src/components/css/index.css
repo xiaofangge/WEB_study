@@ -1,57 +1,51 @@
-.category .cate-list > .cate-goods:last-child {
-  padding-bottom: 0;
-}
-.category .cate-title {
-  font-size: 14px;
-  line-height: 24px;
-  color: #222426;
-  width: 100%;
-  background-color: #fff;
-  padding: 10px 8px 13px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-};
-  left: 0;
-  bottom: 0;
-  height: 1px;
-  background-color: #e4e4e4;
-  -webkit-transform: scale(1, 0.5);
-          transform: scale(1, 0.5);
-  -webkit-transform-origin: center bottom;
-          transform-origin: center bottom;
-}
-.nav .menu {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  height: 100%;
-}
-.nav .menu-item {
-  position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+.goods-count {
+  font-size: 16px;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding-left: 15px;
-  width: 80px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  color: #666666;
-  font-size: 16px;
+  background-color: #ffffff;
 }
-.nav .menu-item.active {
-  color: #333;
-  font-weight: bolder;
+.goods-count .minus,
+.goods-count .plus {
+  width: 20px;
+  height: 20px;
+  background-size: 20px 20px;
+  position: relative;
 }
-.nav .menu-active-bar {
+.goods-count .minus {
+  margin-right: 12.5px;
+  background-image: url(https://zqran.gitee.io/images/waimai/minus.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+.goods-count .plus {
+  margin-left: 12.5px;
+  background-image: url(https://zqran.gitee.io/images/waimai/plus.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+}0%, -50%);
+  border-radius: 50%;
+  text-align: center;
+}
+.list-menu .list-menu-item.active {
+  background-color: #fff;
+  color: #333333;
+  font-weight: bold;
+}
+.list-menu .list-menu-item img {
+  width: 15px;
+  height: 15px;
+  margin-right: 3px;
+  position: relative;
   display: inline-block;
-  position: absolute;
-  bottom: 0px;
+  vertical-align: top;
+}ottom: 0px;
   left: 0%;
   -webkit-transform: translateX(0);
   transform: translateX(0);

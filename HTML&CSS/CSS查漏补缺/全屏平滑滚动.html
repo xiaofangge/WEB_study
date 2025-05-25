@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>全屏平滑滚动</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      /* html {
+        scroll-behavior: smooth;
+      } */
+
+      body {
+        overflow: hidden;
+      }
+
+      section {
+        height: 100vh;
+        color: white;
+        font-size: 40px;
+        font-weight: bold;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      section:first-child {
+        background-color: red;
+      }
+
+      section:nth-child(2) {
+        background-color: gray;
+      }
+
+      section:last-of-type {
+        background-color: green;
+      }
+    </style>
+  </head>
+
+  <body>
+    <section>selection1</section>
+    <section>selection2</section>
+    <section>selection3</section>
+    <script>
+      let currentSection = 0;
+
+      const sections = document.querySelectorAll("section");
+
+      window.addEventListener("wheel", (event) => {
+        if (event.deltaY > 0) {
+          currentSection = Math.min(currentSection + 1, sections.length - 1);
+        } else {
+          currentSection = Math.max(currentSection - 1, 0);
+        }
+
+        sections[currentSection].scrollIntoView({ behavior: "smooth" });
+      });
+    </script>
+  </body>
+</html>
