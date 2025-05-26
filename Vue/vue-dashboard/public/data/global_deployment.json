@@ -1,0 +1,64 @@
+{
+    "global_deployment": [
+        {
+            "region": "亚太地区",
+            "airports_covered": 142,
+            "user_growth": "8.7%",
+            "compliance_trend": "+2.1%"
+          },
+          {
+            "region": "北美地区",
+            "airports_covered": 200,
+            "user_growth": "3.2%",
+            "compliance_trend": "+0.5%"
+          },
+          {
+            "region": "欧洲地区",
+            "airports_covered": 178,
+            "user_growth": "5.1%",
+            "compliance_trend": "+1.8%"
+          },
+          {
+            "region": "拉丁美洲",
+            "airports_covered": 85,
+            "user_growth": "12.4%",
+            "compliance_trend": "+3.6%"
+          },
+          {
+            "region": "中东地区",
+            "airports_covered": 63,
+            "user_growth": "9.9%",
+            "compliance_trend": "-0.7%"
+          },
+          {
+            "region": "非洲地区",
+            "airports_covered": 47,
+            "user_growth": "15.3%",
+            "compliance_trend": "+4.2%"
+          },
+          {
+            "region": "独联体国家",
+            "airports_covered": 34,
+            "user_growth": "6.8%",
+            "compliance_trend": "+2.9%"
+          },
+          {
+            "region": "大洋洲地区",
+            "airports_covered": 28,
+            "user_growth": "2.1%",
+            "compliance_trend": "+0.3%"
+          },
+          {
+            "region": "北欧地区",
+            "airports_covered": 55,
+            "user_growth": "4.5%",
+            "compliance_trend": "+1.2%"
+          },
+          {
+            "region": "东南亚地区",
+            "airports_covered": 112,
+            "user_growth": "11.2%",
+            "compliance_trend": "+2.7%"
+          }
+    ]
+}

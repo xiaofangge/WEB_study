@@ -1,0 +1,588 @@
+{
+    "scheduled_tasks": [
+        {
+            "task_name": "航后数据归档",
+            "execution_time": "02:00",
+            "success_rate": "99.1%",
+            "avg_duration": "23min",
+            "monthly_stats": {
+                "2023-01": {
+                    "success": 30,
+                    "fail": 1
+                },
+                "2023-02": {
+                    "success": 28,
+                    "fail": 0
+                },
+                "2023-03": {
+                    "success": 31,
+                    "fail": 0
+                },
+                "2023-04": {
+                    "success": 30,
+                    "fail": 1
+                },
+                "2023-05": {
+                    "success": 31,
+                    "fail": 0
+                },
+                "2023-06": {
+                    "success": 30,
+                    "fail": 0
+                },
+                "2023-07": {
+                    "success": 31,
+                    "fail": 0
+                },
+                "2023-08": {
+                    "success": 31,
+                    "fail": 0
+                },
+                "2023-09": {
+                    "success": 30,
+                    "fail": 1
+                },
+                "2023-10": {
+                    "success": 31,
+                    "fail": 0
+                },
+                "2023-11": {
+                    "success": 30,
+                    "fail": 0
+                },
+                "2023-12": {
+                    "success": 31,
+                    "fail": 0
+                }
+            }
+        },
+        {
+            "task_name": "飞行计划预生成",
+            "execution_time": "04:30",
+            "success_rate": "99.8%",
+            "avg_duration": "17min",
+            "monthly_stats": {
+                "2023-01": {
+                    "success": 62,
+                    "fail": 0
+                },
+                "2023-02": {
+                    "success": 56,
+                    "fail": 0
+                },
+                "2023-03": {
+                    "success": 62,
+                    "fail": 1
+                },
+                "2023-04": {
+                    "success": 60,
+                    "fail": 0
+                },
+                "2023-05": {
+                    "success": 62,
+                    "fail": 0
+                },
+                "2023-06": {
+                    "success": 60,
+                    "fail": 0
+                },
+                "2023-07": {
+                    "success": 62,
+                    "fail": 1
+                },
+                "2023-08": {
+                    "success": 62,
+                    "fail": 0
+                },
+                "2023-09": {
+                    "success": 60,
+                    "fail": 0
+                },
+                "2023-10": {
+                    "success": 62,
+                    "fail": 0
+                },
+                "2023-11": {
+                    "success": 60,
+                    "fail": 0
+                },
+                "2023-12": {
+                    "success": 62,
+                    "fail": 0
+                }
+            }
+        },
+        {
+            "task_name": "气象数据同步",
+            "execution_time": "每小时00分",
+            "success_rate": "98.3%",
+            "avg_duration": "8min",
+            "monthly_stats": {
+                "2023-01": {
+                    "success": 720,
+                    "fail": 12
+                },
+                "2023-02": {
+                    "success": 672,
+                    "fail": 9
+                },
+                "2023-03": {
+                    "success": 744,
+                    "fail": 11
+                },
+                "2023-04": {
+                    "success": 720,
+                    "fail": 10
+                },
+                "2023-05": {
+                    "success": 744,
+                    "fail": 9
+                },
+                "2023-06": {
+                    "success": 720,
+                    "fail": 8
+                },
+                "2023-07": {
+                    "success": 744,
+                    "fail": 9
+                },
+                "2023-08": {
+                    "success": 744,
+                    "fail": 7
+                },
+                "2023-09": {
+                    "success": 720,
+                    "fail": 6
+                },
+                "2023-10": {
+                    "success": 744,
+                    "fail": 5
+                },
+                "2023-11": {
+                    "success": 720,
+                    "fail": 4
+                },
+                "2023-12": {
+                    "success": 744,
+                    "fail": 3
+                }
+            }
+        },
+        {
+            "task_name": "配载平衡校验",
+            "execution_time": "起飞前90分钟",
+            "success_rate": "99.5%",
+            "avg_duration": "12min",
+            "monthly_stats": {
+                "2023-01": {
+                    "success": 450,
+                    "fail": 3
+                },
+                "2023-02": {
+                    "success": 420,
+                    "fail": 2
+                },
+                "2023-03": {
+                    "success": 465,
+                    "fail": 2
+                },
+                "2023-04": {
+                    "success": 450,
+                    "fail": 1
+                },
+                "2023-05": {
+                    "success": 465,
+                    "fail": 1
+                },
+                "2023-06": {
+                    "success": 450,
+                    "fail": 0
+                },
+                "2023-07": {
+                    "success": 465,
+                    "fail": 1
+                },
+                "2023-08": {
+                    "success": 465,
+                    "fail": 0
+                },
+                "2023-09": {
+                    "success": 450,
+                    "fail": 0
+                },
+                "2023-10": {
+                    "success": 465,
+                    "fail": 0
+                },
+                "2023-11": {
+                    "success": 450,
+                    "fail": 0
+                },
+                "2023-12": {
+                    "success": 465,
+                    "fail": 0
+                }
+            }
+        },
+        {
+            "task_name": "机务日志备份",
+            "execution_time": "23:45",
+            "success_rate": "99.9%",
+            "avg_duration": "42min",
+            "monthly_stats": {
+                "2023-01": {
+                    "success": 31,
+                    "fail": 0
+                },
+                "2023-02": {
+                    "success": 28,
+                    "fail": 0
+                },
+                "2023-03": {
+                    "success": 31,
+                    "fail": 0
+                },
+                "2023-04": {
+                    "success": 30,
+                    "fail": 0
+                },
+                "2023-05": {
+                    "success": 31,
+                    "fail": 0
+                },
+                "2023-06": {
+                    "success": 30,
+                    "fail": 0
+                },
+                "2023-07": {
+                    "success": 31,
+                    "fail": 0
+                },
+                "2023-08": {
+                    "success": 31,
+                    "fail": 0
+                },
+                "2023-09": {
+                    "success": 30,
+                    "fail": 0
+                },
+                "2023-10": {
+                    "success": 31,
+                    "fail": 0
+                },
+                "2023-11": {
+                    "success": 30,
+                    "fail": 0
+                },
+                "2023-12": {
+                    "success": 31,
+                    "fail": 0
+                }
+            }
+        },
+        {
+            "task_name": "燃油效率计算",
+            "execution_time": "05:15",
+            "success_rate": "97.6%",
+            "avg_duration": "29min",
+            "monthly_stats": {
+                "2023-01": {
+                    "success": 28,
+                    "fail": 2
+                },
+                "2023-02": {
+                    "success": 25,
+                    "fail": 1
+                },
+                "2023-03": {
+                    "success": 28,
+                    "fail": 1
+                },
+                "2023-04": {
+                    "success": 27,
+                    "fail": 1
+                },
+                "2023-05": {
+                    "success": 28,
+                    "fail": 0
+                },
+                "2023-06": {
+                    "success": 27,
+                    "fail": 0
+                },
+                "2023-07": {
+                    "success": 28,
+                    "fail": 1
+                },
+                "2023-08": {
+                    "success": 28,
+                    "fail": 0
+                },
+                "2023-09": {
+                    "success": 27,
+                    "fail": 0
+                },
+                "2023-10": {
+                    "success": 28,
+                    "fail": 0
+                },
+                "2023-11": {
+                    "success": 27,
+                    "fail": 0
+                },
+                "2023-12": {
+                    "success": 28,
+                    "fail": 0
+                }
+            }
+        },
+        {
+            "task_name": "适航证书验证",
+            "execution_time": "实时触发",
+            "success_rate": "99.3%",
+            "avg_duration": "3min",
+            "monthly_stats": {
+                "2023-01": {
+                    "success": 2850,
+                    "fail": 20
+                },
+                "2023-02": {
+                    "success": 2590,
+                    "fail": 15
+                },
+                "2023-03": {
+                    "success": 2880,
+                    "fail": 18
+                },
+                "2023-04": {
+                    "success": 2790,
+                    "fail": 16
+                },
+                "2023-05": {
+                    "success": 2880,
+                    "fail": 14
+                },
+                "2023-06": {
+                    "success": 2790,
+                    "fail": 12
+                },
+                "2023-07": {
+                    "success": 2880,
+                    "fail": 10
+                },
+                "2023-08": {
+                    "success": 2880,
+                    "fail": 9
+                },
+                "2023-09": {
+                    "success": 2790,
+                    "fail": 8
+                },
+                "2023-10": {
+                    "success": 2880,
+                    "fail": 7
+                },
+                "2023-11": {
+                    "success": 2790,
+                    "fail": 5
+                },
+                "2023-12": {
+                    "success": 2880,
+                    "fail": 4
+                }
+            }
+        },
+        {
+            "task_name": "机组排班优化",
+            "execution_time": "06:00",
+            "success_rate": "96.8%",
+            "avg_duration": "55min",
+            "monthly_stats": {
+                "2023-01": {
+                    "success": 28,
+                    "fail": 3
+                },
+                "2023-02": {
+                    "success": 25,
+                    "fail": 2
+                },
+                "2023-03": {
+                    "success": 28,
+                    "fail": 2
+                },
+                "2023-04": {
+                    "success": 27,
+                    "fail": 1
+                },
+                "2023-05": {
+                    "success": 28,
+                    "fail": 1
+                },
+                "2023-06": {
+                    "success": 27,
+                    "fail": 1
+                },
+                "2023-07": {
+                    "success": 28,
+                    "fail": 1
+                },
+                "2023-08": {
+                    "success": 28,
+                    "fail": 0
+                },
+                "2023-09": {
+                    "success": 27,
+                    "fail": 0
+                },
+                "2023-10": {
+                    "success": 28,
+                    "fail": 0
+                },
+                "2023-11": {
+                    "success": 27,
+                    "fail": 0
+                },
+                "2023-12": {
+                    "success": 28,
+                    "fail": 0
+                }
+            }
+        },
+        {
+            "task_name": "跑道状态更新",
+            "execution_time": "每15分钟",
+            "success_rate": "99.7%",
+            "avg_duration": "2min",
+            "monthly_stats": {
+                "2023-01": {
+                    "success": 2880,
+                    "fail": 8
+                },
+                "2023-02": {
+                    "success": 2688,
+                    "fail": 5
+                },
+                "2023-03": {
+                    "success": 2976,
+                    "fail": 6
+                },
+                "2023-04": {
+                    "success": 2880,
+                    "fail": 4
+                },
+                "2023-05": {
+                    "success": 2976,
+                    "fail": 3
+                },
+                "2023-06": {
+                    "success": 2880,
+                    "fail": 2
+                },
+                "2023-07": {
+                    "success": 2976,
+                    "fail": 1
+                },
+                "2023-08": {
+                    "success": 2976,
+                    "fail": 1
+                },
+                "2023-09": {
+                    "success": 2880,
+                    "fail": 0
+                },
+                "2023-10": {
+                    "success": 2976,
+                    "fail": 0
+                },
+                "2023-11": {
+                    "success": 2880,
+                    "fail": 0
+                },
+                "2023-12": {
+                    "success": 2976,
+                    "fail": 0
+                }
+            }
+        },
+        {
+            "task_name": "应急设备检查",
+            "execution_time": "每日06:00",
+            "success_rate": "100%",
+            "avg_duration": "15min",
+            "monthly_stats": {
+                "2023-01": {
+                    "success": 31,
+                    "fail": 0
+                },
+                "2023-02": {
+                    "success": 28,
+                    "fail": 0
+                },
+                "2023-03": {
+                    "success": 31,
+                    "fail": 0
+                },
+                "2023-04": {
+                    "success": 30,
+                    "fail": 0
+                },
+                "2023-05": {
+                    "success": 31,
+                    "fail": 0
+                },
+                "2023-06": {
+                    "success": 30,
+                    "fail": 0
+                },
+                "2023-07": {
+                    "success": 31,
+                    "fail": 0
+                },
+                "2023-08": {
+                    "success": 31,
+                    "fail": 0
+                },
+                "2023-09": {
+                    "success": 30,
+                    "fail": 0
+                },
+                "2023-10": {
+                    "success": 31,
+                    "fail": 0
+                },
+                "2023-11": {
+                    "success": 30,
+                    "fail": 0
+                },
+                "2023-12": {
+                    "success": 31,
+                    "fail": 0
+                }
+            }
+        },
+        {
+            "task_name": "旅客数据加密",
+            "execution_time": "实时处理",
+            "success_rate": "99.4%",
+            "avg_duration": "5min",
+            "monthly_stats": {
+                "2023-01": {
+                    "success": 85000,
+                    "fail": 500
+                },
+                "2023-02": {
+                    "success": 76500,
+                    "fail": 400
+                },
+                "2023-03": {
+                    "success": 89000,
+                    "fail": 450
+                },
+                "2023-12": {
+                    "success": 90000,
+                    "fail": 300
+                }
+            }
+        }
+    ]
+}

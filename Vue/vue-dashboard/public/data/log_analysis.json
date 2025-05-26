@@ -1,0 +1,64 @@
+{
+    "log_analysis": [
+        {
+            "log_type": "配载修正",
+            "daily_avg": 87,
+            "error_correlation": 0.12
+        },
+        {
+            "log_type": "重心告警",
+            "daily_avg": 23,
+            "error_correlation": 0.78
+        },
+        {
+            "log_type": "油量校准",
+            "daily_avg": 45,
+            "error_correlation": 0.32
+        },
+        {
+            "log_type": "舱单冲突",
+            "daily_avg": 16,
+            "error_correlation": 0.91
+        },
+        {
+            "log_type": "数据同步异常",
+            "daily_avg": 62,
+            "error_correlation": 0.25
+        },
+        {
+            "log_type": "传感器漂移",
+            "daily_avg": 9,
+            "error_correlation": 0.67
+        },
+        {
+            "log_type": "权限越界访问",
+            "daily_avg": 3,
+            "error_correlation": 0.55
+        },
+        {
+            "log_type": "气象数据延迟",
+            "daily_avg": 28,
+            "error_correlation": 0.43
+        },
+        {
+            "log_type": "配平超时",
+            "daily_avg": 34,
+            "error_correlation": 0.82
+        },
+        {
+            "log_type": "版本回滚记录",
+            "daily_avg": 1,
+            "error_correlation": 0.95
+        },
+        {
+            "log_type": "网络波动重传",
+            "daily_avg": 78,
+            "error_correlation": 0.18
+        },
+        {
+            "log_type": "硬件温度告警",
+            "daily_avg": 12,
+            "error_correlation": 0.63
+        }
+    ]
+}

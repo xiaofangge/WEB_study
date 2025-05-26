@@ -1,0 +1,70 @@
+{
+    "aircraft_compatibility": [
+        {
+            "model": "A350-900",
+            "software_support": "Full",
+            "payload_accuracy": "±0.5%",
+            "airlines_using": 28
+          },
+          {
+            "model": "B787-9",
+            "software_support": "Full",
+            "payload_accuracy": "±0.6%",
+            "airlines_using": 42
+          },
+          {
+            "model": "A320neo",
+            "software_support": "Advanced",
+            "payload_accuracy": "±0.8%",
+            "airlines_using": 135
+          },
+          {
+            "model": "B777-300ER",
+            "software_support": "Legacy",
+            "payload_accuracy": "±1.2%",
+            "airlines_using": 67
+          },
+          {
+            "model": "A220-300",
+            "software_support": "Full",
+            "payload_accuracy": "±0.7%",
+            "airlines_using": 38
+          },
+          {
+            "model": "B737 MAX 8",
+            "software_support": "Conditional",
+            "payload_accuracy": "±1.0%",
+            "airlines_using": 89
+          },
+          {
+            "model": "CRJ-900",
+            "software_support": "Basic",
+            "payload_accuracy": "±2.0%",
+            "airlines_using": 54
+          },
+          {
+            "model": "E195-E2",
+            "software_support": "Full",
+            "payload_accuracy": "±0.9%",
+            "airlines_using": 27
+          },
+          {
+            "model": "A330-900neo",
+            "software_support": "Advanced",
+            "payload_accuracy": "±0.6%",
+            "airlines_using": 33
+          },
+          {
+            "model": "B747-8F",
+            "software_support": "Cargo",
+            "payload_accuracy": "±0.4%",
+            "airlines_using": 19
+          },
+          {
+            "model": "ATR 72-600",
+            "software_support": "Regional",
+            "payload_accuracy": "±1.5%",
+            "airlines_using": 62
+          }
+    ]
+}

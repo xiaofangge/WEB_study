@@ -1,0 +1,94 @@
+{
+    "airport_metrics": [
+        {
+            "airport": "PEK",
+            "max_payload": 89.2,
+            "software_utilization": "92%",
+            "alert_frequency": 2.3
+        },
+        {
+            "airport": "JFK",
+            "max_payload": 95.8,
+            "software_utilization": "88%",
+            "alert_frequency": 3.1
+        },
+        {
+            "airport": "DXB",
+            "max_payload": 102.4,
+            "software_utilization": "96%",
+            "alert_frequency": 1.7
+        },
+        {
+            "airport": "HND",
+            "max_payload": 78.5,
+            "software_utilization": "94%",
+            "alert_frequency": 2.8
+        },
+        {
+            "airport": "CDG",
+            "max_payload": 87.3,
+            "software_utilization": "89%",
+            "alert_frequency": 4.2
+        },
+        {
+            "airport": "ATL",
+            "max_payload": 105.6,
+            "software_utilization": "98%",
+            "alert_frequency": 0.9
+        },
+        {
+            "airport": "SIN",
+            "max_payload": 82.9,
+            "software_utilization": "91%",
+            "alert_frequency": 1.5
+        },
+        {
+            "airport": "FRA",
+            "max_payload": 93.1,
+            "software_utilization": "93%",
+            "alert_frequency": 2.6
+        },
+        {
+            "airport": "LAX",
+            "max_payload": 99.7,
+            "software_utilization": "90%",
+            "alert_frequency": 3.5
+        },
+        {
+            "airport": "IST",
+            "max_payload": 85.4,
+            "software_utilization": "87%",
+            "alert_frequency": 5.0
+        },
+        {
+            "airport": "SYD",
+            "max_payload": 76.8,
+            "software_utilization": "85%",
+            "alert_frequency": 2.0
+        },
+        {
+            "airport": "AMS",
+            "max_payload": 81.2,
+            "software_utilization": "95%",
+            "alert_frequency": 1.8
+        },
+        {
+            "airport": "DEL",
+            "max_payload": 72.3,
+            "software_utilization": "83%",
+            "alert_frequency": 4.8
+        },
+        {
+            "airport": "LHR",
+            "max_payload": 88.7,
+            "software_utilization": "97%",
+            "alert_frequency": 3.9
+        },
+        {
+            "airport": "KEF",
+            "max_payload": 65.4,
+            "software_utilization": "80%",
+            "alert_frequency": 6.2
+        }
+    ]
+}
