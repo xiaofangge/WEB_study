@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文字纵向对齐vertical-align</title>
+    <style>
+        #align {
+            /* font-size: small; */
+            font-size: 6px;
+            color: red;
+            /* vertical-align: top; */
+            /* vertical-align: text-top; */
+            /* vertical-align: 20px; */
+            vertical-align: top;
+        }
+        .temp-unit span {
+            font-size: 6px;
+            vertical-align: top;
+        }
+    </style>
+</head>
+<body>
+    <span>
+        hello
+        <span id="align">is</span>
+        fun
+    </span>
+    <br>
+    <span class="temp-unit">
+        <span>o</span>
+        C
+    </span>
+</body>
+</html>
