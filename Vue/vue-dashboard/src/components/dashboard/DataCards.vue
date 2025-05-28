@@ -5,36 +5,42 @@
         总用户数
         <el-icon class="card-icon"><UserFilled /></el-icon>
       </div>
-      <div class="value">{{ props.stats.totalUsers }}</div>
+      <div class="value">{{ stats.totalUsers }}</div>
     </div>
     <div class="card">
       <div class="label">
         在线率
         <el-icon class="card-icon"><Connection /></el-icon>
       </div>
-      <div class="value">{{ props.stats.onlineRatio }}%</div>
+      <div class="value">{{ stats.onlineRatio }}%</div>
     </div>
     <div class="card">
       <div class="label">
         飞机总数
         <el-icon class="card-icon"><Guide /></el-icon>
       </div>
-      <div class="value">{{ props.stats.totalPlanes }}</div>
+      <div class="value">{{ stats.totalPlanes }}</div>
     </div>
     <div class="card">
       <div class="label">
         货机占比
         <el-icon class="card-icon"><Van /></el-icon>
       </div>
-      <div class="value">{{ props.stats.cargoRatio }}%</div>
+      <div class="value">{{ stats.cargoRatio }}%</div>
     </div>
   </div>
 </template>
 
-<script setup>
-import { defineProps } from 'vue'
-import { UserFilled, Connection, Guide, Van } from '@element-plus/icons-vue'
-const props = defineProps({ stats: Object })
+<script>
+export default {
+  name: 'DataCards',
+  props: {
+    stats: {
+      type: Object,
+      default: () => ({})
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>

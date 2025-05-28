@@ -5,15 +5,17 @@
       <div class="dashboard-left">
         <UserCard :user="mainUser" />
         <BirthdayList :users="birthdayUsers" />
-        <AirlineLineChart :chart-data="chartData" />
         <ScatterChart />
       </div>
       <!-- 中间栏：数据卡片、统计图表+时间线 -->
       <div class="dashboard-center">
         <div class="card-row"><DataCards :stats="stats" /></div>
         <div class="chart-row">
-          <PieRadarChart :pie-data="pieData" :radar-data="radarData" />
+          <AirlineLineChart :chart-data="chartData" />
+          <PieChart :pie-data="pieData" />
+          <RadarChart :radar-data="radarData" />
           <TimelinePanel :logs="logs" />
+          <GlobalStatsPanel :data="globalData" />
         </div>
       </div>
       <!-- 右侧栏：日历、事件 -->
@@ -26,10 +28,8 @@
 </template>
 
 <script>
-import { ref, onMounted } from 'vue'
 import DataCards from './dashboard/DataCards.vue'
 import BarLineChart from './dashboard/BarLineChart.vue'
-import PieRadarChart from './dashboard/PieRadarChart.vue'
 import TimelinePanel from './dashboard/TimelinePanel.vue'
 import CustomCalendar from './dashboard/CustomCalendar.vue'
 import UserCard from './dashboard/UserCard.vue'
@@ -37,66 +37,90 @@ import BirthdayList from './dashboard/BirthdayList.vue'
 import EventList from './dashboard/EventList.vue'
 import AirlineLineChart from './dashboard/AirlineLineChart.vue'
 import ScatterChart from './dashboard/ScatterChart.vue'
+import GlobalStatsPanel from './dashboard/GlobalStatsPanel.vue'
+import RadarChart from './dashboard/RadarChart.vue'
+import PieChart from './dashboard/PieChart.vue'
 
 export default {
   name: 'DashboardHome',
   components: {
     DataCards,
     BarLineChart,
-    PieRadarChart,
+    PieChart,
     TimelinePanel,
+    RadarChart,
     CustomCalendar,
     UserCard,
     BirthdayList,
     EventList,
     AirlineLineChart,
-    ScatterChart
+    ScatterChart,
+    GlobalStatsPanel
   },
-  setup() {
-    const mainUser = ref(null)
-    const birthdayUsers = ref([])
-    const stats = ref({})
-    const chartData = ref([])
-    const pieData = ref([])
-    const radarData = ref([])
-    const logs = ref([])
-    const events = ref([])
-    const calendarDate = ref(new Date())
-
-    onMounted(async () => {
-      // 用户与生日
-      const userRes = await fetch('/data/user_activity.json')
-      const userJson = await userRes.json()
-      mainUser.value = userJson.user_activity[0]
-      birthdayUsers.value = userJson.user_activity.slice(1, 4)
-      // 统计卡片
-      const planeRes = await fetch('/data/airline_operations.json')
-      const planeJson = await planeRes.json()
-      stats.value = {
-        totalUsers: userJson.user_activity.reduce((sum, d) => sum + d.total_users, 0),
-        onlineRatio: Number((userJson.user_activity.reduce((sum, d) => sum + parseFloat(d.online_ratio), 0) / userJson.user_activity.length).toFixed(1)),
-        totalPlanes: planeJson.airline_operations.reduce((sum, d) => sum + d.total_aircraft, 0),
-        cargoRatio: Number((planeJson.airline_operations.reduce((sum, d) => sum + parseFloat(d.cargo_ratio), 0) / planeJson.airline_operations.length).toFixed(1))
-      }
-      // 图表
-      chartData.value = planeJson.airline_operations.slice(0, 5)
-      const pieRes = await fetch('/data/regulation_distribution.json')
-      const pieJson = await pieRes.json()
-      pieData.value = pieJson.regulation_distribution.slice(0, 6)
-      const radarRes = await fetch('/data/airport_metrics.json')
-      const radarJson = await radarRes.json()
-      radarData.value = radarJson.airport_metrics.slice(0, 6)
-      // 时间线
-      const logRes = await fetch('/data/log_analysis.json')
-      const logJson = await logRes.json()
-      logs.value = logJson.log_analysis
-      // 事件
-      const taskRes = await fetch('/data/scheduled_tasks.json')
-      const taskJson = await taskRes.json()
-      events.value = taskJson.scheduled_tasks;
-    })
-
-    return { mainUser, birthdayUsers, stats, chartData, pieData, radarData, logs, events, calendarDate }
+  data() {
+    return {
+      mainUser: null,
+      birthdayUsers: [],
+      stats: {},
+      chartData: [],
+      pieData: [],
+      radarData: [],
+      logs: [],
+      events: [],
+      calendarDate: new Date(),
+      globalData: []
+    }
+  },
+  mounted() {
+    // 用户与生日
+    fetch('/data/user_activity.json')
+      .then(res => res.json())
+      .then(userJson => {
+        this.mainUser = userJson.user_activity[0]
+        this.birthdayUsers = userJson.user_activity.slice(1, 4)
+        // 统计卡片
+        fetch('/data/airline_operations.json')
+          .then(res => res.json())
+          .then(planeJson => {
+            this.stats = {
+              totalUsers: userJson.user_activity.reduce((sum, d) => sum + d.total_users, 0),
+              onlineRatio: Number((userJson.user_activity.reduce((sum, d) => sum + parseFloat(d.online_ratio), 0) / userJson.user_activity.length).toFixed(1)),
+              totalPlanes: planeJson.airline_operations.reduce((sum, d) => sum + d.total_aircraft, 0),
+              cargoRatio: Number((planeJson.airline_operations.reduce((sum, d) => sum + parseFloat(d.cargo_ratio), 0) / planeJson.airline_operations.length).toFixed(1))
+            }
+            this.chartData = planeJson.airline_operations.slice(0, 5)
+          })
+        // 饼图
+        fetch('/data/regulation_distribution.json')
+          .then(res => res.json())
+          .then(pieJson => {
+            this.pieData = pieJson.regulation_distribution.slice(0, 6)
+          })
+        // 雷达图
+        fetch('/data/airport_metrics.json')
+          .then(res => res.json())
+          .then(radarJson => {
+            this.radarData = radarJson.airport_metrics.slice(0, 6)
+          })
+        // 时间线
+        fetch('/data/log_analysis.json')
+          .then(res => res.json())
+          .then(logJson => {
+            this.logs = logJson.log_analysis
+          })
+        // 事件
+        fetch('/data/scheduled_tasks.json')
+          .then(res => res.json())
+          .then(taskJson => {
+            this.events = taskJson.scheduled_tasks
+          })
+        // 全球部署
+        fetch('/data/global_deployment.json')
+          .then(res => res.json())
+          .then(globalJson => {
+            this.globalData = globalJson.global_deployment
+          })
+      })
   }
 }
 </script>

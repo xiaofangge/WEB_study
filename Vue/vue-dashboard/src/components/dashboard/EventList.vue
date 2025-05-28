@@ -12,10 +12,28 @@
   </div>
 </template>
 
-<script setup>
-import { computed, defineProps } from 'vue'
-const props = defineProps({ date: Date, events: Array })
-const dateStr = computed(() => props.date ? props.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) : '')
+<script>
+export default {
+  name: 'EventList',
+  props: {
+    date: {
+      type: [String, Date],
+      default: ''
+    },
+    events: {
+      type: Array,
+      default: () => []
+    }
+  },
+  data() {
+    return {
+      dateStr: ''
+    }
+  },
+  mounted() {
+    this.dateStr = this.date ? this.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) : ''
+  }
+}
 </script>
 
 <style lang="scss" scoped>

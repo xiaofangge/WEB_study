@@ -16,9 +16,16 @@
   </div>
 </template>
 
-<script setup>
-import { defineProps } from 'vue'
-const props = defineProps({ user: Object })
+<script>
+export default {
+  name: 'UserCard',
+  props: {
+    user: {
+      type: Object,
+      default: () => ({})
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>

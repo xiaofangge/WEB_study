@@ -1,7 +1,7 @@
 <template>
   <div class="birthday-list">
     <div class="title">Upcoming Birthdays</div>
-    <div class="birthday-item" v-for="user in props.users" :key="user.department">
+    <div class="birthday-item" v-for="user in users" :key="user.department">
       <span v-if="!user.avatar" class="avatar avatar-text">{{ user.department ? user.department[0] : '?' }}</span>
       <img v-else :src="user.avatar" class="avatar" />
       <div class="info">
@@ -12,13 +12,15 @@
   </div>
 </template>
 
-<script setup>
-import { defineProps } from 'vue'
-const props = defineProps({ users: Array })
-function randomBirthday() {
-  // 随机生成生日标签
-  const tags = ['Today', 'Tomorrow', 'Next Week', '14.07.2022']
-  return tags[Math.floor(Math.random() * tags.length)]
+<script>
+export default {
+  name: 'BirthdayList',
+  props: {
+    users: {
+      type: Array,
+      default: () => []
+    }
+  }
 }
 </script>
 

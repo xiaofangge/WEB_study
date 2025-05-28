@@ -21,71 +21,24 @@
     </div>
 </template>
 
-<script setup>
-import { ref, computed, watch, defineProps, defineEmits } from 'vue'
-const props = defineProps({
-    modelValue: Date
-})
-const emit = defineEmits(['update:modelValue'])
-const today = new Date()
-const current = ref(new Date(props.modelValue || today))
-const selected = ref(new Date(props.modelValue || today))
-const weekDays = ['S', 'M', 'T', 'W', 'T', 'F', 'S']
-const dots = [5, 15] // 可自定义有小圆点的日期
-const monthYear = computed(() =>
-    current.value.toLocaleString('en-US', { month: 'long', year: 'numeric' })
-)
-const selectedWeekday = computed(() =>
-    selected.value.toLocaleString('en-US', { weekday: 'long' })
-)
-function daysInMonth(year, month) {
-    return new Date(year, month + 1, 0).getDate()
-}
-const days = computed(() => {
-    const year = current.value.getFullYear()
-    const month = current.value.getMonth()
-    const firstDay = new Date(year, month, 1).getDay()
-    const total = daysInMonth(year, month)
-    const arr = []
-    // 上月补位
-    for (let i = 0; i < firstDay; i++) {
-        arr.push({ day: '', otherMonth: true })
+<script>
+export default {
+    name: 'CustomCalendar',
+    props: {
+        value: {
+            type: [String, Date],
+            default: ''
+        }
+    },
+    data() {
+        return {
+            // 这里初始化日历相关数据
+        }
+    },
+    methods: {
+        // 这里实现日历相关方法
     }
-    // 本月天数
-    for (let d = 1; d <= total; d++) {
-        arr.push({
-            day: d,
-            date: new Date(year, month, d),
-            otherMonth: false,
-            hasDot: dots.includes(d)
-        })
-    }
-    // 补齐42格
-    while (arr.length < 42) arr.push({ day: '', otherMonth: true })
-    return arr
-})
-function isToday(d) {
-    if (!d.date) return false
-    return d.date.toDateString() === today.toDateString()
 }
-function isSelected(d) {
-    if (!d.date) return false
-    return d.date.toDateString() === selected.value.toDateString()
-}
-function selectDate(d) {
-    if (!d.date) return
-    selected.value = d.date
-    emit('update:modelValue', d.date)
-}
-function prevMonth() {
-    current.value = new Date(current.value.getFullYear(), current.value.getMonth() - 1, 1)
-}
-function nextMonth() {
-    current.value = new Date(current.value.getFullYear(), current.value.getMonth() + 1, 1)
-}
-watch(() => props.modelValue, v => {
-    if (v) selected.value = new Date(v)
-})
 </script>
 
 <style lang="scss" scoped>
