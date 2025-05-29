@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>auto 与 minmax</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            display: grid;
+            place-items: center;
+            width: 100vw;
+            height: 100vh;
+        }
+        .gird-box {
+            color: white;
+            font-size: 6px;
+            width: 80vw;
+            height: 60vh;
+            background-color: black;
+            display: grid;
+            /* grid-template-columns: 60px 30px auto minmax(10px, 80px); */
+            /* grid-template-columns: repeat(3, 30px); */
+            /* grid-template-columns: repeat(auto-fill, 30px); */
+            /* grid-template-columns: 40px repeat(auto-fit, 30px); */
+            grid-template-columns: 40px repeat(auto-fit, minmax(10px, 1fr));
+            grid-template-rows: 1fr 1fr 2fr repeat(3, 10px);
+            gap: 5px;
+        }
+        .gird-box > div:nth-child(3) {
+            width: 30px;
+            height: 10px;
+            background-color: skyblue;
+        }
+        .gird-box > div:nth-child(4) {
+            width: 30px;
+            height: 10px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="gird-box">
+        <div>child1</div>
+        <div>child2</div>
+        <div>child3</div>
+        <div>child4</div>
+    </div>
+</body>
+</html>

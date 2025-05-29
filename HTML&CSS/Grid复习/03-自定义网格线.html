@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        body {
+            width: 100vw;
+            height: 100vh;
+            display: grid;
+            place-items: center;
+        }
+        .grid-box {
+            width: 80vw;
+            height: 80vh;
+            color: white;
+            display: grid;
+            /* grid-template-columns: repeat(4, 1fr); */
+            grid-template-columns: [line1] 1fr [line2] 1fr [line3] 1fr [line4] 1fr [line5];
+            grid-template-rows: [horizon1] 1fr [horizon2] 1fr [horizon3] 1fr [horizon4] 1fr [horizon5];
+            /* grid-template-rows: repeat(4, 1fr); */
+            grid-auto-flow: row;
+            /* grid-auto-flow: column; */
+            /* grid-auto-flow: dense; */
+        }
+        .grid-box div {
+            display: grid;
+            place-items: center;
+            background-color: var(--color);
+        }
+        .grid-box div:first-child {
+            width: 40px;
+            height: 20px;
+            order: 1;
+        }
+        .grid-box div:last-child {
+            grid-column: line2 / line5;
+            grid-row: horizon2 / horizon3;
+        }
+
+    </style>    
+  </head>
+  <body>
+    <div class="grid-box">
+        <div style="--color: red;">1</div>
+        <div style="--color: orange;">2</div>
+        <div style="--color: yellow;">3</div>
+        <div style="--color: green;">4</div>
+        <div style="--color: blue;">5</div>
+        <div style="--color: gray;">6</div>
+        <div style="--color: pink;">7</div>
+        <div style="--color: aqua;">8</div>
+        <div style="--color: skyblue;">9</div>
+    </div>
+  </body>
+</html>

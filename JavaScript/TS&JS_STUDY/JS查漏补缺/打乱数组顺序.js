@@ -21,7 +21,6 @@ function verifyRandomness(arr, iterations = 1000) {
         const key = shuffled.join(',');
         counts[key] = (counts[key] || 0) + 1;
     }
-    return counts;
 }
 
 // 打印每种排列出现的次数
