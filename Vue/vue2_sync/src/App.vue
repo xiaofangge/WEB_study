@@ -6,6 +6,8 @@
     <BaseForm ref="baseform" />
     <button @click="handleGet">获取数据</button>
     <button @click="handleReset">重置数据</button>
+    <hr>
+    <button @click="handleMyMsg">调用消息</button>
   </div>
 </template>
 
@@ -34,6 +36,12 @@ export default {
     },
     handleReset() {
       this.$refs.baseform.reset()
+    },
+    handleMyMsg() {
+      this.$myMsg({
+        label: '这是一个新消息',
+        time: 5000
+      })
     }
   }
 }
