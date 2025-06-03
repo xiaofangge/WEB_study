@@ -3,7 +3,7 @@
     <div class="dashboard-grid">
       <!-- 左侧栏：用户卡片、生日 -->
       <div class="dashboard-left">
-        <UserCard :user="mainUser" />
+        <UserCard :departments="departments" />
         <BirthdayList :users="birthdayUsers" />
         <ScatterChart />
       </div>
@@ -59,7 +59,7 @@ export default {
   },
   data() {
     return {
-      mainUser: null,
+      departments: [],
       birthdayUsers: [],
       stats: {},
       chartData: [],
@@ -76,7 +76,7 @@ export default {
     fetch('/data/user_activity.json')
       .then(res => res.json())
       .then(userJson => {
-        this.mainUser = userJson.user_activity[0]
+        this.departments = userJson.user_activity
         this.birthdayUsers = userJson.user_activity.slice(1, 4)
         // 统计卡片
         fetch('/data/airline_operations.json')

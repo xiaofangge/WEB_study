@@ -7,6 +7,7 @@ import Test4 from './components/Test4.vue';
 import MyUI from './libs/MyUI';
 import router from "./router";
 import store from './store/index';
+import JsppUI from './libs/jspp-ui';
 
 const app = createApp(App)
 
@@ -32,6 +33,7 @@ app.use(MyUI, {
     components: ['MyButton', 'MyInput']
 })
 app.use(ElementPlus);
+app.use(JsppUI);
 
 
 // 统一错误处理

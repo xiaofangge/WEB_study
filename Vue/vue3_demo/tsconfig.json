@@ -20,6 +20,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "src/libs/utils.ts", "src/utils/emitter.ts"],
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "src/libs/utils.ts", "src/utils/emitter.ts", "src/libs/jspp-ui/index.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
