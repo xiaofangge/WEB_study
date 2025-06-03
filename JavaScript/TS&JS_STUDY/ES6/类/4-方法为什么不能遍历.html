@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Hd(name) {
+            this.name = name;
+        }
+        Hd.prototype.show = function() {
+            console.log("Hello World");
+        }
+        console.log(JSON.stringify(
+            Object.getOwnPropertyDescriptor(Hd.prototype, "show"),
+            null,
+            2
+        ))
+        console.log("-------")
+        let h = new Hd('后盾人');
+        // for (const key in h) {  
+        //     console.log(key);
+        // }
+        for (const key in h) {
+            if (h.hasOwnProperty(key)) {
+                console.log(key);
+            }   
+        }
+
+        console.log("-------")
+
+        class User {
+            constructor(name) {
+                this.name = name;
+            }
+            show() {
+                console.log("Hello World");
+            }
+        }
+        console.log(JSON.stringify(
+            Object.getOwnPropertyDescriptor(User.prototype, "show"),
+            null,
+            2
+        ))
+        // {
+        //   "writable": true,
+        //   "enumerable": false,
+        //   "configurable": true
+        // }
+        let u = new User('前端');
+        for (const key in u) {
+            console.log(key);
+        }
+    </script>
+</body>
+</html>

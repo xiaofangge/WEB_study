@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class User {
+            constructor(name) {
+                this.name = name;
+            }
+            show() {}
+        }
+        console.dir(User)
+        // console.log(User === User.prototype.constructor) // true
+        const u = new User("后盾人")
+        console.dir(u)
+        console.log(Object.getOwnPropertyNames(u))
+        console.log("获取原型上的方法 => ", Object.getOwnPropertyNames(User.prototype))
+        function Hd(name) {
+            this.name = name;
+        }
+        Hd.prototype.show = () => {
+
+        }
+        console.dir(Hd)
+        const h = new Hd("前盾人")
+        console.dir(h)
+        console.log(Object.getOwnPropertyNames(h))
+        console.log("获取原型上的方法 => ", Object.getOwnPropertyNames(Hd.prototype))
+        // console.log(Hd === Hd.prototype.constructor)    // true
+    </script>
+</body>
+</html>

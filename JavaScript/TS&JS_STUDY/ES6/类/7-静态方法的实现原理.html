@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function User() {}
+        User.prototype.show = function() {
+            console.log("prototype show");
+        }
+        User.__proto__.show = function() {
+            console.log(this)  // ƒ User() {}
+            console.log(this === User) // true
+            console.log(this === User.prototype.constructor) // true
+            console.log("static show");
+        }
+        User.show()
+        console.dir(User);
+
+        console.log("-----------------")
+
+        class Web {
+            show() {
+                console.log("prototype.show")
+            }
+            static show() {
+                console.log(this)  // class Web
+                console.log(this === Web) // true
+                console.log(this === Web.prototype.constructor) // true
+                console.log("static.show");
+            }
+        }
+        Web.show();
+        new Web().show()
+        console.dir(Web);
+
+        console.log("-----------------")
+        class Boy {
+            constructor(name, age, sex, grade) {
+                this.name = name;
+                this.age = age;
+                this.sex = sex;
+                this.grade = grade;
+            }
+            static create(...args) {
+                return new this(...args);
+            }
+        }
+        console.dir(Boy.create("后盾人", 18, "男", "研三"));
+    </script>
+</body>
+</html>

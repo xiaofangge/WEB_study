@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // "use strict";
+        // 严格模式下，this指向undefined
+        function show() {
+            console.log(this)  // undefined
+        }
+        show()
+
+        function User(name) {
+            this.name = name;
+        }
+        User.prototype.show = function() {
+            function test() {
+                console.log(this)   // undefined
+            }
+            test()
+        }
+        let u = new User("后盾人");
+        u.show()  
+
+        // class 默认在严格模式下运行
+        class Hd {
+            show() {
+                function test() {
+                    console.log(this)   // undefined
+                }
+                test()
+            }
+        }
+        let h = new Hd();
+        h.show()
+        
+    </script>
+</body>
+</html>

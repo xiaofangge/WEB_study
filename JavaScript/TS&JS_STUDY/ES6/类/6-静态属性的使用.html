@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Web(url) {
+            this.url = url;
+        }
+        // 使用静态属性
+        Web.url = 'https://www.baidu.com'
+        let web = new Web("https://www.houdunren.com");
+        console.log(web.url); // https://www.houdunren.com
+        console.log(Web.url); // https://www.baidu.com
+        console.dir(Web)
+
+        class Request {
+            static host = 'https://www.houdunren.com';
+            api(url) {
+                return `${Request.host}${url}`;
+            }
+        }
+        console.dir(Request)
+        let q = new Request();
+        console.log(q.api('/api/user')); // https://www.houdunren.com/api/user
+    </script>
+</body>
+</html>

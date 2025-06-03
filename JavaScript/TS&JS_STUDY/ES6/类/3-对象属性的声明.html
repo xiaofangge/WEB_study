@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象属性的声明</title>
+</head>
+<body>
+    <script>
+        class User {
+            // 声明对象属性
+            site = "后盾人";
+            constructor(name) {
+                this.name = name;
+            }
+            setSite(site) {
+                this.site = site;
+            }
+            show() {
+                return `${this.site}:${this.name}`;
+            }
+        }
+        let user = new User("前端");
+        user.setSite("Frontend");
+        console.log(user.show());
+    </script>
+</body>
+</html>

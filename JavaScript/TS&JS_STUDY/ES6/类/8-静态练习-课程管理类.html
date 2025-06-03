@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const data = [
+            { name: "JavaScript", price: 1000 },
+            { name: "HTML", price: 500 },
+            { name: "CSS", price: 500 },
+            { name: "Vue", price: 1500 },
+            { name: "React", price: 1800 },
+            { name: "Node.js", price: 1300 }
+        ]
+        class Lesson {
+            constructor(_data) {
+                this.model = _data
+            }
+            // 访问器
+            get name() {
+                return this.model.name
+            }
+            get price() {
+                return this.model.price
+            }
+            static createBatch(_data) {
+                return _data.map(item => new this(item))
+            }
+            static maxPrice(_data) {
+                return _data.sort((a, b) => b.price - a.price)[0]
+            }
+            static totalPrice(_data) {
+                return _data.reduce((total, item) => total + item.price, 0)
+            }
+        }
+        const lessons = Lesson.createBatch(data)
+        console.log(lessons)
+        console.log(Lesson.maxPrice(lessons))
+        console.log(Lesson.maxPrice(lessons).name)
+        console.log(Lesson.maxPrice(lessons).price)
+        console.log(Lesson.totalPrice(lessons))
+    </script>
+</body>
+</html>
