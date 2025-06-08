@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>属性保护</title>
+</head>
+<body>
+    <script>
+        // const host = new WeakMap();
+        const protecteds = new WeakMap();
+        class Common {
+            // 属性保护
+            // [HOST] = "https://www.houdunren.com";
+            constructor() {
+                protecteds.set(this, {
+                    host: "https://www.houdunren.com"
+                });
+            }
+            // 访问器
+            set host(url) {
+                if (!/^https?:/i.test(url)) {
+                    throw new Error("URL must start with http:// or https://");
+                }
+                protecteds.set(this, {
+                    ...protecteds.get(this),
+                    host: url
+                });
+            }
+            get host() {
+                return protecteds.get(this).host;
+            }
+        }
+        class User extends Common {
+            
+            constructor(name) {
+                // 调用父类构造函数
+                super();
+                protecteds.set(this, {
+                    ...protecteds.get(this),
+                    name: name
+                });
+            }
+            get name() {
+                return protecteds.get(this).name;
+            }
+            set name(name) {
+                if (typeof name !== 'string' || name.trim() === '') {
+                    throw new Error("Name must be a non-empty string");
+                }
+                protecteds.set(this, {
+                    ...protecteds.get(this),
+                    name: name
+                });
+            }
+        }
+        let user = new User("hdcms");
+        user.host = 'https://www.hdcms.com';
+        console.log(user)
+        console.log(user.host)
+        console.log(user.name)
+    </script>
+</body>
+</html>

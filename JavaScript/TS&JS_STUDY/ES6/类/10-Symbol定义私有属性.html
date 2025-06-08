@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>属性保护</title>
+</head>
+<body>
+    <script>
+        // const HOST = Symbol();
+        const protecteds = Symbol();
+        class Common {
+            // 属性保护
+            // [HOST] = "https://www.houdunren.com";
+            constructor() {
+                this[protecteds] = {};
+                this[protecteds].host = "https://www.houdunren.com";
+            }
+            set host(url) {
+                if (!/^https?:/i.test(url)) {
+                    throw new Error("URL must start with http:// or https://");
+                }
+                this[protecteds].host = url;
+            }
+            get host() {
+                return this[protecteds].host;
+            }
+        }
+        class User extends Common {
+            
+            constructor(name) {
+                // 调用父类构造函数
+                super();
+                this[protecteds].name = name;
+            }
+            get name() {
+                return this[protecteds].name;
+            }
+            set name(name) {
+                if (typeof name !== 'string' || name.trim() === '') {
+                    throw new Error("Name must be a non-empty string");
+                }
+                this[protecteds].name = name;
+            }
+        }
+        let user = new User("hdcms");
+        user.host = 'https://www.hdcms.com';
+        console.log(user)
+        console.log(user.host)
+        console.log(user.name)
+    </script>
+</body>
+</html>

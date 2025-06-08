@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>isPrototypeOf</title>
+</head>
+<body>
+    <script>
+        let a = {};
+        let b = {
+            __proto__: a // 设置b的原型为a
+        }
+        console.log(b.__proto__ === a); // true
+        console.log(a.isPrototypeOf(b)); // true
+
+        console.log("--------------------");
+        // 使用isPrototypeOf方法检查原型链
+        class Common {}
+        class User extends Common {}
+        class Admin extends User {}
+        let hd = new Admin();
+        console.log(Admin.prototype.isPrototypeOf(hd)); // true
+        console.log(User.prototype.isPrototypeOf(hd)); // true
+        console.log(Common.prototype.isPrototypeOf(hd)); // true
+    </script>
+</body>
+</html>

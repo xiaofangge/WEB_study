@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>属性保护</title>
+</head>
+<body>
+    <script>
+        class User {
+            // 属性保护
+            _url = "https://www.houdunren.com";
+            constructor(name) {
+                this.name = name;
+            }
+            set url(url) {
+                if (!/^https?:/i.test(url)) {
+                    throw new Error("URL must start with http:// or https://");
+                }
+                this._url = url;
+            }
+        }
+        let user = new User("hdcms");
+        user.name = '李四'
+        user.url = 'https://hdcms.com'
+        console.log(user)
+    </script>
+</body>
+</html>

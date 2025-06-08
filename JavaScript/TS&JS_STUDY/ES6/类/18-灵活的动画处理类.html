@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: content-box;
+      }
+
+      body {
+        padding: 30px;
+      }
+
+      .slide {
+        width: 300px;
+        display: flex;
+        flex-direction: column;
+        /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); */
+      }
+
+      .slide dt {
+        height: 30px;
+        background: #34495e;
+        color: white;
+        display: flex;
+        align-items: center;
+        padding-left: 10px;
+        cursor: pointer;
+      }
+
+      .slide dt:first-of-type {
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+      }
+
+      .slide dd {
+        height: 100px;
+        background: #f1c40f;
+        overflow: hidden;
+      }
+
+      .slide dd div {
+        padding: 10px;
+      }
+
+      .slide dd:last-of-type {
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="slide s1">
+      <dt>后盾人</dt>
+      <dd>
+        <div>houdunren.com</div>
+      </dd>
+      <dt>后盾人</dt>
+      <dd>
+        <div>hdcms.com</div>
+      </dd>
+      <dt>后盾人</dt>
+      <dd>
+        <div>hdcms.com</div>
+      </dd>
+    </div>
+    <script>
+      class Animation {
+        constructor(el, timeout = 5) {
+          this.el = el;
+          this.timeout = 5;
+          this.isShow = true;
+          this.defaultHeight = Number(
+            window.getComputedStyle(el).height.slice(0, -2)
+          );
+          console.log("默认高度:", this.defaultHeight);
+        }
+        get height() {
+          return Number(window.getComputedStyle(this.el).height.slice(0, -2));
+        }
+        set height(value) {
+          this.el.style.height = value + "px";
+        }
+        hide(callback) {
+          this.isShow = false;
+          let id = setInterval(() => {
+            if (this.height <= 0) {
+              clearInterval(id);
+              callback && callback();
+              return;
+            }
+            this.height = this.height - 1;
+          }, this.timeout);
+        }
+        show(callback) {
+          this.isShow = true;
+          let id = setInterval(() => {
+            if (this.height >= this.defaultHeight) {
+              clearInterval(id);
+              callback && callback();
+              return;
+            }
+            this.height = this.height + 1;
+          }, this.timeout);
+        }
+      }
+      class Slide {
+        constructor(el) {
+            this.el = document.querySelector(el)
+            this.links = this.el.querySelectorAll('dt')
+            this.panels = [...this.el.querySelectorAll('dd')].map(item =>
+                new Panel(item, 15)
+            )
+            this.bind();
+        }
+        bind() {
+            this.links.forEach((item,index) => {
+                item.addEventListener('click', () => {
+                    this.action(index)
+                })
+            })
+        }
+        action(index) {
+            Panel.hideAll(Panel.filter(this.panels, index), () => {
+                 this.panels[index].show()
+            })
+        }
+      }
+      class Panel extends Animation {
+        static num = 0;
+        static hideAll(items, callback) {
+            if (Panel.num > 0) return;
+            items.forEach(item => {
+                Panel.num++;
+                item.hide(() => {
+                    Panel.num--;
+                })
+            })
+            callback && callback()
+        }
+        static filter(items, i) {
+            return items.filter((item, index) => index !== i)
+        }
+      }
+      let hd = new Slide('.s1')
+    //   let animateEl = document.querySelector(".s1");
+    //   let animate = new Animation(animateEl);
+    //     animate.hide(() => {
+    //         console.log("隐藏完了");
+    //         animate.show(() => {
+    //         console.log("显示完了");
+    //         });
+    //     });
+    </script>
+  </body>
+</html>

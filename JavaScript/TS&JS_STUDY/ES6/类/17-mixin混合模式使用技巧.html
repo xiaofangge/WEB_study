@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=+, initial-scale=1.0">
+    <title>mixin混合模式使用技巧</title>
+</head>
+<body>
+    <script>
+        // mixin
+        let Tool = {
+            max(key) {
+                return this.data.sort((a, b) => b[key] - a[key])[0];
+            }
+        }
+
+        let Arr = {
+            count(key) {
+                return this.data.reduce((acc, item) => {
+                    return acc + item[key]
+                }, 0);
+            }
+        }
+
+        class Lesson {
+            constructor(lessons) {
+                this.lessons = lessons;
+            }
+            get data() {
+                return this.lessons;
+            }
+        }
+
+        const data = [
+            { name: "Math", score: 90, click: 189 },
+            { name: "English", score: 85, click: 120 },
+            { name: "Science", score: 95, click: 200 },
+            { name: "History", score: 80, click: 150 },
+            { name: "Art", score: 88, click: 170 }
+        ]
+        Object.assign(Lesson.prototype, Tool, Arr); // 混合模式，将Tool的方法添加到Lesson的原型上
+        let lesson = new Lesson(data);
+        console.log(lesson);
+        console.log(lesson.max("score")); // { name: "Science", score: 95, click: 200 }
+        console.log(lesson.count("click")); // 829
+    </script>
+</body>
+</html>

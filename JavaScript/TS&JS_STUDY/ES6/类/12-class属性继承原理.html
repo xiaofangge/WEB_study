@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 属性继承
+        function User(name) {
+            this.name = name;
+        }
+
+        function Admin(name) {
+            User.call(this, name); // 调用父类构造函数
+        }
+        Admin.prototype = Object.create(User.prototype); // 继承父类原型
+        Admin.prototype.show = function() {
+            console.log(`Admin: ${this.name}`);
+        };
+        let hd = new Admin("hdcms");
+        console.log(hd)
+
+        console.log("--------------------")
+        // 类继承
+        class User2 {
+            constructor(name) {
+                this.name = name;
+            }
+        }
+        class Admin2 extends User2 {
+            constructor(name) {
+                super(name); // 调用父类构造函数
+            }
+            show() {
+                console.log(`Admin: ${this.name}`);
+            }
+        }
+        let hd2 = new Admin2("hdcms");
+        console.log(hd2)
+    </script>
+</body>
+</html>

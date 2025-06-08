@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>内置类继承原理</title>
+</head>
+<body>
+    
+    <script>
+        function Arr(...args) {
+            args.forEach(item => this.push(item));
+            this.first = function() {
+                return this[0];
+            };
+        }
+        Arr.prototype = Object.create(Array.prototype);
+        let hd = new Arr(100, 1, 2, 3);
+        console.log(hd instanceof Arr); // true
+        console.log(hd instanceof Array); // true
+        console.dir(hd); // Arr(4) [100, 1, 2, 3, first: ƒ]
+        console.log(hd.first()); // 100
+
+        console.log("--------------------");
+        class Arr2 extends Array {
+            constructor(...args) {
+                super(...args); // 调用父类构造函数
+            }
+            first() {
+                return this[0];
+            }
+            max() {
+                return this.sort((a, b) => b - a)[0]
+            }
+            remove(value) {
+                const index = this.indexOf(value);
+                if (index > -1) {
+                    this.splice(index, 1);
+                }
+            }
+        }
+        let hd2 = new Arr2(100, 1, 2, 3, 199);
+        console.log(hd2.max())
+        hd2.remove(199);
+        console.log(hd2.max())
+    </script>
+</body>
+</html>
