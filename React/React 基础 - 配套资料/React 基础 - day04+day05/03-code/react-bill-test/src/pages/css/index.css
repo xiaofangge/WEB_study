@@ -1,14 +1,9 @@
-.layout .container {
-  position: fixed;
-  top: 0;
-  bottom: 50px;
-  width: 100%;
-}
-.layout .footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-};
+.keepAccounts {
+  --ka-bg-color: #daf2e1;
+  --ka-color: #69ae78;
+  --ka-border-color: #191d26;
+  height: 100%;
+  background-color: var(--ka-bg-color);
 }
 .keepAccounts .nav {
   --adm-font-size-10: 16px;

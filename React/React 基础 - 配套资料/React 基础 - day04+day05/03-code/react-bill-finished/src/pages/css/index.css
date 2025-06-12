@@ -1,32 +1,49 @@
-.billDetail {
+.monthlyBill {
   --ka-text-color: #191d26;
   height: 100%;
-  background-image: url(https://zqran.gitee.io/images/ka/bill-bg.png);
-  background-size: 100% 380px;
+  background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#f5f5f5));
+  background: linear-gradient(180deg, #ffffff, #f5f5f5 100%);
+  background-size: 100% 240px;
   background-repeat: no-repeat;
   background-color: rgba(245, 245, 245, 0.9);
   color: var(--ka-text-color);
 }
-.billDetail .nav {
+.monthlyBill .nav {
   --adm-font-size-10: 16px;
   color: #121826;
   background-color: transparent;
 }
-.billDetail .nav::after {
-  height: 0;
+.monthlyBill .nav .adm-nav-bar-back-arrow {
+  font-size: 20px;
 }
-.billDetail .nav .nav-title {
+.monthlyBill .content {
+  height: 573px;
+  padding: 0 10px;
+  overflow-y: scroll;
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+}
+.monthlyBill .content::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+.monthlyBill .content > .header {
+  height: 135px;
+  padding: 20px 20px 20px 18.5px;
+  margin-bottom: 10px;
+  background-image: url(https://zqran.gitee.io/images/ka/month-bg.png);
+  background-size: cover;
+}
+.monthlyBill .content > .header .date {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  margin-bottom: 25px;
+  font-size: 16px;
 }
-.billDetail .nav .arrow {
+.monthlyBill .content > .header .date .arrow {
   display: inline-block;
   width: 7px;
   height: 7px;
@@ -39,32 +56,6 @@
   -webkit-transform-origin: center;
           transform-origin: center;
   -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-}
-.billDetail .nav .expand {
-  -webkit-transform: translate(0, 2px) rotate(45deg);
-          transform: translate(0, 2px) rotate(45deg);
-}
-.billDetail .content {
-  height: 573px;
-  overflow-y: scroll;
-}
-.billDetail .content > .overview {
-  width: 290px;
-  padding: 20px;
-}
-.billDetail .content .monthBill {
-  --ka-text-color: #888c98;
-  height: 75px;
-  padding: 15px;
-  margin: 10px;
-  border-radius: 10px;
-  background: #ffffff;
-}
-.billDetail .content .monthBill .date {
-  margin-bottom: 10px;
-  font-size: 16px;
-}-transition: all 0.3s;
   transition: all 0.3s;
 }
 .monthlyBill .content > .header .date .arrow.expand {
