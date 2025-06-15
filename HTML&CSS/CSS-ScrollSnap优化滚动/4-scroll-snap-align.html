@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>scroll-snap-align</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .content {
+            width: 100vw;
+            background-color: palegreen;
+            white-space: nowrap;
+            overflow-x: auto;
+            overflow-y: hidden;
+            scroll-snap-type: x mandatory;
+        }
+        .content .item {
+            display: inline-block;
+            margin: 5px;
+            height: 100px;
+            background-color: #fff;
+            width: var(--width);
+            scroll-snap-align: start;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div class="item" style="--width: 200px"></div>
+        <div class="item" style="--width: 150px"></div>
+        <div class="item" style="--width: 80px"></div>
+        <div class="item" style="--width: 220px"></div>
+        <div class="item" style="--width: 100px"></div>
+        <div class="item" style="--width: 250px"></div>
+        <div class="item" style="--width: 200px"></div>
+        <div class="item" style="--width: 200px"></div>
+        <div class="item" style="--width: 120px"></div>
+        <div class="item" style="--width: 300px"></div>
+    </div>
+</body>
+</html>

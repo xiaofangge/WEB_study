@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>全屏滚动效果</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .content {
+            width: 100vw;
+            height: 100vh;
+            overflow-y: auto;
+            overflow-x: hidden;
+            scroll-snap-type: y mandatory;
+        }
+        .content .box {
+            width: 100vw;
+            height: 100vh;
+            background-color: var(--color);
+            color: aliceblue;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            scroll-snap-align: start;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div class="box" style="--color: blue">
+            <h3>第一个盒子</h3>
+        </div>
+        <div class="box" style="--color: red">
+            <h3>第二个盒子</h3>
+        </div>
+        <div class="box" style="--color: green">
+            <h4>第三个盒子</h4>
+        </div>
+    </div>
+</body>
+</html>

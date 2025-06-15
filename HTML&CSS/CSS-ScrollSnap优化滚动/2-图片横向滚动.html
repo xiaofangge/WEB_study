@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片横向滚动</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .content {
+            width: 100vw;
+            height: 300px;
+            white-space: nowrap;
+            overflow-x: auto;
+            overflow-y: hidden;
+            /* 确定滚动时，水平还是垂直 
+                x: 滚动容器只捕捉其水平轴上的捕捉位置
+                mandatory: 如果滚动容器被滚动，超过临界值会自动滚动到下个容器上
+            */
+            scroll-snap-type: x mandatory;
+        }
+        .content img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            scroll-snap-align: start;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <img src="./images/img-01.png" alt="">
+        <img src="./images/img-02.jpg" alt="">
+        <img src="./images/img-03.png" alt="">
+        <img src="./images/img-04.jpg" alt="">
+        <img src="./images/img-05.jpg" alt="">
+        <img src="./images/img-06.jpg" alt="">
+        <img src="./images/img-07.jpg" alt="">
+        <img src="./images/img-08.png" alt="">
+        <img src="./images/img-09.png" alt="">
+        <img src="./images/img-10.jpg" alt="">
+        <img src="./images/img-11.jpg" alt="">
+    </div>
+</body>
+</html>
