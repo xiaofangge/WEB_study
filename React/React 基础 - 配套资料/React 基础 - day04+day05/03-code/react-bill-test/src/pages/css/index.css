@@ -1,106 +1,96 @@
-.keepAccounts {
-  --ka-bg-color: #daf2e1;
-  --ka-color: #69ae78;
-  --ka-border-color: #191d26;
+.monthlyBill {
+  --ka-text-color: #191d26;
   height: 100%;
-  background-color: var(--ka-bg-color);
+  background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#f5f5f5));
+  background: linear-gradient(180deg, #ffffff, #f5f5f5 100%);
+  background-size: 100% 240px;
+  background-repeat: no-repeat;
+  background-color: rgba(245, 245, 245, 0.9);
+  color: var(--ka-text-color);
 }
-.keepAccounts .nav {
+.monthlyBill .nav {
   --adm-font-size-10: 16px;
   color: #121826;
   background-color: transparent;
 }
-.keepAccounts .nav::after {
-  height: 0;
-}
-.keepAccounts .nav .adm-nav-bar-back-arrow {
+.monthlyBill .nav .adm-nav-bar-back-arrow {
   font-size: 20px;
 }
-.keepAccounts .header {
-  height: 132px;
-}
-.keepAccounts .header .kaType {
-  padding: 9px 0;
-  text-align: center;
-}
-.keepAccounts .header .kaType .adm-button {
-  --adm-font-size-9: 13px;
-}
-.keepAccounts .header .kaType .adm-button:first-child {
-  margin-right: 10px;
-}
-.keepAccounts .header .kaType .selected {
-  color: #fff;
-  --background-color: var(--ka-border-color);
-}
-.keepAccounts .header .kaFormWrapper {
-  padding: 10px 22.5px 20px;
-}
-.keepAccounts .header .kaFormWrapper .kaForm {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  padding: 11px 15px 11px 12px;
-  border: 0.5px solid var(--ka-border-color);
-  border-radius: 9px;
-  background-color: #fff;
-}
-.keepAccounts .header .kaFormWrapper .kaForm .date {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  height: 28px;
-  padding: 5.5px 5px;
-  border-radius: 4px;
-  color: var(--ka-color);
-  background-color: var(--ka-bg-color);
-}
-.keepAccounts .header .kaFormWrapper .kaForm .date .icon {
-  margin-right: 6px;
-  font-size: 17px;
-}
-.keepAccounts .header .kaFormWrapper .kaForm .date .text {
-  font-size: 16px;
-}
-.keepAccounts .header .kaFormWrapper .kaForm .kaInput {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-.keepAccounts .header .kaFormWrapper .kaForm .kaInput .input {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-  margin-right: 10px;
-  --text-align: right;
-  --font-size: 24px;
-  --color: var(--ka-color);
-  --placeholder-color: #d1d1d1;
-}
-.keepAccounts .header .kaFormWrapper .kaForm .kaInput .iconYuan {
-  font-size: 24px;
-}
-.keepAccounts .kaTypeList {
-  height: 490px;
-  padding: 20px 11px;
-  padding-bottom: 70px;
+.monthlyBill .content {
+  height: 573px;
+  padding: 0 10px;
   overflow-y: scroll;
-  background: #ffffff;
-  border-radius: 20px 20px 0 0;
   -ms-overflow-style: none; /* Internet Explorer 10+ */
   scrollbar-width: none; /* Firefox */
 }
-.keepAccounts .kaTypeList::-webkit-scrollbar {
+.monthlyBill .content::-webkit-scrollbar {
   display: none; /* Safari and Chrome */
+}
+.monthlyBill .content > .header {
+  height: 135px;
+  padding: 20px 20px 0px 18.5px;
+  margin-bottom: 10px;
+  background-image: url(https://yjy-teach-oss.oss-cn-beijing.aliyuncs.com/reactbase/ka/month-bg.png);
+  background-size: 100% 100%;
+}
+.monthlyBill .content > .header .date {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 25px;
+  font-size: 16px;
+}
+.monthlyBill .content > .header .date .arrow {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-top: -3px;
+  margin-left: 9px;
+  border-top: 2px solid #121826;
+  border-left: 2px solid #121826;
+  -webkit-transform: rotate(225deg);
+          transform: rotate(225deg);
+  -webkit-transform-origin: center;
+          transform-origin: center;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.monthlyBill .content > .header .date .arrow.expand {
+  -webkit-transform: translate(0, 2px) rotate(45deg);
+          transform: translate(0, 2px) rotate(45deg);
+}
+.monthlyBill .twoLineOverview {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 250px;
+}
+.monthlyBill .twoLineOverview .item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.monthlyBill .twoLineOverview .item .money {
+  height: 24px;
+  line-height: 24px;
+  margin-bottom: 5px;
+  font-size: 18px;
+}
+.monthlyBill .twoLineOverview .item .type {
+  height: 14px;
+  line-height: 14px;
+  font-size: 12px;
+} Chrome */
 }
 .keepAccounts .kaTypeList .kaType {
   margin-bottom: 25px;

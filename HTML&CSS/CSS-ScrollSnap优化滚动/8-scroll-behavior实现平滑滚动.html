@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>scroll-behavior实现平滑滚动</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 100vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        nav {
+            width: 100vw;
+            /* height: 50px; */
+            line-height: 50px;
+            background-color: #333;
+            text-align: center;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .box {
+            width: 100vw;
+            height: calc(100vh - 50px);
+            overflow-y: auto;
+            text-align: center;
+            scroll-behavior: smooth;
+        }
+        .box section {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--bgColor);
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <a href="#one">模块一</a>
+            <a href="#two">模块二</a>
+            <a href="#three">模块三</a>
+        </nav>
+        <div class="box">
+            <section id="one" style="--bgColor: red;">First section</section>
+            <section id="two" style="--bgColor: pink;">Second section</section>
+            <section id="three" style="--bgColor: skyblue;">Third section</section>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>列表左滑动显示按钮</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .content {
+            width: 100vw;
+            white-space: nowrap;
+            overflow-x: auto;
+            overflow-y: hidden;
+            border-bottom: 1px solid #eee;
+            scroll-snap-type: x mandatory;
+        }
+        /* 滚动条样式 */
+        .content::-webkit-scrollbar {
+            display: none;
+        }
+        .content a {
+            text-decoration: none;
+            width: 100vw;
+            padding: 10px;
+            display: inline-block;
+            scroll-snap-align: start;
+        }
+        .content button {
+            border: 0;
+            outline: 0;
+            color: #fff;
+            background: red;
+            width: 40px;
+            height: 25px;
+            scroll-snap-align: end;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <a href="#" class="list">这是一个列表</a>
+        <button class="button">按钮</button>
+    </div>
+</body>
+</html>
