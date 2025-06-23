@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>360度背景旋转</title>
+    <style>
+      @property --angle {
+        syntax: "<angle>";
+        inherits: false;
+        initial-value: 0deg;
+      }
+      .box {
+        width: 300px;
+        height: 300px;
+        background: conic-gradient(from var(--angle), red, orange, yellow, green, skyblue, pink);
+        animation: 2s spin linear infinite;
+      }
+      @keyframes spin {
+        to {
+            --angle: 360deg;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box"></div>
+  </body>
+</html>
