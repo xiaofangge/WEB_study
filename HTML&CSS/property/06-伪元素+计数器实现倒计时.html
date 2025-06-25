@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>伪元素+计数器实现倒计时</title>
+    <style>
+        @property --i {
+            syntax: '<integer>';
+            inherits: false;
+            initial-value: 10;
+        }
+
+        .box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 100px;
+        }
+
+        .box::before {
+            counter-reset: count var(--i);
+            content: counter(count);
+            animation: count 2s linear infinite;
+        }
+        @keyframes count {
+            to {
+                --i: 0
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+</body>
+
+</html>

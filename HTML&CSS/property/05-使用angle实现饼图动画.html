@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用angle实现饼图动画</title>
+    <style>
+        @property --pie {
+            syntax: '<angle>';
+            inherits: false;
+            initial-value: 10deg;
+        }
+
+        .box {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: conic-gradient(red, red var(--pie), transparent var(--pie), transparent);
+            transition: --pie 1.5s ease;
+        }
+
+        .box:hover {
+            --pie: 360deg;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+</body>
+
+</html>

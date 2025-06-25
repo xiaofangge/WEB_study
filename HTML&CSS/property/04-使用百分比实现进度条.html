@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用百分比实现进度条</title>
+    <style>
+        @property --progress {
+            syntax: '<percentage>';
+            inherits: false;
+            initial-value: 0%;
+        }
+        .box {
+            width: 300px;
+            height: 30px;
+            border: 1px solid red;
+            border-radius: 18px;
+            background: linear-gradient(90deg,#f00, #f99 var(--progress), transparent var(--progress));
+            transition: --progress 1.5s ease-in-out;
+        }
+        .box:hover {
+            --progress: 100%
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+</body>
+
+</html>

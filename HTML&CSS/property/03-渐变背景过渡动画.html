@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>渐变背景过渡动画</title>
+    <style>
+      /* :root {
+        --colorA: red;
+        --colorB: blue;
+      } */
+      @property --colorA {
+        syntax: "<color>";
+        inherits: true;
+        initial-value: red;
+      }
+      @property --colorB {
+        syntax: "<color>";
+        inherits: true;
+        initial-value: blue;
+      }
+      .box {
+        width: 300px;
+        height: 300px;
+        background: linear-gradient(90deg, var(--colorA), var(--colorB));
+        /* 渐变背景默认没有过渡动画 */
+        /* transition: background 1s; */
+        transition: --colorA 1s, --colorB 1s;
+      }
+      .box:hover {
+        --colorA: pink;
+        --colorB: yellow;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box"></div>
+  </body>
+</html>
