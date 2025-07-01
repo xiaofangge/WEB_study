@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>多张图片遮罩</title>
+    <style>
+        .box {
+            width: 300px;
+            height: 300px;
+            background: url(../grid布局/images/img-02.jpg) no-repeat;
+            position: relative;
+        }
+        .box::before {
+            background: url(../grid布局/images/img-12.jpg) no-repeat;
+            content: '';
+            width: 300px;
+            height: 300px;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            top: 0;
+            mask: linear-gradient(90deg, #000, transparent);
+            -webkit-mask: linear-gradient(90deg, #000, transparent);
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+</html>

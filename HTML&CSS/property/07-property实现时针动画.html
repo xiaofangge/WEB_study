@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>property实现时针动画</title>
+    <style>
+      @property --h {
+        syntax: "<integer>";
+        inherits: false;
+        initial-value: 0;
+      }
+      @property --m {
+        syntax: "<integer>";
+        inherits: false;
+        initial-value: 0;
+      }
+      @property --s {
+        syntax: "<integer>";
+        inherits: false;
+        initial-value: 0;
+      }
+      .time {
+        text-align: center;
+        font-size: 100px;
+      }
+      /* 时 */
+      .hour::after {
+        counter-reset: hour var(--h);
+        content: counter(hour);
+        animation: hour calc(6s * 60 * 24) linear infinite;
+      }
+      /* 分 */
+      .minutes::after {
+        counter-reset: minutes var(--m);
+        content: counter(minutes);
+        animation: minutes calc(6s * 60) linear infinite;
+      }
+      /* 秒 */
+      .seconds::after {
+        counter-reset: second var(--s);
+        content: counter(second);
+        animation: seconds 6s linear infinite;
+      }
+      @keyframes hour {
+        to {
+          --h: 24;
+        }
+      }
+      @keyframes minutes {
+        to {
+          --m: 60;
+        }
+      }
+      @keyframes seconds {
+        to {
+          --s: 60;
+        }
+      }
+      @keyframes shark {
+        0%, 100% {
+            opacity: 1;
+        }
+        50% {
+            opacity: 0;
+        }
+      }
+      .split {
+        animation: shark 1s linear infinite;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="time">
+      <span class="hour"></span>
+      <b class="split">:</b>
+      <span class="minutes"></span>
+      <b class="split">:</b>
+      <span class="seconds"></span>
+    </div>
+  </body>
+</html>
